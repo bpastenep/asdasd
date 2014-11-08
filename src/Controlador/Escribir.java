@@ -20,28 +20,27 @@ public class Escribir {
     {
         FileWriter fichero = null;
         PrintWriter pw = null;
-      //  try
-      //  {
+       try
+       {
             fichero = new FileWriter("Logeo.txt", continuar);
             pw = new PrintWriter(fichero);
-            int x;
+            //int x;
             String linea;
             linea = user+";"+pass;
             ValidaUsuario valida = new ValidaUsuario();
             if (valida.validae(user)){
                 pw.println(linea);
-                x=1;
+                //x=1;
                 JOptionPane.showMessageDialog(null, "Usuario Creado con exito");
-                System.out.println(x);
           }  
             else{
                 JOptionPane.showMessageDialog(null, "El usuario YA EXISTE, intente otro");
-                x=0;
+                //x=0;
             }
-            if(x==1){
+            //if(x==1){
                 cu.cerrar();
-        }
-        /*} catch (Exception e) {
+        //}    
+                } catch (Exception e) {
             e.printStackTrace();
         } finally {
            try {
@@ -52,7 +51,7 @@ public class Escribir {
            } catch (Exception e2) {
               e2.printStackTrace();
            }
-        }*/
+        }
 
       
     }
