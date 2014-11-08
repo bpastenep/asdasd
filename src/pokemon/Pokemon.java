@@ -7,8 +7,8 @@ public class Pokemon {
 
 
     public static void main(String[] args) {
-        VistaLogin vl = new VistaLogin();
-        vl.setVisible(true);
+        ControladorPrincipal cp = new ControladorPrincipal();
+        cp.iniciar();
     }
     
 }
