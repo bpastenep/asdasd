@@ -23,11 +23,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.cp = co;
     }
-/*@Override
+
+@Override
 public Image getIconImage(){
     Image refValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/icono.png"));
     return refValue;        
-}*/
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -40,6 +41,7 @@ public Image getIconImage(){
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setIconImage(getIconImage());
 
         jLabel1.setText("Vista principal");
 
