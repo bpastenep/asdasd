@@ -32,6 +32,7 @@ public class Escribir {
                 pw.println(linea);
                 //x=1;
                 JOptionPane.showMessageDialog(null, "Usuario Creado con exito");
+              
           }  
             else{
                 JOptionPane.showMessageDialog(null, "El usuario YA EXISTE, intente otro");

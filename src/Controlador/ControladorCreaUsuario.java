@@ -15,7 +15,6 @@ import Vista.VistaCreaU;
 public class ControladorCreaUsuario {
     private VistaCreaU vu;
     private ControladorPrincipal cp;
-
     public void Iniciar(ControladorPrincipal op) {
         VistaCreaU vu = new VistaCreaU(this,true);
         vu.setVisible(true);
@@ -25,6 +24,7 @@ public class ControladorCreaUsuario {
     void cerrar() {
        this.cp.iniciarL();
        this.vu.setVisible(false);
+       
     }
     
 }
