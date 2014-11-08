@@ -15,26 +15,33 @@ import javax.swing.JOptionPane;
  * @author Benjamin
  */
 public class Escribir {
-    public void escribirArchivo(String user, String pass,  boolean continuar) throws IOException
+    private int x;
+    public void escribirArchivo(String user, String pass,  boolean continuar, ControladorCreaUsuario cu) throws IOException
     {
         FileWriter fichero = null;
         PrintWriter pw = null;
-        try
-        {
+      //  try
+      //  {
             fichero = new FileWriter("Logeo.txt", continuar);
             pw = new PrintWriter(fichero);
+            int x;
             String linea;
             linea = user+";"+pass;
             ValidaUsuario valida = new ValidaUsuario();
             if (valida.validae(user)){
                 pw.println(linea);
+                x=1;
                 JOptionPane.showMessageDialog(null, "Usuario Creado con exito");
-                
+                System.out.println(x);
           }  
             else{
                 JOptionPane.showMessageDialog(null, "El usuario YA EXISTE, intente otro");
+                x=0;
             }
-        } catch (Exception e) {
+            if(x==1){
+                cu.cerrar();
+        }
+        /*} catch (Exception e) {
             e.printStackTrace();
         } finally {
            try {
@@ -45,6 +52,8 @@ public class Escribir {
            } catch (Exception e2) {
               e2.printStackTrace();
            }
-        }
+        }*/
+
+      
     }
 }

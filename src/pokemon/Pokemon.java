@@ -8,7 +8,7 @@ public class Pokemon {
 
     public static void main(String[] args) {
         ControladorPrincipal cp = new ControladorPrincipal();
-        cp.iniciar();
+        cp.iniciarL();
     }
     
 }
