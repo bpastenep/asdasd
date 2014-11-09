@@ -118,6 +118,7 @@ public class VistaCreaU extends javax.swing.JDialog {
             Escribir es = new Escribir();
             try {
                 es.escribirArchivo(user.getText(), pass.getText(), true, cu); 
+                this.setVisible(false);
 
             } catch (IOException ex) {
                 Logger.getLogger(VistaCreaU.class.getName()).log(Level.SEVERE, null, ex);
