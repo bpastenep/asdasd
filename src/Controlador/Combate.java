@@ -1,12 +1,10 @@
-
-
 package Controlador;
+
+
 import Modelo.Pokemon;
 import Modelo.Entrenador;
-/**
- *
- * @author Benjamin
- */
+
+
 public class Combate {
     public int Atacar(int ps, int daño){
         return (ps-daño);
@@ -29,6 +27,9 @@ public class Combate {
             Atacar(ja.getPokemon(0).getAtaque(), jb.getPokemon(0).getPS());
         }
         //Acá se debe agregar la opción de poder cambiar al pokemon con el que se tiene que pelear 
+        else if (op == 2){
+            
+        }
     }
     
     public int jugadorGanador(Pokemon[] e1, Pokemon[] e2){
@@ -52,6 +53,5 @@ public class Combate {
         return 0;
     }
 
-// el benja se la come atravesá
     
 }
