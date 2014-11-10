@@ -6,10 +6,11 @@
 
 package Vista;
 
+import Controlador.ControladorCombate;
+import Controlador.ControladorPrincipal;
 import java.awt.Image;
 import java.awt.Toolkit;
 import static sun.applet.AppletResourceLoader.getImage;
-import Controlador.ControladorPrincipal;
 
 /**
  *
@@ -119,8 +120,8 @@ public Image getIconImage(){
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        VistaCombate vc = new VistaCombate(this,true);
-        vc.setVisible(true);
+        ControladorCombate cc = new ControladorCombate(cp);
+        cc.iniciarV();
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
