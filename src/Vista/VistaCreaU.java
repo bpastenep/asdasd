@@ -120,7 +120,7 @@ public class VistaCreaU extends javax.swing.JDialog {
             try {
                 es.escribirArchivo(user.getText(), pass.getText(), true, cu); 
                 this.setVisible(false);
-
+//Holi, soy el benja y soy sexy
             } catch (IOException ex) {
                 Logger.getLogger(VistaCreaU.class.getName()).log(Level.SEVERE, null, ex);
             }
