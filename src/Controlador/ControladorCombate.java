@@ -47,7 +47,7 @@ public class ControladorCombate {
         }
         //Acá se debe agregar la opción de poder cambiar al pokemon con el que se tiene que pelear 
         else if (op == 2){
-            
+            //cabmbio();
         }
     }
     

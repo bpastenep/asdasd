@@ -258,11 +258,13 @@ public class VistaCombate extends javax.swing.JDialog {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         pokemon2.setEnabled(false);
         ataques2.setEnabled(true);
+        op2 = 0;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         pokemon2.setEnabled(true);
         ataques2.setEnabled(false);
+        op2 = 1;
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void pokemon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokemon1ActionPerformed
