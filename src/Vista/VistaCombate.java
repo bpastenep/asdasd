@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Vista;
 
-/**
- *
- * @author Benjamin
- */
 public class VistaCombate extends javax.swing.JDialog {
-
+    
+    int op1;
+    int op2;
+    
     /**
      * Creates new form VentanaCombate
      */
@@ -253,11 +246,13 @@ public class VistaCombate extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         pokemon1.setEnabled(false);
         ataques1.setEnabled(true);
+        op1 = 0;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        pokemon1.setEnabled(true);
        ataques1.setEnabled(false);
+       op1 = 1;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
