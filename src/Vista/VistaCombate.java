@@ -18,9 +18,11 @@ public class VistaCombate extends javax.swing.JDialog {
     public VistaCombate(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        ataques1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ataque1", "Ataque2", "Ataque3", "Ataque4"}));
+        String[] ataquesp1 =  new String[] {"Ataque1", "Ataque2", "Ataque3", "Ataque4"};
+        String[] ataquesp2 = new String[] {"Ataque1", "Ataque2", "Ataque3", "Ataque4"};
+        ataques1.setModel(new javax.swing.DefaultComboBoxModel(ataquesp1));
         ataques1.setEnabled(false);
-        ataques2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ataque1", "Ataque2", "Ataque3", "Ataque4"}));
+        ataques2.setModel(new javax.swing.DefaultComboBoxModel(ataquesp2));
         ataques2.setEnabled(false);
         pokemon1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pokemon1", "Pokemon2", "POkemon3", "Pokemon4", "Pokemon5", "Pokemon6"}));
         pokemon1.setEnabled(false);
@@ -71,8 +73,18 @@ public class VistaCombate extends javax.swing.JDialog {
         jLabel2.setText("Usuario1");
 
         ataques1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ataques1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ataques1ActionPerformed(evt);
+            }
+        });
 
         pokemon1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pokemon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pokemon1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("HP: ");
 
@@ -93,6 +105,11 @@ public class VistaCombate extends javax.swing.JDialog {
         jLabel9.setText("HP");
 
         jButton1.setText("SimularTurno");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Atacar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +269,18 @@ public class VistaCombate extends javax.swing.JDialog {
         pokemon2.setEnabled(true);
         ataques2.setEnabled(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void pokemon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokemon1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pokemon1ActionPerformed
+
+    private void ataques1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataques1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ataques1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println(ataques1.getSelectedIndex());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

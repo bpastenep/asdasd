@@ -21,8 +21,11 @@ public class ControladorCombate {
         }
     }
     
-    public void cambio(Pokemon[] listadoPkmn1, Pokemon[] listadoPkmn2){
-        
+    public void cambio(Pokemon[] listadoPkmn, int selPkmn){
+        Pokemon aux;
+        aux = listadoPkmn[0];
+        listadoPkmn[0] = listadoPkmn[selPkmn];
+        listadoPkmn[selPkmn] = aux;
     }
     
     public boolean debilitado(Pokemon[] e1, Pokemon[] e2){
