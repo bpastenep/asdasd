@@ -1,5 +1,6 @@
 package Modelo;
 
+
 public class Pokemon extends EspeciePokemon {
     private int PS, atk, def, atkEsp, defEsp;
     private String estado;
@@ -7,6 +8,10 @@ public class Pokemon extends EspeciePokemon {
     private Habilidad habilidad;
     
 // get y set's  
+    
+    public boolean getContacto(){
+        return movimientos.isContacto();
+    }
     
     public int getPS(){
         return PS;

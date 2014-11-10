@@ -12,7 +12,7 @@ import Modelo.Entrenador;
  * @author Benjamin
  */
 public class SimularCombate {
-    Combate c = new Combate();
+    ControladorCombate c = new ControladorCombate();
     Entrenador winer;
     int seleccion;
     public Entrenador simularCombate(Entrenador j1, Entrenador j2){

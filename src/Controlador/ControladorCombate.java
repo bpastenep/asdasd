@@ -5,10 +5,26 @@ import Modelo.Pokemon;
 import Modelo.Entrenador;
 
 
-public class Combate {
-    public int Atacar(int ps, int daño){
-        return (ps-daño);
+public class ControladorCombate {
+    public int atacar(boolean contacto, int ps, int atk, int atkEsp, int def, int defEsp){
+        if(contacto){
+            if(def > atk)
+                return 1;
+            else
+                return ps - (atk - def);
+        }
+        else{
+            if(defEsp > atkEsp)
+                return 1;
+            else
+                return ps - (atkEsp - defEsp);
+        }
     }
+    
+    public void cambio(Pokemon[] listadoPkmn1, Pokemon[] listadoPkmn2){
+        
+    }
+    
     public boolean debilitado(Pokemon[] e1, Pokemon[] e2){
         for (int i=0;i<e1.length;i++){
             for(int j=0;j<e1.length;i++){
@@ -24,7 +40,7 @@ public class Combate {
     }
     public void realizarAccion(Entrenador ja, Entrenador jb,  int op){
         if (op==1){//Si Opcion es igual a 1 representará que el jugdor desea atacar
-            Atacar(ja.getPokemon(0).getAtaque(), jb.getPokemon(0).getPS());
+            atacar(ja.getPokemon(0).getContacto(), jb.getPokemon(0).getPS(), ja.getPokemon(0).getAtk(), ja.getPokemon(0).getAtkEsp(), ja.getPokemon(0).getDef(), ja.getPokemon(0).getDefEsp());
         }
         //Acá se debe agregar la opción de poder cambiar al pokemon con el que se tiene que pelear 
         else if (op == 2){

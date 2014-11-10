@@ -114,8 +114,8 @@ public Image getIconImage(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        VistaLogin vl = new VistaLogin(this,true);
-//        vl.setVisible(true);
+        VistaLogin vl = new VistaLogin(this,true);
+        vl.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
