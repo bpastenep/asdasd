@@ -59,6 +59,11 @@ public Image getIconImage(){
         });
 
         jButton3.setText("Simular Combate");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Bienvenido:");
 
@@ -112,6 +117,11 @@ public Image getIconImage(){
 //        VistaLogin vl = new VistaLogin(this,true);
 //        vl.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        VistaCombate vc = new VistaCombate(this,true);
+        vc.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
 
