@@ -6,9 +6,6 @@ public class PrimeraFase {
     private boolean medallaUno, medallaDos, medallaTres, medallaCuatro, 
             medallaCinco, medallaSeis, medallaSiete, medallaOcho;
 
-    
-
-
 // get y set's
     
     public boolean isMedallaUno() {
