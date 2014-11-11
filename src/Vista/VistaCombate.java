@@ -10,6 +10,8 @@ public class VistaCombate extends javax.swing.JDialog {
     private ControladorPrincipal cp;
     String[] equipoTest1;
     String[] equipoTest2;
+    Pokemon[] equipo1;
+    Pokemon[] equipo2;
     //Pokemones creados para la prueba
     
     /**
@@ -19,6 +21,8 @@ public class VistaCombate extends javax.swing.JDialog {
         initComponents();
         this.cp = op;
         this.cc = cco;
+        this.equipo1 = equipo;
+        this.equipo2 = equipo;
         String[] ataquesp1=cc.asignaA(equipo);
         String[] ataquesp2=cc.asignaA(equipo);
         ataques1.setModel(new javax.swing.DefaultComboBoxModel(ataquesp1));
@@ -35,6 +39,8 @@ public class VistaCombate extends javax.swing.JDialog {
         pokemonActivo2.setText(equipoTest2[0]);
         usuv1.setText(usu1);
         usuv2.setText(usu2);
+        Hp1.setText(Integer.toString(equipo[0].getPS()));
+        Hp2.setText(Integer.toString(equipo[0].getPS()));
     }   
 
    
@@ -53,7 +59,6 @@ public class VistaCombate extends javax.swing.JDialog {
         ataques1 = new javax.swing.JComboBox();
         pokemon1 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        hp1 = new javax.swing.JProgressBar();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -63,7 +68,6 @@ public class VistaCombate extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        hp2 = new javax.swing.JProgressBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -71,6 +75,8 @@ public class VistaCombate extends javax.swing.JDialog {
         jButton5 = new javax.swing.JButton();
         pokemonActivo1 = new javax.swing.JLabel();
         pokemonActivo2 = new javax.swing.JLabel();
+        Hp1 = new javax.swing.JLabel();
+        Hp2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -114,7 +120,7 @@ public class VistaCombate extends javax.swing.JDialog {
 
         jLabel8.setText("Pokemon");
 
-        jLabel9.setText("HP");
+        jLabel9.setText("HP:");
 
         jButton1.setText("SimularTurno");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +160,10 @@ public class VistaCombate extends javax.swing.JDialog {
         pokemonActivo1.setText("jLabel10");
 
         pokemonActivo2.setText("jLabel10");
+
+        Hp1.setText("HP1");
+
+        Hp2.setText("hp2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,8 +212,8 @@ public class VistaCombate extends javax.swing.JDialog {
                         .addComponent(pokemonActivo1)
                         .addGap(66, 66, 66)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(hp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37)
+                        .addComponent(Hp1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(usuv2))
@@ -212,11 +222,14 @@ public class VistaCombate extends javax.swing.JDialog {
                         .addComponent(pokemonActivo2)
                         .addGap(33, 33, 33)
                         .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(hp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(Hp2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(jButton4)
@@ -241,11 +254,10 @@ public class VistaCombate extends javax.swing.JDialog {
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(pokemonActivo1))
-                    .addComponent(hp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(pokemonActivo1)
+                    .addComponent(Hp1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -260,15 +272,14 @@ public class VistaCombate extends javax.swing.JDialog {
                     .addComponent(pokemon2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(pokemonActivo2))
-                    .addComponent(hp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(pokemonActivo2)
+                    .addComponent(Hp2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addComponent(jButton1)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -277,25 +288,25 @@ public class VistaCombate extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         pokemon1.setEnabled(false);
         ataques1.setEnabled(true);
-        op1 = 0;
+        op1 = 1;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        pokemon1.setEnabled(true);
        ataques1.setEnabled(false);
-       op1 = 1;
+       op1 = 2;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         pokemon2.setEnabled(false);
         ataques2.setEnabled(true);
-        op2 = 0;
+        op2 = 1;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         pokemon2.setEnabled(true);
         ataques2.setEnabled(false);
-        op2 = 1;
+        op2 = 2;
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void pokemon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokemon1ActionPerformed
@@ -311,8 +322,10 @@ public class VistaCombate extends javax.swing.JDialog {
         //String ataquej2 = (String) ataques2.getSelectedItem();
         //String cambioj1 = (String) pokemon1.getSelectedItem();
         //String cambioj2 = (String) pokemon2.getSelectedItem();
-        cc.realizarTurno(equipoTest1,op1,pokemon1.getSelectedIndex());
-        equipoTest1=cc.actualizarDatos();
+        cc.realizarAccion(equipoTest1, equipoTest2,op1,pokemon1.getSelectedIndex(),(String)ataques1.getSelectedItem(),equipo1,equipo2);
+        cc.realizarAccion(equipoTest2,equipoTest1, op2,pokemon2.getSelectedIndex(),(String) ataques2.getSelectedItem(),equipo1,equipo2);
+        //equipoTest1 = cc.actualizarDatos();
+        System.out.println(equipoTest1[0]);
         pokemonActivo1.setText(equipoTest1[0]);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -326,10 +339,10 @@ public class VistaCombate extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Hp1;
+    private javax.swing.JLabel Hp2;
     private javax.swing.JComboBox ataques1;
     private javax.swing.JComboBox ataques2;
-    private javax.swing.JProgressBar hp1;
-    private javax.swing.JProgressBar hp2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

@@ -82,9 +82,9 @@ public class Pokemon extends EspeciePokemon {
         return movimientos;
     }
 
-    /*public void setMovimientos(MovAprendido movimientos) {
+    public void setMovimientos(MovAprendido movimientos) {
         this.movimientos = movimientos;
-    }*/
+    }
 
     public Habilidad getHabilidad() {
         return habilidad;

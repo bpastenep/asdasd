@@ -12,7 +12,6 @@ public class ControladorCombate {
     public VistaCombate vc;
     public ControladorPrincipal cp;
     public String usu1,usu2;
-    String[] cambio=null;
     //Esto se tiene que borrar ya que se sacará de la BD
     public Pokemon p1 = new Pokemon("Pikachu",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 170);
     public Pokemon p2 = new Pokemon("Evee",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 140);
@@ -21,6 +20,7 @@ public class ControladorCombate {
     public Pokemon p5 = new Pokemon("Geodude",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 220);
     public Pokemon p6 = new Pokemon("Snorlax",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 250);
     public Pokemon[] equipoP= {p1,p2,p3,p4,p5,p6};
+    public int hpFinal;
     //Contstructor
     
     public ControladorCombate(ControladorPrincipal op, String nusurio, String usua2) {
@@ -43,15 +43,27 @@ public class ControladorCombate {
         if(contacto){
             if(def > atk)
                 return 1;
-            else
+            else{
+                this.hpFinal = ps - (atk - def);
                 return ps - (atk - def);
+            }
         }
         else{
             if(defEsp > atkEsp)
                 return 1;
-            else
+            else{
+                this.hpFinal = ps - (atkEsp - defEsp);
                 return ps - (atkEsp - defEsp);
+            }
         }
+    }
+    
+    public void actualizaHp(Pokemon[] listaPkmn){
+        listaPkmn[0].setPS(this.hpFinal);
+    }
+    
+    public void actualizaCambio(){
+        
     }
     
     /*public void cambio(Pokemon[] listadoPkmn, int selPkmn){
@@ -61,9 +73,8 @@ public class ControladorCombate {
         listadoPkmn[selPkmn] = aux;
     }*/
     
-    public String[] cambioPrueba(String[] listadoPkmn, int selPkmn){
-        System.out.println("llame la prueba");
-        String aux;
+    public Pokemon[] cambio(Pokemon[] listadoPkmn, int selPkmn){
+        Pokemon aux;
         aux = listadoPkmn[0];
         listadoPkmn[0] = listadoPkmn[selPkmn];
         listadoPkmn[selPkmn] = aux;
@@ -83,15 +94,18 @@ public class ControladorCombate {
         }
         return true;
     }
-    /*public void realizarAccion(Entrenador ja, Entrenador jb,  int op){
+    public void realizarAccion(String[] e1, String[] e2,  int op, int indice, 
+            String nombreAtaque, Pokemon[] team1, Pokemon[] team2){
+        System.out.println("Intenta realizar acción");
         if (op==1){//Si Opcion es igual a 1 representará que el jugdor desea atacar
-            atacar(ja.getPokemon(0).getContacto(), jb.getPokemon(0).getPS(), ja.getPokemon(0).getAtk(), ja.getPokemon(0).getAtkEsp(), ja.getPokemon(0).getDef(), ja.getPokemon(0).getDefEsp());
+            atacar(team1[0].movimientos.movimientosA[indice].isContacto(),team1[0].getPS(),team1[0].getAtaque()
+                    ,team1[0].getAtkEsp(),team1[0].getDef(), team1[0].getDefEsp());
         }
         //Acá se debe agregar la opción de poder cambiar al pokemon con el que se tiene que pelear 
         else if (op == 2){
-            //cambio();
+            cambio(team1, indice);
         }
-    }*/
+    }
     
     public int jugadorGanador(Pokemon[] e1, Pokemon[] e2){
         int c1=0, c2=0;
@@ -114,31 +128,16 @@ public class ControladorCombate {
         return 0;
     }
 
-    public void realizarTurno(String[] l1, int opcion, int pos) {
-        System.out.println(pos);
-        System.out.println("llame al metodo");
-        System.out.println(l1[0]);
-        //if(opcion == 1){
-        //}
-        //else{
-            System.out.println("Entre al metodo");
-            cambio = cambioPrueba(l1, pos);
-        //} 
-    }
-
-    public String[] actualizarDatos() {
-        return cambio;
-    }
+    
+    
+    
 
     public String[] asignaA(Pokemon[] e) {
-        System.out.println("entra al metodo de los nombres");
         MovAprendido ma;
         ma=e[0].getMovimientos();
-        System.out.println(ma.movimientosA[0].getNombre());
-        System.out.println("Logra crear el arreglo");
+        System.out.println("El movimiento es: "+ma.movimientosA[0].getNombre());
         String[] ataques = new String[ma.movimientosA.length];
         for (int i=0;i<ma.movimientosA.length;i++){
-            System.out.println(ataques[i]);
             ataques[i]=ma.movimientosA[i].getNombre();
         }
         return ataques;    
