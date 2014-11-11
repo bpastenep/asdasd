@@ -2,6 +2,7 @@ package Vista;
 import Controlador.ControladorCombate;
 import Controlador.ControladorPrincipal;
 import Modelo.Pokemon;
+import javax.swing.JOptionPane;
 public class VistaCombate extends javax.swing.JDialog {
     
     int op1;
@@ -17,12 +18,13 @@ public class VistaCombate extends javax.swing.JDialog {
     /**
      * Creates new form VentanaCombate
      */
-    public VistaCombate(ControladorCombate cco, ControladorPrincipal op,String usu1, String usu2, Pokemon[] equipo) {
+    public VistaCombate(ControladorCombate cco, ControladorPrincipal op,String usu1, String usu2, Pokemon[] equipo, Pokemon[] equipo2) {
         initComponents();
         this.cp = op;
         this.cc = cco;
         this.equipo1 = equipo;
-        this.equipo2 = equipo;
+        this.equipo2 = equipo2;
+        System.out.println(equipo1[0].getNombre()+ " "+ equipo2[0].getNombre());
         String[] ataquesp1=cc.asignaA(equipo);
         String[] ataquesp2=cc.asignaA(equipo);
         ataques1.setModel(new javax.swing.DefaultComboBoxModel(ataquesp1));
@@ -35,12 +37,12 @@ public class VistaCombate extends javax.swing.JDialog {
         pokemon1.setEnabled(false);
         pokemon2.setModel(new javax.swing.DefaultComboBoxModel(equipoTest2));
         pokemon2.setEnabled(false);
-        pokemonActivo1.setText(equipoTest1[0]);
-        pokemonActivo2.setText(equipoTest2[0]);
+        pokemonActivo1.setText(equipo1[0].getNombre());
+        pokemonActivo2.setText(equipo2[0].getNombre());
         usuv1.setText(usu1);
         usuv2.setText(usu2);
-        Hp1.setText(Integer.toString(equipo[0].getPS()));
-        Hp2.setText(Integer.toString(equipo[0].getPS()));
+        Hp1.setText(Integer.toString(equipo1[0].getPS()));
+        Hp2.setText(Integer.toString(equipo2[0].getPS()));
     }   
 
    
@@ -228,7 +230,7 @@ public class VistaCombate extends javax.swing.JDialog {
                                 .addComponent(jButton1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(47, 47, 47)
-                                .addComponent(Hp2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(Hp2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
@@ -322,11 +324,24 @@ public class VistaCombate extends javax.swing.JDialog {
         //String ataquej2 = (String) ataques2.getSelectedItem();
         //String cambioj1 = (String) pokemon1.getSelectedItem();
         //String cambioj2 = (String) pokemon2.getSelectedItem();
-        cc.realizarAccion(equipoTest1, equipoTest2,op1,pokemon1.getSelectedIndex(),(String)ataques1.getSelectedItem(),equipo1,equipo2);
-        cc.realizarAccion(equipoTest2,equipoTest1, op2,pokemon2.getSelectedIndex(),(String) ataques2.getSelectedItem(),equipo1,equipo2);
-        //equipoTest1 = cc.actualizarDatos();
-        System.out.println(equipoTest1[0]);
-        pokemonActivo1.setText(equipoTest1[0]);
+        System.out.println("opcion J1:" + op1 + "opcion j2" + op2);
+        if(op1==0 && op2==0){
+            JOptionPane.showMessageDialog(null, "DEBE HACER SELECCION EN AMBOS JUGADORES");
+        }
+        else{
+            equipo1=cc.realizarAccion(op1,pokemon1.getSelectedIndex(),equipo1,equipo2,ataques1.getSelectedIndex());
+            equipo2=cc.realizarAccion(op2,pokemon2.getSelectedIndex(),equipo2,equipo1, ataques2.getSelectedIndex());
+            pokemonActivo1.setText(equipo1[0].getNombre());
+            pokemonActivo2.setText(equipo2[0].getNombre());
+            Hp1.setText(Integer.toString(equipo1[0].getPS()));
+            Hp2.setText(Integer.toString(equipo2[0].getPS()));
+            op1=0;
+            op2=0;
+            pokemon1.setEnabled(false);
+            pokemon2.setEnabled(false);
+            ataques1.setEnabled(false);
+            ataques2.setEnabled(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ataques2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataques2ActionPerformed
