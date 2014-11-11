@@ -7,7 +7,7 @@ import java.util.Set;
 public class Pokemon extends EspeciePokemon {
     public int PS, atk, def, atkEsp, defEsp;
     public String estado;
-    public Movimiento[] movimientos = new Movimiento[4];
+    public MovAprendido movimientos = new MovAprendido();
     public Habilidad habilidad;
     
     public Pokemon(String name, int a, int d, int ae, int de, int hp){
@@ -17,17 +17,14 @@ public class Pokemon extends EspeciePokemon {
         setDef(d);
         setAtkEsp(ae);
         setDefEsp(d);
-        System.out.println(movimientos.length);
         for(int i=0;i<4;i++){
-            movimientos[i]= new Movimiento(i);
+            movimientos.asignarAtaques();
         }
         
     }
 // get y set's  
     
-    public boolean getContacto(int id){
-        return movimientos[id].isContacto();
-    }
+
     
     public int getPS(){
         return PS;
@@ -81,7 +78,7 @@ public class Pokemon extends EspeciePokemon {
         this.estado = estado;
     }
 
-    public Movimiento[] getMovimientos() {
+    public MovAprendido getMovimientos() {
         return movimientos;
     }
 

@@ -132,14 +132,14 @@ public class ControladorCombate {
 
     public String[] asignaA(Pokemon[] e) {
         System.out.println("entra al metodo de los nombres");
-        Movimiento[] ma;
+        MovAprendido ma;
         ma=e[0].getMovimientos();
-        System.out.println(ma[0].getNombre());
+        System.out.println(ma.movimientosA[0].getNombre());
         System.out.println("Logra crear el arreglo");
-        String[] ataques = new String[ma.length];
-        for (int i=0;i<ma.length;i++){
+        String[] ataques = new String[ma.movimientosA.length];
+        for (int i=0;i<ma.movimientosA.length;i++){
             System.out.println(ataques[i]);
-            ataques[i]=ma[i].getNombre();
+            ataques[i]=ma.movimientosA[i].getNombre();
         }
         return ataques;    
     }
