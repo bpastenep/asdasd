@@ -1,23 +1,44 @@
 package Controlador;
 
 
-import Modelo.Pokemon;
 import Modelo.Entrenador;
+import Modelo.MovAprendido;
+import Modelo.Movimiento;
+import Modelo.Pokemon;
 import Vista.VistaCombate;
 
 
 public class ControladorCombate {
     public VistaCombate vc;
     public ControladorPrincipal cp;
+    public String usu1,usu2;
     String[] cambio=null;
+    //Esto se tiene que borrar ya que se sacará de la BD
+    public Pokemon p1 = new Pokemon("Pikachu",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 170);
+    public Pokemon p2 = new Pokemon("Evee",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 140);
+    public Pokemon p3 = new Pokemon("Bulbasaur",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 146);
+    public Pokemon p4 = new Pokemon("Caterpie",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 90);
+    public Pokemon p5 = new Pokemon("Geodude",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 220);
+    public Pokemon p6 = new Pokemon("Snorlax",(int)(Math.random()*50+1),(int)(Math.random()*50+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 250);
+    public Pokemon[] equipoP= {p1,p2,p3,p4,p5,p6};
+    //Contstructor
+    
+    public ControladorCombate(ControladorPrincipal op, String nusurio, String usua2) {
+        System.out.println("entro al constructor");
+        this.usu1=nusurio;
+        this.cp=op;
+        this.usu2=usua2;
+        System.out.println("Salio del constructor");
+    }
+    
     public void iniciarV(){
-        vc= new VistaCombate(this,cp);
+        System.out.println("intento crear la vista");
+        vc= new VistaCombate(this,cp,usu1,usu2,equipoP);
+        System.out.println("llego hasta acá");
         vc.setVisible(true);
     }
 
-    public ControladorCombate(ControladorPrincipal op) {
-        this.cp=op;
-    }
+
     public int atacar(boolean contacto, int ps, int atk, int atkEsp, int def, int defEsp){
         if(contacto){
             if(def > atk)
@@ -107,6 +128,28 @@ public class ControladorCombate {
 
     public String[] actualizarDatos() {
         return cambio;
+    }
+
+    public String[] asignaA(Pokemon[] e) {
+        System.out.println("entra al metodo de los nombres");
+        Movimiento[] ma;
+        ma=e[0].getMovimientos();
+        System.out.println(ma[0].getNombre());
+        System.out.println("Logra crear el arreglo");
+        String[] ataques = new String[ma.length];
+        for (int i=0;i<ma.length;i++){
+            System.out.println(ataques[i]);
+            ataques[i]=ma[i].getNombre();
+        }
+        return ataques;    
+    }
+
+    public String[] asignaP(Pokemon[] e) {
+       String[] equipo=new String[e.length];
+       for (int i=0;i<e.length;i++){
+           equipo[i]=e[i].getNombre();
+       }
+       return equipo;
     }
 
     

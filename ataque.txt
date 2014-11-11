@@ -1,0 +1,9 @@
+placaje;true;25;12;32;47
+latigos cepa;true;32;25;14;27
+hojas navaja;true;43;27;12;42
+arañazo;true;27;24;27;12
+ascuas;false;43;27;34;68
+chirrido;false;10;14;21;45
+cabezazo;true;24;27;32;45
+rapidez;false;32;12;56;32
+impatrueno;false;50;12;32;43

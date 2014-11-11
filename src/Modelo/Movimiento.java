@@ -1,12 +1,46 @@
 package Modelo;
 
 
-abstract class Movimiento {
+public class Movimiento {
     private String nombre, efectoSecundario, tipo;
     private int potencia, precision, pP;
     private boolean contacto;
+    
+    public Movimiento(){
+    }
+
+    public Movimiento(int i) {
+        System.out.println("Entra al constructor de movimiento");
+        switch(i){
+            case 0:
+                System.out.println("Asigna cabezazo");
+                this.nombre="Cabezazo";
+                this.potencia=(int)(Math.random()*50+1);
+                this.contacto=true;
+                System.out.println("termina de asignar cabezazo");
+                break;
+            case 1:
+                System.out.println("Asigna placaje");
+                this.nombre="Placaje";
+                this.potencia=(int)(Math.random()*50+1);
+                this.contacto=true;
+                System.out.println("termina con placaje");
+                break; 
+            case 2:
+                this.nombre="Chirrido";
+                this.potencia=(int)(Math.random()*50+1);
+                this.contacto=false;
+                break;
+            case 3:
+                this.nombre="Rapidez";
+                this.potencia=(int)(Math.random()*50+1);
+                this.contacto=false;
+                break;                           
+        }
+    }
 
 // get y set's  
+    
     
     public String getNombre() {
         return nombre;

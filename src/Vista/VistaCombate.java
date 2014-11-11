@@ -1,6 +1,7 @@
 package Vista;
 import Controlador.ControladorCombate;
 import Controlador.ControladorPrincipal;
+import Modelo.Pokemon;
 public class VistaCombate extends javax.swing.JDialog {
     
     int op1;
@@ -9,27 +10,31 @@ public class VistaCombate extends javax.swing.JDialog {
     private ControladorPrincipal cp;
     String[] equipoTest1;
     String[] equipoTest2;
+    //Pokemones creados para la prueba
+    
     /**
      * Creates new form VentanaCombate
      */
-    public VistaCombate(ControladorCombate cco, ControladorPrincipal op) {
+    public VistaCombate(ControladorCombate cco, ControladorPrincipal op,String usu1, String usu2, Pokemon[] equipo) {
         initComponents();
-        String[] ataquesp1 =  new String[] {"Ataque1", "Ataque2", "Ataque3", "Ataque4"};
-        String[] ataquesp2 = new String[] {"Ataque1", "Ataque2", "Ataque3", "Ataque4"};
-        equipoTest1 = new String[] { "Abra", "Kadabra", "Alakazam"};
-        equipoTest2 = new String[] { "Pikachu", "Sudowoodo", "Bulbasaur"};
+        this.cp = op;
+        this.cc = cco;
+        String[] ataquesp1=cc.asignaA(equipo);
+        String[] ataquesp2=cc.asignaA(equipo);
         ataques1.setModel(new javax.swing.DefaultComboBoxModel(ataquesp1));
         ataques1.setEnabled(false);
         ataques2.setModel(new javax.swing.DefaultComboBoxModel(ataquesp2));
         ataques2.setEnabled(false);
+        equipoTest1 = cc.asignaP(equipo);
+        equipoTest2 = cc.asignaP(equipo);
         pokemon1.setModel(new javax.swing.DefaultComboBoxModel(equipoTest1));
         pokemon1.setEnabled(false);
         pokemon2.setModel(new javax.swing.DefaultComboBoxModel(equipoTest2));
         pokemon2.setEnabled(false);
-        this.cp = op;
-        this.cc = cco;
         pokemonActivo1.setText(equipoTest1[0]);
         pokemonActivo2.setText(equipoTest2[0]);
+        usuv1.setText(usu1);
+        usuv2.setText(usu2);
     }   
 
    
@@ -44,7 +49,7 @@ public class VistaCombate extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        usuv1 = new javax.swing.JLabel();
         ataques1 = new javax.swing.JComboBox();
         pokemon1 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
@@ -52,7 +57,7 @@ public class VistaCombate extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel6 = new javax.swing.JLabel();
+        usuv2 = new javax.swing.JLabel();
         ataques2 = new javax.swing.JComboBox();
         pokemon2 = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
@@ -72,7 +77,7 @@ public class VistaCombate extends javax.swing.JDialog {
 
         jLabel1.setText("Vista Combate");
 
-        jLabel2.setText("Usuario1");
+        usuv1.setText("Usuario1");
 
         ataques1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ataques1.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +99,7 @@ public class VistaCombate extends javax.swing.JDialog {
 
         jLabel5.setText("Pokémon");
 
-        jLabel6.setText("Usuario2");
+        usuv2.setText("Usuario2");
 
         ataques2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ataques2.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +177,7 @@ public class VistaCombate extends javax.swing.JDialog {
                         .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2)))
+                        .addComponent(usuv1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -201,7 +206,7 @@ public class VistaCombate extends javax.swing.JDialog {
                         .addComponent(hp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel6))
+                        .addComponent(usuv2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(pokemonActivo2)
@@ -226,7 +231,7 @@ public class VistaCombate extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(usuv1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addGap(27, 27, 27)
@@ -244,7 +249,7 @@ public class VistaCombate extends javax.swing.JDialog {
                 .addGap(64, 64, 64)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(usuv2)
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
@@ -331,11 +336,9 @@ public class VistaCombate extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -344,5 +347,7 @@ public class VistaCombate extends javax.swing.JDialog {
     private javax.swing.JComboBox pokemon2;
     private javax.swing.JLabel pokemonActivo1;
     private javax.swing.JLabel pokemonActivo2;
+    private javax.swing.JLabel usuv1;
+    private javax.swing.JLabel usuv2;
     // End of variables declaration//GEN-END:variables
 }

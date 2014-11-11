@@ -10,6 +10,7 @@ import Controlador.ControladorCombate;
 import Controlador.ControladorPrincipal;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import static sun.applet.AppletResourceLoader.getImage;
 
 /**
@@ -120,7 +121,9 @@ public Image getIconImage(){
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        ControladorCombate cc = new ControladorCombate(cp);
+        String usuario2 = JOptionPane.showInputDialog("Ingrese nombre del segundo usuario: ");
+        System.out.println("Crear controlador");
+        ControladorCombate cc = new ControladorCombate(cp,nUsuarioL,usuario2);
         cc.iniciarV();
     }//GEN-LAST:event_jButton3ActionPerformed
 

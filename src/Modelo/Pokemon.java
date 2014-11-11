@@ -1,16 +1,32 @@
 package Modelo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class Pokemon extends EspeciePokemon {
-    private int PS, atk, def, atkEsp, defEsp;
-    private String estado;
-    private MovAprendido movimientos;
-    private Habilidad habilidad;
+    public int PS, atk, def, atkEsp, defEsp;
+    public String estado;
+    public Movimiento[] movimientos = new Movimiento[4];
+    public Habilidad habilidad;
     
+    public Pokemon(String name, int a, int d, int ae, int de, int hp){
+        this.setNombre(name);
+        setPS(hp);
+        setAtk(a);
+        setDef(d);
+        setAtkEsp(ae);
+        setDefEsp(d);
+        System.out.println(movimientos.length);
+        for(int i=0;i<4;i++){
+            movimientos[i]= new Movimiento(i);
+        }
+        
+    }
 // get y set's  
     
-    public boolean getContacto(){
-        return movimientos.isContacto();
+    public boolean getContacto(int id){
+        return movimientos[id].isContacto();
     }
     
     public int getPS(){
@@ -65,13 +81,13 @@ public class Pokemon extends EspeciePokemon {
         this.estado = estado;
     }
 
-    public MovAprendido getMovimientos() {
+    public Movimiento[] getMovimientos() {
         return movimientos;
     }
 
-    public void setMovimientos(MovAprendido movimientos) {
+    /*public void setMovimientos(MovAprendido movimientos) {
         this.movimientos = movimientos;
-    }
+    }*/
 
     public Habilidad getHabilidad() {
         return habilidad;
