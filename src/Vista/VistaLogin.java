@@ -44,28 +44,35 @@ public class VistaLogin extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         user = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         pass = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ighSCTp5YocAu.png"))); // NOI18N
-
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
         jLabel2.setText("Usuario");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(140, 270, 160, 20);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/password.png"))); // NOI18N
         jLabel3.setText("Password");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(120, 310, 160, 20);
 
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userActionPerformed(evt);
             }
         });
+        getContentPane().add(user);
+        user.setBounds(310, 270, 164, 20);
 
         jButton1.setText("Iniciar Sesión");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -73,12 +80,16 @@ public class VistaLogin extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(261, 370, 156, 23);
 
         pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passActionPerformed(evt);
             }
         });
+        getContentPane().add(pass);
+        pass.setBounds(310, 310, 164, 20);
 
         jButton2.setText("Registrarse");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -86,51 +97,12 @@ public class VistaLogin extends javax.swing.JDialog {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(261, 411, 156, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(user)
-                            .addComponent(pass, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(261, 261, 261)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaLogin8.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 700, 460);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -208,9 +180,9 @@ public class VistaLogin extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
