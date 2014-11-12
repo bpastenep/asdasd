@@ -33,27 +33,34 @@ public class VistaCreaU extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         user = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
-
-        jLabel1.setText("Crear Usuarios");
+        getContentPane().setLayout(null);
 
         jLabel2.setText("Nombre de Usuario");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(39, 78, 91, 14);
 
         jLabel3.setText("Contraseña");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(39, 116, 56, 14);
 
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userActionPerformed(evt);
             }
         });
+        getContentPane().add(user);
+        user.setBounds(165, 75, 103, 20);
+        getContentPane().add(pass);
+        pass.setBounds(165, 113, 103, 20);
 
         jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,47 +68,12 @@ public class VistaCreaU extends javax.swing.JDialog {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(140, 170, 87, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                            .addComponent(pass)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jButton1)))
-                .addContainerGap(132, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addComponent(jButton1)
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vistaCreaU2.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 400, 300);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,9 +106,9 @@ public class VistaCreaU extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
