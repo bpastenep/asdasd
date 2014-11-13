@@ -47,9 +47,11 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         usuv2.setText(usu2);
         Hp1.setText(Integer.toString(equipoP1[0].getPS()));
         Hp2.setText(Integer.toString(equipoP2[0].getPS()));
+        barraHp1.setValue(cc.barraHp(equipoP1));
+        barraHp2.setValue(100);
     }   
 
-   
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,6 +83,8 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         pokemonActivo2 = new javax.swing.JLabel();
         Hp1 = new javax.swing.JLabel();
         Hp2 = new javax.swing.JLabel();
+        barraHp2 = new javax.swing.JProgressBar();
+        barraHp1 = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -112,7 +116,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
 
         jLabel3.setText("HP: ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(116, 155, 30, 14);
+        jLabel3.setBounds(116, 155, 30, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ataque.png"))); // NOI18N
         jLabel4.setText("Ataque");
@@ -210,11 +214,15 @@ public class VistaCombateUvU extends javax.swing.JDialog {
 
         Hp1.setText("HP1");
         getContentPane().add(Hp1);
-        Hp1.setBounds(173, 151, 80, 23);
+        Hp1.setBounds(290, 153, 80, 30);
 
         Hp2.setText("hp2");
         getContentPane().add(Hp2);
-        Hp2.setBounds(178, 375, 70, 23);
+        Hp2.setBounds(280, 373, 30, 20);
+        getContentPane().add(barraHp2);
+        barraHp2.setBounds(136, 380, 140, 12);
+        getContentPane().add(barraHp1);
+        barraHp1.setBounds(140, 160, 146, 12);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombate4.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -257,7 +265,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(op1==0 || op2==0){ // <<-- if Interviene en la ejecucion??
-            JOptionPane.showMessageDialog(null, "DEBE HACER SELECCION EN AMBOS JUGADORES");
+            JOptionPane.showMessageDialog(null, "¡Ambos jugadores deben seleccionar una opción!");
         }
         else{
             equipoP2=cc.realizarAccion(op2,pokemon2.getSelectedIndex(),equipoP2,equipoP1, ataques2.getSelectedIndex());
@@ -282,7 +290,10 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             pokemon2.setEnabled(false);
             ataques1.setEnabled(false);
             ataques2.setEnabled(false);
-        }
+            barraHp1.setValue(cc.barraHp(equipoP1));
+            System.out.println(cc.barraHp(equipoP1));
+            barraHp2.setValue(cc.barraHp(equipoP2));
+            System.out.println(cc.barraHp(equipoP1));        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ataques2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataques2ActionPerformed
@@ -299,6 +310,8 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     private javax.swing.JLabel Hp2;
     private javax.swing.JComboBox ataques1;
     private javax.swing.JComboBox ataques2;
+    private javax.swing.JProgressBar barraHp1;
+    private javax.swing.JProgressBar barraHp2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

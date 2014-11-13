@@ -27,7 +27,7 @@ public class ControladorCombate {
     public Pokemon p11 = new Pokemon("Mew",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
     public Pokemon p12 = new Pokemon("Charizard",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
     public Pokemon[] equipoP= {p1,p2,p3,p4,p5,p6};
-    public Pokemon[] equipo2={p7,p8,p9,p10,p11,p12};
+    public Pokemon[] equipo2={p7,p8,p9,p10,p1,p12};
     public int hpFinal;
     
     //Contstructor  
@@ -56,6 +56,15 @@ public class ControladorCombate {
         }
         else
             return false;
+    }
+    
+    public int barraHp(Pokemon[] lista){
+        int valor;
+        System.out.println("PS POKEMON"+ lista[0].getPS());
+        valor = (lista[0].getPS()*100)/50;
+        System.out.println("Después de la división: "+ valor);
+        //int porcentaje = Float.(valor);
+        return valor;
     }
     
 //Metodo que genera el ataque
@@ -106,7 +115,7 @@ public class ControladorCombate {
  //Cambiar un pokemon debitilitado 
     public void cambiaDebil(Pokemon[] listaActiva){
         int posicion = 0;
-        JOptionPane.showMessageDialog(null, listaActiva[0].getNombre()+" Ha sido debilitado");
+        JOptionPane.showMessageDialog(null, listaActiva[0].getNombre()+" ha sido debilitado.");
         for(int i = 0; i < listaActiva.length; i++){
             if(listaActiva[i].getPS() > 0){
                 posicion = i;
@@ -128,7 +137,7 @@ public class ControladorCombate {
         }
         else{   
                 int pos=0;
-                JOptionPane.showMessageDialog(null,listadoPkmn[selPkmn].getNombre()+ " Se encuentra DEBILITADO, se asiganará el Siguiente");
+                JOptionPane.showMessageDialog(null,listadoPkmn[selPkmn].getNombre()+ " Se encuentra DEBILITADO. Se asignará el siguiente.");
                 for(int i = 0; i < listadoPkmn.length; i++){
                         if(listadoPkmn[i].getPS() > 0){
                             pos = i;
