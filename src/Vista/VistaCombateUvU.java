@@ -66,13 +66,9 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         ataques1 = new javax.swing.JComboBox();
         pokemon1 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         usuv2 = new javax.swing.JLabel();
         ataques2 = new javax.swing.JComboBox();
         pokemon2 = new javax.swing.JComboBox();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -86,16 +82,23 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         barraHp2 = new javax.swing.JProgressBar();
         barraHp1 = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(400, 480));
+        setMinimumSize(new java.awt.Dimension(714, 404));
+        setPreferredSize(new java.awt.Dimension(714, 404));
         setResizable(false);
         getContentPane().setLayout(null);
 
+        usuv1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        usuv1.setForeground(new java.awt.Color(255, 255, 255));
         usuv1.setText("Usuario1");
         getContentPane().add(usuv1);
-        usuv1.setBounds(80, 230, 42, 14);
+        usuv1.setBounds(20, 30, 130, 30);
 
+        ataques1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ataques1.setForeground(new java.awt.Color(0, 0, 153));
         ataques1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ataques1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,8 +106,10 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(ataques1);
-        ataques1.setBounds(91, 113, 90, 20);
+        ataques1.setBounds(50, 220, 90, 20);
 
+        pokemon1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        pokemon1.setForeground(new java.awt.Color(0, 0, 153));
         pokemon1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         pokemon1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,26 +117,22 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(pokemon1);
-        pokemon1.setBounds(260, 110, 100, 20);
+        pokemon1.setBounds(200, 220, 100, 20);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("HP: ");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(116, 155, 30, 20);
+        jLabel3.setBounds(70, 290, 30, 20);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ataque.png"))); // NOI18N
-        jLabel4.setText("Ataque");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(-60, 110, 160, 20);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pokemon.png"))); // NOI18N
-        jLabel5.setText("Pokémon");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(100, 110, 150, 20);
-
+        usuv2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        usuv2.setForeground(new java.awt.Color(255, 255, 255));
         usuv2.setText("Usuario2");
         getContentPane().add(usuv2);
-        usuv2.setBounds(280, 230, 42, 14);
+        usuv2.setBounds(580, 30, 130, 30);
 
+        ataques2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ataques2.setForeground(new java.awt.Color(204, 0, 0));
         ataques2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ataques2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,26 +140,21 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(ataques2);
-        ataques2.setBounds(90, 320, 100, 20);
+        ataques2.setBounds(410, 220, 100, 20);
 
+        pokemon2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        pokemon2.setForeground(new java.awt.Color(204, 0, 0));
         pokemon2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(pokemon2);
-        pokemon2.setBounds(266, 320, 100, 20);
+        pokemon2.setBounds(570, 220, 100, 20);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ataque.png"))); // NOI18N
-        jLabel7.setText("Ataque");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(-60, 320, 150, 20);
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pokemon.png"))); // NOI18N
-        jLabel8.setText("Pokemon");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(110, 320, 160, 20);
-
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("HP:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(114, 379, 30, 14);
+        jLabel9.setBounds(450, 290, 30, 17);
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("SimularTurno");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,8 +162,10 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(149, 428, 95, 23);
+        jButton1.setBounds(300, 340, 120, 23);
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 153));
         jButton2.setText("Atacar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,8 +173,11 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(91, 63, 100, 23);
+        jButton2.setBounds(50, 160, 100, 23);
+        jButton2.getAccessibleContext().setAccessibleDescription("");
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 153));
         jButton3.setText("Cambiar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,8 +185,10 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(260, 60, 100, 23);
+        jButton3.setBounds(200, 160, 100, 23);
 
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(204, 0, 0));
         jButton4.setText("Atacar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,8 +196,10 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(90, 280, 100, 23);
+        jButton4.setBounds(410, 160, 100, 23);
 
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(204, 0, 0));
         jButton5.setText("Cambiar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,31 +207,52 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton5);
-        jButton5.setBounds(260, 280, 110, 23);
+        jButton5.setBounds(570, 160, 110, 23);
 
+        pokemonActivo1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        pokemonActivo1.setForeground(new java.awt.Color(255, 255, 255));
         pokemonActivo1.setText("jLabel10");
         getContentPane().add(pokemonActivo1);
-        pokemonActivo1.setBounds(10, 155, 80, 14);
+        pokemonActivo1.setBounds(10, 280, 80, 14);
 
+        pokemonActivo2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        pokemonActivo2.setForeground(new java.awt.Color(255, 255, 255));
         pokemonActivo2.setText("jLabel10");
         getContentPane().add(pokemonActivo2);
-        pokemonActivo2.setBounds(11, 379, 80, 14);
+        pokemonActivo2.setBounds(390, 280, 80, 14);
 
+        Hp1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Hp1.setForeground(new java.awt.Color(255, 255, 255));
         Hp1.setText("HP1");
         getContentPane().add(Hp1);
-        Hp1.setBounds(290, 153, 80, 30);
+        Hp1.setBounds(250, 290, 100, 30);
 
+        Hp2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Hp2.setForeground(new java.awt.Color(255, 255, 255));
         Hp2.setText("hp2");
         getContentPane().add(Hp2);
-        Hp2.setBounds(280, 373, 30, 20);
+        Hp2.setBounds(630, 300, 70, 20);
         getContentPane().add(barraHp2);
-        barraHp2.setBounds(136, 380, 140, 12);
+        barraHp2.setBounds(480, 300, 140, 14);
         getContentPane().add(barraHp1);
-        barraHp1.setBounds(140, 160, 146, 12);
+        barraHp1.setBounds(100, 300, 146, 14);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombate4.jpg"))); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("¿Qué debería hacer?");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 400, 480);
+        jLabel2.setBounds(530, 120, 250, 30);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("¿Qué debería hacer?");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 120, 250, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombateNew2.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 710, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -270,7 +296,6 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         else{
             equipoP2=cc.realizarAccion(op2,pokemon2.getSelectedIndex(),equipoP2,equipoP1, ataques2.getSelectedIndex());
             equipoP1=cc.realizarAccion(op1,pokemon1.getSelectedIndex(),equipoP1,equipoP2, ataques1.getSelectedIndex());
-            System.out.println("El nombre eso :"+equipoP1[0].getNombre());
             pokemonActivo1.setText(equipoP1[0].getNombre());
             pokemonActivo2.setText(equipoP2[0].getNombre());
             Hp1.setText(Integer.toString(equipoP1[0].getPS()));
@@ -318,12 +343,10 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JComboBox pokemon1;
     private javax.swing.JComboBox pokemon2;
