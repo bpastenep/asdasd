@@ -64,7 +64,7 @@ public Image getIconImage(){
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(231, 258, 113, 23);
+        jButton1.setBounds(190, 200, 170, 23);
 
         jButton3.setText("Simular Combate");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +73,7 @@ public Image getIconImage(){
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(231, 175, 113, 23);
+        jButton3.setBounds(190, 160, 170, 23);
         getContentPane().add(jLabel3);
         jLabel3.setBounds(241, 13, 109, 0);
         getContentPane().add(jLabel4);
@@ -93,7 +93,6 @@ public Image getIconImage(){
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String usuario2 = JOptionPane.showInputDialog("Ingrese nombre del segundo usuario: ");
-        System.out.println("Crear controlador");
         ControladorCombate cc = new ControladorCombate(cp,nUsuarioL,usuario2);
         cc.iniciarV();
     }//GEN-LAST:event_jButton3ActionPerformed
