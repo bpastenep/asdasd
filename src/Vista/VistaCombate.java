@@ -56,7 +56,6 @@ public class VistaCombate extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         usuv1 = new javax.swing.JLabel();
         ataques1 = new javax.swing.JComboBox();
         pokemon1 = new javax.swing.JComboBox();
@@ -82,12 +81,9 @@ public class VistaCombate extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 480));
         setResizable(false);
         getContentPane().setLayout(null);
-
-        jLabel1.setText("Vista Combate");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(147, 31, 69, 14);
 
         usuv1.setText("Usuario1");
         getContentPane().add(usuv1);
@@ -115,13 +111,15 @@ public class VistaCombate extends javax.swing.JDialog {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(116, 155, 20, 14);
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ataque.png"))); // NOI18N
         jLabel4.setText("Ataque");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(52, 116, 35, 14);
+        jLabel4.setBounds(-60, 110, 160, 20);
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pokemon.png"))); // NOI18N
         jLabel5.setText("Pokémon");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(208, 116, 43, 14);
+        jLabel5.setBounds(100, 110, 150, 20);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(0, 238, 400, 10);
 
@@ -136,19 +134,21 @@ public class VistaCombate extends javax.swing.JDialog {
             }
         });
         getContentPane().add(ataques2);
-        ataques2.setBounds(75, 323, 56, 20);
+        ataques2.setBounds(100, 320, 56, 20);
 
         pokemon2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(pokemon2);
-        pokemon2.setBounds(255, 323, 56, 20);
+        pokemon2.setBounds(280, 320, 56, 20);
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ataque.png"))); // NOI18N
         jLabel7.setText("Ataque");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 326, 35, 14);
+        jLabel7.setBounds(-60, 320, 150, 20);
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pokemon.png"))); // NOI18N
         jLabel8.setText("Pokemon");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(208, 326, 43, 14);
+        jLabel8.setBounds(110, 320, 160, 20);
 
         jLabel9.setText("HP:");
         getContentPane().add(jLabel9);
@@ -215,7 +215,7 @@ public class VistaCombate extends javax.swing.JDialog {
         getContentPane().add(Hp2);
         Hp2.setBounds(178, 375, 40, 23);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombate2.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombate4.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 400, 480);
 
@@ -298,7 +298,6 @@ public class VistaCombate extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

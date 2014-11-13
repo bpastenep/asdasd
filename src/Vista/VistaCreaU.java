@@ -41,16 +41,24 @@ public class VistaCreaU extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(400, 300));
+        setPreferredSize(new java.awt.Dimension(400, 330));
         setResizable(false);
         getContentPane().setLayout(null);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nombreUsuario.png"))); // NOI18N
         jLabel2.setText("Nombre de Usuario");
+        jLabel2.setMaximumSize(new java.awt.Dimension(160, 20));
+        jLabel2.setMinimumSize(new java.awt.Dimension(160, 20));
+        jLabel2.setPreferredSize(new java.awt.Dimension(160, 20));
+        jLabel2.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(39, 78, 91, 14);
+        jLabel2.setBounds(20, 90, 170, 20);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contraseña.png"))); // NOI18N
         jLabel3.setText("Contraseña");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(39, 116, 56, 14);
+        jLabel3.setBounds(-10, 130, 160, 20);
 
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,9 +66,9 @@ public class VistaCreaU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(user);
-        user.setBounds(165, 75, 103, 20);
+        user.setBounds(210, 90, 103, 20);
         getContentPane().add(pass);
-        pass.setBounds(165, 113, 103, 20);
+        pass.setBounds(210, 130, 103, 20);
 
         jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -69,9 +77,9 @@ public class VistaCreaU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(140, 170, 87, 23);
+        jButton1.setBounds(150, 200, 87, 23);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vistaCreaU2.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vistaCreaU13.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 400, 300);
 
@@ -84,7 +92,7 @@ public class VistaCreaU extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
           if (user.getText().isEmpty() || pass.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Nombre de uauario o contraseña vacios");
+            JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña vacíos");
         }
         else{
             String linea;
