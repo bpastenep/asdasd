@@ -27,7 +27,7 @@ public class ControladorCombate {
     public Pokemon p11 = new Pokemon("Mew",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
     public Pokemon p12 = new Pokemon("Charizard",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
     public Pokemon[] equipoP= {p1,p2,p3,p4,p5,p6};
-    public Pokemon[] equipo2={p7,p8,p9,p10,p1,p12};
+    public Pokemon[] equipo2={p7,p8,p9,p10,p11,p12};
     public int hpFinal;
     
     //Contstructor  
