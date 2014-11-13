@@ -3,7 +3,7 @@ import Controlador.ControladorCombate;
 import Controlador.ControladorPrincipal;
 import Modelo.Pokemon;
 import javax.swing.JOptionPane;
-public class VistaCombateUvU extends javax.swing.JDialog {
+public class VistaCombate extends javax.swing.JDialog {
     
     int op1;
     int op2;
@@ -11,42 +11,39 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     private ControladorPrincipal cp;
     String[] equipoTest1;
     String[] equipoTest2;
-    Pokemon[] equipoP1;
-    Pokemon[] equipoP2;
-    String usua1;
-    String usua2;
+    Pokemon[] equipo1;
+    Pokemon[] equipo2;
     //Pokemones creados para la prueba
+    
     /**
      * Creates new form VentanaCombate
      */
-    public VistaCombateUvU(ControladorCombate cco, ControladorPrincipal op,String usu1, String usu2, Pokemon[] equipo, Pokemon[] equipo2) {
+    public VistaCombate(ControladorCombate cco, ControladorPrincipal op,String usu1, String usu2, Pokemon[] equipo, Pokemon[] equipo2) {
         initComponents();
         this.cp = op;
         this.cc = cco;
-        this.equipoP1 = equipo;
-        this.equipoP2 = equipo2;
-        this.usua1=usu1;
-        this.usua2=usu2;
-        System.out.println(equipoP1[0].getNombre()+ " "+ equipo2[0].getNombre());
-        String[] ataquesp1=cc.asignaA(equipoP1);
-        String[] ataquesp2=cc.asignaA(equipoP2);
+        this.equipo1 = equipo;
+        this.equipo2 = equipo2;
+        System.out.println(equipo1[0].getNombre()+ " "+ equipo2[0].getNombre());
+        String[] ataquesp1=cc.asignaA(equipo);
+        String[] ataquesp2=cc.asignaA(equipo);
         ataques1.setModel(new javax.swing.DefaultComboBoxModel(ataquesp1));
         ataques1.setEnabled(false);
         ataques2.setModel(new javax.swing.DefaultComboBoxModel(ataquesp2));
         ataques2.setEnabled(false);
-        equipoTest1 = cc.asignaP(equipoP1);
-        equipoTest2 = cc.asignaP(equipoP2);
+        equipoTest1 = cc.asignaP(equipo);
+        equipoTest2 = cc.asignaP(equipo);
         pokemon1.setModel(new javax.swing.DefaultComboBoxModel(equipoTest1));
         pokemon1.setEnabled(false);
         pokemon2.setModel(new javax.swing.DefaultComboBoxModel(equipoTest2));
         pokemon2.setEnabled(false);
-        pokemonActivo1.setText(equipoP1[0].getNombre());
-        pokemonActivo2.setText(equipoP2[0].getNombre());
+        pokemonActivo1.setText(equipo1[0].getNombre());
+        pokemonActivo2.setText(equipo2[0].getNombre());
         usuv1.setText(usu1);
         usuv2.setText(usu2);
-        Hp1.setText(Integer.toString(equipoP1[0].getPS()));
-        Hp2.setText(Integer.toString(equipoP2[0].getPS()));
-    } 
+        Hp1.setText(Integer.toString(equipo1[0].getPS()));
+        Hp2.setText(Integer.toString(equipo2[0].getPS()));
+    }   
 
    
 
@@ -59,7 +56,6 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         usuv1 = new javax.swing.JLabel();
         ataques1 = new javax.swing.JComboBox();
         pokemon1 = new javax.swing.JComboBox();
@@ -85,14 +81,9 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(400, 479));
-        setPreferredSize(new java.awt.Dimension(400, 479));
+        setMinimumSize(new java.awt.Dimension(400, 480));
         setResizable(false);
         getContentPane().setLayout(null);
-
-        jLabel1.setText("Usuario V/S Usuario");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(140, 20, 110, 14);
 
         usuv1.setText("Usuario1");
         getContentPane().add(usuv1);
@@ -120,13 +111,15 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(116, 155, 20, 14);
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ataque.png"))); // NOI18N
         jLabel4.setText("Ataque");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(52, 116, 35, 14);
+        jLabel4.setBounds(-60, 110, 160, 20);
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pokemon.png"))); // NOI18N
         jLabel5.setText("Pokémon");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(208, 116, 43, 14);
+        jLabel5.setBounds(100, 110, 150, 20);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(0, 238, 400, 10);
 
@@ -145,15 +138,17 @@ public class VistaCombateUvU extends javax.swing.JDialog {
 
         pokemon2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(pokemon2);
-        pokemon2.setBounds(270, 320, 56, 20);
+        pokemon2.setBounds(280, 320, 56, 20);
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ataque.png"))); // NOI18N
         jLabel7.setText("Ataque");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 326, 35, 14);
+        jLabel7.setBounds(-60, 320, 150, 20);
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pokemon.png"))); // NOI18N
         jLabel8.setText("Pokemon");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(208, 326, 43, 14);
+        jLabel8.setBounds(110, 320, 160, 20);
 
         jLabel9.setText("HP:");
         getContentPane().add(jLabel9);
@@ -175,7 +170,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(91, 63, 90, 23);
+        jButton2.setBounds(91, 63, 65, 23);
 
         jButton3.setText("Cambiar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +179,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(261, 63, 100, 23);
+        jButton3.setBounds(261, 63, 71, 23);
 
         jButton4.setText("Atacar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +188,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(90, 280, 90, 23);
+        jButton4.setBounds(67, 282, 65, 23);
 
         jButton5.setText("Cambiar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -202,7 +197,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton5);
-        jButton5.setBounds(249, 282, 110, 23);
+        jButton5.setBounds(249, 282, 71, 23);
 
         pokemonActivo1.setText("jLabel10");
         getContentPane().add(pokemonActivo1);
@@ -220,9 +215,9 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         getContentPane().add(Hp2);
         Hp2.setBounds(178, 375, 40, 23);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombate2.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombate4.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(-10, -10, 400, 490);
+        jLabel2.setBounds(0, 0, 400, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -260,28 +255,23 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     }//GEN-LAST:event_ataques1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(op1==0 || op2==0){ // <<-- if Interviene en la ejecucion??
+        //String ataquej1 = (String) ataques1.getSelectedItem();
+        //String ataquej2 = (String) ataques2.getSelectedItem();
+        //String cambioj1 = (String) pokemon1.getSelectedItem();
+        //String cambioj2 = (String) pokemon2.getSelectedItem();
+        System.out.println("opcion J1:" + op1 + "opcion j2" + op2);
+        if(op1==0 && op2==0){
             JOptionPane.showMessageDialog(null, "DEBE HACER SELECCION EN AMBOS JUGADORES");
         }
         else{
-            equipoP2=cc.realizarAccion(op2,pokemon2.getSelectedIndex(),equipoP2,equipoP1, ataques2.getSelectedIndex());
-            equipoP1=cc.realizarAccion(op1,pokemon1.getSelectedIndex(),equipoP1,equipoP2, ataques1.getSelectedIndex());
-            pokemonActivo1.setText(equipoP1[0].getNombre());
-            pokemonActivo2.setText(equipoP2[0].getNombre());
-            Hp1.setText(Integer.toString(equipoP1[0].getPS()));
-            Hp2.setText(Integer.toString(equipoP2[0].getPS()));
-            pokemon1.setModel(new javax.swing.DefaultComboBoxModel(equipoTest1));
-            pokemon2.setModel(new javax.swing.DefaultComboBoxModel(equipoTest2));
+            equipo1=cc.realizarAccion(op1,pokemon1.getSelectedIndex(),equipo1,equipo2,ataques1.getSelectedIndex());
+            equipo2=cc.realizarAccion(op2,pokemon2.getSelectedIndex(),equipo2,equipo1, ataques2.getSelectedIndex());
+            pokemonActivo1.setText(equipo1[0].getNombre());
+            pokemonActivo2.setText(equipo2[0].getNombre());
+            Hp1.setText(Integer.toString(equipo1[0].getPS()));
+            Hp2.setText(Integer.toString(equipo2[0].getPS()));
             op1=0;
             op2=0;
-            if(cc.hpTotal(equipoP1)){
-                JOptionPane.showMessageDialog(null, "El ganador es "+usua2);
-                this.setVisible(false);
-            }
-            if(cc.hpTotal(equipoP2)){
-                JOptionPane.showMessageDialog(null, "El ganador es "+usua1);
-                this.setVisible(false);
-            }
             pokemon1.setEnabled(false);
             pokemon2.setEnabled(false);
             ataques1.setEnabled(false);
@@ -308,7 +298,6 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -56,7 +56,9 @@ public class VistaLogin extends javax.swing.JDialog {
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(690, 500));
+        setMaximumSize(new java.awt.Dimension(700, 465));
+        setMinimumSize(new java.awt.Dimension(700, 465));
+        setPreferredSize(new java.awt.Dimension(700, 485));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -119,11 +121,11 @@ public class VistaLogin extends javax.swing.JDialog {
         ValidaUsuario vu = new ValidaUsuario();
         try{
                 if(vu.validau(pass.getText(), user.getText()))  {
-                    JOptionPane.showMessageDialog(null, "Usuario Existente, bienvenido!");
+                    JOptionPane.showMessageDialog(null, "Usuario existente. ¡Bienvenido!");
                     cp.iniciar(user.getText());
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Usuario Incorrecto");
+                    JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
                 }
             } 
         catch(IOException ex) {
