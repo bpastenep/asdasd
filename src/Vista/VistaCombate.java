@@ -82,6 +82,7 @@ public class VistaCombate extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 477));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -217,7 +218,7 @@ public class VistaCombate extends javax.swing.JDialog {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombate2.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 400, 480);
+        jLabel2.setBounds(0, 0, 390, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
