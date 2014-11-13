@@ -270,6 +270,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         else{
             equipoP2=cc.realizarAccion(op2,pokemon2.getSelectedIndex(),equipoP2,equipoP1, ataques2.getSelectedIndex());
             equipoP1=cc.realizarAccion(op1,pokemon1.getSelectedIndex(),equipoP1,equipoP2, ataques1.getSelectedIndex());
+            System.out.println("El nombre eso :"+equipoP1[0].getNombre());
             pokemonActivo1.setText(equipoP1[0].getNombre());
             pokemonActivo2.setText(equipoP2[0].getNombre());
             Hp1.setText(Integer.toString(equipoP1[0].getPS()));

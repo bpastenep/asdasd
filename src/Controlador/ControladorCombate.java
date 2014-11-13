@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 
 public class ControladorCombate {
     public VistaCombateUvU vc;
-    public Pokemon[] listadoPokemon;
     public ControladorPrincipal cp;
     public String usu1,usu2; 
     //Esto se tiene que borrar ya que se sacará de la BD
@@ -127,30 +126,35 @@ public class ControladorCombate {
     }
 //Cambia el orden de un pokemon
     public Pokemon[] cambio(Pokemon[] listadoPkmn, int selPkmn){
-        
+        Pokemon[] listadoPokemon=null;
         if(debilitado(listadoPkmn, selPkmn)){
+                System.out.println("Entro al primer if");
                 Pokemon aux;
                 aux = listadoPkmn[0];
                 listadoPkmn[0] = listadoPkmn[selPkmn];
                 listadoPkmn[selPkmn] = aux;
-                this.listadoPokemon = listadoPkmn;
+                listadoPokemon = listadoPkmn;
         }
         else{   
                 int pos=0;
-                JOptionPane.showMessageDialog(null,listadoPkmn[selPkmn].getNombre()+ " Se encuentra DEBILITADO. Se asignará el siguiente.");
-                for(int i = 0; i < listadoPkmn.length; i++){
+                JOptionPane.showMessageDialog(null,listadoPkmn[selPkmn].getNombre()+ " Se encuentra DEBILITADO. Se asignará el siguiente con pS :´"+listadoPkmn[selPkmn].getPS());
+                for(int i = 0; i < (listadoPkmn.length) ;i++){
                         if(listadoPkmn[i].getPS() > 0){
+                            System.out.println("Entra al if");
                             pos = i;
+                            System.out.println("Posisicion asiganada"+i);
                             break;
-                }
+                    }
+                }        
+                System.out.println("Ls posicion final fue. " + pos);
                 Pokemon aux;
                 aux = listadoPkmn[0];
                 listadoPkmn[0] = listadoPkmn[pos];
                 listadoPkmn[pos] = aux;
-                this.listadoPokemon = listadoPkmn;
-            }
+                listadoPokemon = listadoPkmn;
+            
         }
-        return this.listadoPokemon;
+        return listadoPokemon;
     }
 
 //Verifica que un pokemon seleccionado no esté debilitado    
