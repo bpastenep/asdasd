@@ -8,6 +8,7 @@ package Vista;
 
 import Controlador.ControladorCombate;
 import Controlador.ControladorPrincipal;
+import Controlador.ControladorCombateCpu;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -21,12 +22,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
     
     private final ControladorPrincipal cp;
     public String nUsuarioL;
+    public String[] tC = {"Usuario vs Usuario", "Usuario vs CPU"};
     
     public VistaPrincipal(ControladorPrincipal co, String n) {
         initComponents();
         this.cp = co;
         this.nUsuarioL=n;
         this.jLabel4.setText(n);
+        tipoCombate.setModel(new javax.swing.DefaultComboBoxModel(tC));
     }
 
 @Override
@@ -44,6 +47,7 @@ public Image getIconImage(){
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        tipoCombate = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,6 +83,15 @@ public Image getIconImage(){
         getContentPane().add(jLabel4);
         jLabel4.setBounds(94, 13, 102, 0);
 
+        tipoCombate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipoCombate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoCombateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tipoCombate);
+        tipoCombate.setBounds(190, 110, 170, 20);
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaPrincipal2.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(3, 0, 550, 483);
@@ -92,10 +105,21 @@ public Image getIconImage(){
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(tipoCombate.getSelectedIndex() == 0){
         String usuario2 = JOptionPane.showInputDialog("Ingrese nombre del segundo usuario: ");
         ControladorCombate cc = new ControladorCombate(cp,nUsuarioL,usuario2);
-        cc.iniciarV();
+        cc.iniciarVUvU();
+        }
+        else if(tipoCombate.getSelectedIndex() == 1){
+            //NULL POINTER EXCEPTION ??? D:
+            ControladorCombateCpu ccpu = new ControladorCombateCpu();
+            ccpu.iniciarVUvsCpu();
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tipoCombateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoCombateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoCombateActionPerformed
 
 
 
@@ -106,5 +130,6 @@ public Image getIconImage(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JComboBox tipoCombate;
     // End of variables declaration//GEN-END:variables
 }

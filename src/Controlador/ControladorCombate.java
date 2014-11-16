@@ -39,7 +39,7 @@ public class ControladorCombate {
     }
     
   //Se instancia la vista  
-    public void iniciarV(){
+    public void iniciarVUvU(){
         vc= new VistaCombateUvU(this,cp,usu1,usu2,equipoP, equipo2);
         vc.setVisible(true);
     }
@@ -68,7 +68,7 @@ public class ControladorCombate {
     
 //Metodo que genera el ataque
     public void atacar(boolean contacto, int ps, int atk, int atkEsp, int def, int defEsp, Pokemon[] e1){
-        System.out.println(atk +""+ def);
+        System.out.println(atk +", "+ def);
         int pos = 0;
         if(contacto){
             if(def >= atk){
@@ -181,18 +181,6 @@ public class ControladorCombate {
         return team1;
     }
     
-    public void accionCpu(Pokemon[] listaHumano, Pokemon[] listaCpu, int mov){
-        if(listaCpu[0].movimientos.movimientosA[mov].isContacto()){
-            if(listaCpu[0].getAtk() > listaHumano[0].getDef()){
-                atacar(true, listaHumano[0].getPS(), listaCpu[0].getAtk(), listaCpu[0].getAtkEsp(), listaCpu[0].getDef(), listaCpu[0].getDefEsp(), listaHumano);
-            }
-            /*else if( ){
-                
-            }
-        }
-        else */
-        }
-    }
     
 //Verifica que jugador es el ganador    
     public int jugadorGanador(Pokemon[] e1, Pokemon[] e2){

@@ -48,7 +48,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         Hp1.setText(Integer.toString(equipoP1[0].getPS()));
         Hp2.setText(Integer.toString(equipoP2[0].getPS()));
         barraHp1.setValue(cc.barraHp(equipoP1));
-        barraHp2.setValue(100);
+        barraHp2.setValue(cc.barraHp(equipoP2));
     }   
 
     
