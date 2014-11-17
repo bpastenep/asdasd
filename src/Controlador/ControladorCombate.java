@@ -38,6 +38,8 @@ public class ControladorCombate {
         System.out.println("Salio del constructor");
     }
     
+    
+    
   //Se instancia la vista  
     public void iniciarVUvU(){
         vc= new VistaCombateUvU(this,cp,usu1,usu2,equipoP, equipo2);

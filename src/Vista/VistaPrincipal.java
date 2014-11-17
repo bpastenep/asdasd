@@ -112,7 +112,7 @@ public Image getIconImage(){
         }
         else if(tipoCombate.getSelectedIndex() == 1){
             //NULL POINTER EXCEPTION ??? D:
-            ControladorCombateCpu ccpu = new ControladorCombateCpu();
+            ControladorCombateCpu ccpu = new ControladorCombateCpu(cp, nUsuarioL);
             ccpu.iniciarVUvsCpu();
         }
     }//GEN-LAST:event_jButton3ActionPerformed

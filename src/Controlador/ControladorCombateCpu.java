@@ -7,9 +7,15 @@ public class ControladorCombateCpu {
     public ControladorCombate cc;
     public ControladorCombateCpu cpu; 
     public VistaCombateUvsCpu vcpu;
+    public ControladorPrincipal cp;
     public int pCambio = 0;
+    String usua1;
     
-    
+    public ControladorCombateCpu(ControladorPrincipal co, String u1){
+        this.cp=co;
+        this.usua1=u1;
+        this.cc=new ControladorCombate(this.cp, this.usua1, "CPU");
+    }
     
     public void iniciarVUvsCpu(){
         vcpu = new VistaCombateUvsCpu(cc, cc.cp, cc.usu1, cc.equipoP, cc.equipo2);

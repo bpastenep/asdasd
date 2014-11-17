@@ -17,7 +17,9 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     String usua1;
 
     public VistaCombateUvsCpu(ControladorCombate cco, ControladorPrincipal op, String usu1, Pokemon[] equipoCpu, Pokemon[] equipoUsuario) {
+        System.out.println("Intenta crear la vista");
         initComponents();
+        System.out.println("Iniciar componentes");
         this.cp = op;
         this.cc = cco;
         this.equipoP1 = equipoCpu;
@@ -37,6 +39,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         cpu.setText("CPU");
         hpCpu.setValue(cc.barraHp(equipoP1));
         hpUsuario.setValue(cc.barraHp(equipoP2));
+        System.out.println("Crea la vista completa");
     }
 
 

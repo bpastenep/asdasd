@@ -29,7 +29,7 @@ public class ControladorPrincipal {
     }
 
     public void cerrarIniciar() {
-        this.vl.setVisible(false);
+        this.vl.setVisible(true);
         ControladorCreaUsuario cu = new ControladorCreaUsuario();
         cu.Iniciar(this);
     }
