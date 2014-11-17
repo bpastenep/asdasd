@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Vista;
 
 import Controlador.ControladorCombate;
@@ -21,6 +15,7 @@ import static sun.applet.AppletResourceLoader.getImage;
 public class VistaPrincipal extends javax.swing.JFrame {
     
     private final ControladorPrincipal cp;
+    public ControladorCombate cc;
     public String nUsuarioL;
     public String[] tC = {"Usuario vs Usuario", "Usuario vs CPU"};
     
@@ -106,14 +101,13 @@ public Image getIconImage(){
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(tipoCombate.getSelectedIndex() == 0){
-        String usuario2 = JOptionPane.showInputDialog("Ingrese nombre del segundo usuario: ");
-        ControladorCombate cc = new ControladorCombate(cp,nUsuarioL,usuario2);
-        cc.iniciarVUvU();
+            String usuario2 = JOptionPane.showInputDialog("Ingrese nombre del segundo usuario: ");
+            ControladorCombate cc = new ControladorCombate(cp,nUsuarioL,usuario2);
+            cc.iniciarVUvU();
         }
         else if(tipoCombate.getSelectedIndex() == 1){
             //NULL POINTER EXCEPTION ??? D:
-            ControladorCombateCpu ccpu = new ControladorCombateCpu();
-            ccpu.iniciarVUvsCpu();
+            JOptionPane.showMessageDialog(null, ":v");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

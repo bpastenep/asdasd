@@ -1,19 +1,19 @@
 package Vista;
 
 import Controlador.ControladorCombate;
+import Controlador.ControladorCombateCpu;
 import Controlador.ControladorPrincipal;
 import Modelo.Pokemon;
+import javax.swing.JOptionPane;
 
 
 public class VistaCombateUvsCpu extends javax.swing.JDialog {
-
     int op1;
     private ControladorCombate cc;
+    private ControladorCombateCpu ccpu;
     private ControladorPrincipal cp;
-    String[] equipoTest1;
-    String[] equipoTest2;
-    Pokemon[] equipoP1;
-    Pokemon[] equipoP2;
+    String[] equipoTest1, equipoTest2;
+    Pokemon[] equipoP1, equipoP2;
     String usua1;
 
     public VistaCombateUvsCpu(ControladorCombate cco, ControladorPrincipal op, String usu1, Pokemon[] equipoCpu, Pokemon[] equipoUsuario) {
@@ -35,10 +35,10 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         pokemonU.setText(equipoP2[0].getNombre());
         nombreU.setText(usu1);
         cpu.setText("CPU");
+        simularT.setText("Simular Turno");
         hpCpu.setValue(cc.barraHp(equipoP1));
         hpUsuario.setValue(cc.barraHp(equipoP2));
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -54,6 +54,8 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         pokemonCpu = new javax.swing.JLabel();
         cpu = new javax.swing.JLabel();
         nombreU = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        simularT = new javax.swing.JButton();
 
         ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ataquesUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -91,10 +93,18 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
 
         nombreU.setText("jLabel2");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        simularT.setText("Simular Turno");
+        simularT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simularTActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -118,7 +128,10 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
                         .addComponent(cpu))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addComponent(nombreU)))
+                        .addComponent(nombreU))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(simularT)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,12 +151,16 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
                 .addComponent(pokemonU)
                 .addGap(18, 18, 18)
                 .addComponent(hpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(cpu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pokemonCpu)
                 .addGap(18, 18, 18)
                 .addComponent(hpCpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(simularT)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -168,6 +185,34 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
        op1 = 2;
     }//GEN-LAST:event_cambioActionPerformed
 
+    private void simularTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularTActionPerformed
+        if(op1 == 0){
+            JOptionPane.showMessageDialog(null, "El jugador debe seleccionar una opción.");
+        }
+        else{
+            equipoP2 = cc.realizarAccion(op1,cambiosUsuario.getSelectedIndex(),equipoP2,equipoP1, ataquesUsuario.getSelectedIndex());
+            equipoP1 = ccpu.accionCpu(equipoP1, equipoP2);
+            pokemonCpu.setText(equipoP1[0].getNombre());
+            pokemonU.setText(equipoP2[0].getNombre());
+            cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoP2)));
+            op1=0;
+            if(cc.hpTotal(equipoP1)){
+                JOptionPane.showMessageDialog(null, "El ganador es "+usua1+"!");
+                this.setVisible(false);
+            }
+            if(cc.hpTotal(equipoP2)){
+                JOptionPane.showMessageDialog(null, "El ganador es CPU!");
+                this.setVisible(false);
+            }
+            cambiosUsuario.setEnabled(false);
+            ataquesUsuario.setEnabled(false);
+            hpCpu.setValue(cc.barraHp(equipoP1));
+            System.out.println(cc.barraHp(equipoP1));
+            hpUsuario.setValue(cc.barraHp(equipoP2));
+            System.out.println(cc.barraHp(equipoP1));
+        }
+    }//GEN-LAST:event_simularTActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ataque;
@@ -177,8 +222,10 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     private javax.swing.JLabel cpu;
     private javax.swing.JProgressBar hpCpu;
     private javax.swing.JProgressBar hpUsuario;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nombreU;
     private javax.swing.JLabel pokemonCpu;
     private javax.swing.JLabel pokemonU;
+    private javax.swing.JButton simularT;
     // End of variables declaration//GEN-END:variables
 }
