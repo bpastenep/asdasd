@@ -222,9 +222,9 @@ public class ControladorCombate {
     public String[] asignaP(Pokemon[] e) {
        String[] equipo=new String[e.length];
        for (int i=0;i<e.length;i++){
-           if(e[i].getPS()<=0)
+            if(e[i].getPS()<=0)
                 equipo[i]="DEB "+e[i].getNombre();
-           else
+            else
                equipo[i]=e[i].getNombre();
        }
        
