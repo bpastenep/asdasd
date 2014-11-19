@@ -111,7 +111,7 @@ public class ControladorCombate {
  //Cambiar un pokemon debitilitado 
     public void cambiaDebil(Pokemon[] listaActiva){
         int posicion = 0;
-        JOptionPane.showMessageDialog(null, listaActiva[0].getNombre()+" ha sido debilitado.");
+        //JOptionPane.showMessageDialog(null, listaActiva[0].getNombre()+" ha sido debilitado.");
         for(int i = 0; i < listaActiva.length; i++){
             if(listaActiva[i].getPS() > 0){
                 posicion = i;

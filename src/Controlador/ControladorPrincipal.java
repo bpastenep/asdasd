@@ -2,6 +2,7 @@ package Controlador;
 
 import Vista.VistaPrincipal;
 import Vista.VistaLogin;
+import Modelo.Entrenador;
 
 public class ControladorPrincipal {
     private VistaPrincipal vp;
@@ -24,5 +25,9 @@ public class ControladorPrincipal {
         this.vl.setVisible(true);
         ControladorCreaUsuario cu = new ControladorCreaUsuario();
         cu.Iniciar(this);
+    }
+    
+    public Entrenador simularCombate (Entrenador j1){
+        j1.getNombreE()
     }
 }
