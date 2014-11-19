@@ -31,11 +31,9 @@ public class ControladorCombate {
     
     //Contstructor  
     public ControladorCombate(ControladorPrincipal op, String nusurio, String usua2) {
-        System.out.println("entro al constructor");
         this.usu1=nusurio;
         this.cp=op;
         this.usu2=usua2;
-        System.out.println("Salio del constructor");
     }
     
     
@@ -61,16 +59,13 @@ public class ControladorCombate {
     
     public int barraHp(Pokemon[] lista){
         int valor;
-        System.out.println("PS POKEMON"+ lista[0].getPS());
         valor = (lista[0].getPS()*100)/50;
-        System.out.println("Después de la división: "+ valor);
         //int porcentaje = Float.(valor);
         return valor;
     }
     
 //Metodo que genera el ataque
     public void atacar(boolean contacto, int ps, int atk, int atkEsp, int def, int defEsp, Pokemon[] e1){
-        System.out.println(atk +", "+ def);
         int pos = 0;
         if(contacto){
             if(def >= atk){
@@ -123,14 +118,12 @@ public class ControladorCombate {
                 break;
             }
         }
-        System.out.println(posicion);
         cambio(listaActiva, posicion);
     }
 //Cambia el orden de un pokemon
     public Pokemon[] cambio(Pokemon[] listadoPkmn, int selPkmn){
         Pokemon[] listadoPokemon=null;
         if(debilitado(listadoPkmn, selPkmn)){
-                System.out.println("Entro al primer if");
                 Pokemon aux;
                 aux = listadoPkmn[0];
                 listadoPkmn[0] = listadoPkmn[selPkmn];
@@ -142,13 +135,10 @@ public class ControladorCombate {
                 JOptionPane.showMessageDialog(null,listadoPkmn[selPkmn].getNombre()+ " Se encuentra DEBILITADO. Se asignará el siguiente con pS :´"+listadoPkmn[selPkmn].getPS());
                 for(int i = 0; i < (listadoPkmn.length) ;i++){
                         if(listadoPkmn[i].getPS() > 0){
-                            System.out.println("Entra al if");
                             pos = i;
-                            System.out.println("Posisicion asiganada"+i);
                             break;
                     }
                 }        
-                System.out.println("Ls posicion final fue. " + pos);
                 Pokemon aux;
                 aux = listadoPkmn[0];
                 listadoPkmn[0] = listadoPkmn[pos];
@@ -169,7 +159,6 @@ public class ControladorCombate {
 
 //Realiza la acción entre ataque o cambiar pokemon
     public Pokemon[] realizarAccion(int op, int indiceP, Pokemon[] team1, Pokemon[] team2, int indiceA){
-        System.out.println("Intenta realizar acción");
         if (op==1){
             //Si Opcion es igual a 1 representará que el jugdor desea atacar
             
@@ -210,7 +199,6 @@ public class ControladorCombate {
     public String[] asignaA(Pokemon[] e) {
         MovAprendido ma;
         ma=e[0].getMovimientos();
-        System.out.println("El movimiento es: "+ma.movimientosA[0].getNombre());
         String[] ataques = new String[ma.movimientosA.length];
         for (int i=0;i<ma.movimientosA.length;i++){
             ataques[i]=ma.movimientosA[i].getNombre();
