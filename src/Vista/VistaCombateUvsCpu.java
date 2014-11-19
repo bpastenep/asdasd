@@ -58,15 +58,10 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         cpu = new javax.swing.JLabel();
         nombreU = new javax.swing.JLabel();
         simularT = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(714, 414));
-        setPreferredSize(new java.awt.Dimension(714, 414));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(300, 412));
         setResizable(false);
-        getContentPane().setLayout(null);
 
         ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ataquesUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -147,25 +142,6 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         getContentPane().add(simularT);
         simularT.setBounds(123, 320, 117, 20);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel2.setText("HP");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(310, 260, 30, 30);
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel3.setText("HP");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(660, 260, 30, 30);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/quedeberiahacertexto1.png"))); // NOI18N
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(50, 120, 250, 30);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombateUvC2.jpg"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 710, 400);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ataquesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataquesUsuarioActionPerformed
@@ -213,8 +189,25 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             hpCpu.setValue(cc.barraHp(equipoMaq));
             System.out.println(cc.barraHp(equipoMaq));
             hpUsuario.setValue(cc.barraHp(equipoHum));
-            System.out.println(cc.barraHp(equipoHum));
-            op1=0;
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel2.setText("HP");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(310, 260, 30, 30);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel3.setText("HP");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(660, 260, 30, 30);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/quedeberiahacertexto1.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(50, 120, 250, 30);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombateUvC2.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 710, 400);
         }
     }//GEN-LAST:event_simularTActionPerformed
 

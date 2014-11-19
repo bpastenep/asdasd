@@ -27,7 +27,7 @@ public class ControladorCombateCpu {
         if(listaCpu[0].getPS() >20 /*Cambiar por HP INICIAL*/){
             this.accion = 1;
         }
-        else if(listaCpu[0].getPS() <= 20 /*Cambiar por HP INICIAL*/){
+        else if(listaCpu[0].getPS() <= 20){ /*Cambiar por HP INICIAL*/
             this.accion = 2;
         }
         else if(listaCpu[0].getPS() == 0){
@@ -38,7 +38,7 @@ public class ControladorCombateCpu {
     
     // método que determina la acción a ser realizada por la cpu
     public Pokemon[] accionCpu(Pokemon[] listaCpu, Pokemon[] listaHumano, int caso){
-        System.out.println("Entro a clase con opcion" + caso);
+
         if(caso == 1){
             accionOfensiva(listaCpu, listaHumano);
         }
@@ -62,13 +62,16 @@ public class ControladorCombateCpu {
             listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtkEsp());
             cc.cambiaDebil(listaRival);
         }
+        else if(listaCpu[0].getDef() >= listaRival[0].getAtk() && listaCpu[0].getDefEsp() >= listaRival[0].getAtkEsp()){
+            accionOfensiva(listaCpu, listaRival);
+            cc.cambiaDebil(listaRival);
+        }
         return listaRival;
     }
     
     
     // método que determina la acción defensiva de la cpu
     public Pokemon[] accionDefensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
-        System.out.println("Entra acá");
         if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() >= listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
                 if(listaCpu[0].getDef() < listaCpu[i].getDef()){
