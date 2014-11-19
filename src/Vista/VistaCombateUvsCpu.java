@@ -13,33 +13,33 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     private ControladorCombateCpu ccpu;
     private ControladorPrincipal cp;
     String[] equipoTest1, equipoTest2;
-    Pokemon[] equipoP1, equipoP2;
+    Pokemon[] equipoMaq, equipoHum;
     String usua1;
 
-    public VistaCombateUvsCpu(ControladorCombate cco, ControladorPrincipal op, String usu1, Pokemon[] equipoCpu, Pokemon[] equipoUsuario) {
-        System.out.println("Intenta crear la vista");
+    public VistaCombateUvsCpu(ControladorCombateCpu cpuu,ControladorCombate cco, ControladorPrincipal op, String usu1, Pokemon[] equipoCpu, Pokemon[] equipoUsuario) {
+        
         initComponents();
-        System.out.println("Iniciar componentes");
         this.cp = op;
         this.cc = cco;
-        this.equipoP1 = equipoCpu;
-        this.equipoP2 = equipoUsuario;
+        this.equipoMaq = equipoCpu;
+        this.equipoHum = equipoUsuario;
         this.usua1 = usu1;
-        String[] ataquesp1= cc.asignaA(equipoP1);
-        String[] ataquesp2= cc.asignaA(equipoP2);
+        this.ccpu = cpuu;
+        String[] ataquesp1= cc.asignaA(equipoMaq);
+        String[] ataquesp2= cc.asignaA(equipoHum);
         ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(ataquesp2));
         ataquesUsuario.setEnabled(false);
-        equipoTest1 = cc.asignaP(equipoP1);
-        equipoTest2 = cc.asignaP(equipoP2);
+        equipoTest1 = cc.asignaP(equipoMaq);
+        equipoTest2 = cc.asignaP(equipoHum);
         cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(equipoTest2));
         cambiosUsuario.setEnabled(false);
-        pokemonCpu.setText(equipoP1[0].getNombre());
-        pokemonU.setText(equipoP2[0].getNombre());
+        pokemonCpu.setText(equipoMaq[0].getNombre());
+        pokemonU.setText(equipoHum[0].getNombre());
         nombreU.setText(usu1);
         cpu.setText("CPU");
         simularT.setText("Simular Turno");
-        hpCpu.setValue(cc.barraHp(equipoP1));
-        hpUsuario.setValue(cc.barraHp(equipoP2));
+        hpCpu.setValue(cc.barraHp(equipoMaq));
+        hpUsuario.setValue(cc.barraHp(equipoHum));
         System.out.println("Crea la vista completa");
     }
 
@@ -57,8 +57,16 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         pokemonCpu = new javax.swing.JLabel();
         cpu = new javax.swing.JLabel();
         nombreU = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         simularT = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
+        setMinimumSize(new java.awt.Dimension(714, 414));
+        setPreferredSize(new java.awt.Dimension(714, 414));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
         ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ataquesUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +74,8 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
                 ataquesUsuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(ataquesUsuario);
+        ataquesUsuario.setBounds(80, 210, 69, 20);
 
         cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cambiosUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -73,99 +83,89 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
                 cambiosUsuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(cambiosUsuario);
+        cambiosUsuario.setBounds(210, 210, 72, 20);
 
-        ataque.setText("atacar");
+        ataque.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ataque.setForeground(new java.awt.Color(0, 0, 204));
+        ataque.setText("Atacar");
         ataque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ataqueActionPerformed(evt);
             }
         });
+        getContentPane().add(ataque);
+        ataque.setBounds(70, 170, 90, 25);
 
-        cambio.setText("cambio");
+        cambio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cambio.setForeground(new java.awt.Color(0, 0, 204));
+        cambio.setText("Cambio");
         cambio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cambioActionPerformed(evt);
             }
         });
+        getContentPane().add(cambio);
+        cambio.setBounds(200, 170, 90, 25);
+        getContentPane().add(hpUsuario);
+        hpUsuario.setBounds(100, 270, 193, 12);
 
+        pokemonU.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        pokemonU.setForeground(new java.awt.Color(0, 51, 204));
         pokemonU.setText("jLabel1");
+        getContentPane().add(pokemonU);
+        pokemonU.setBounds(10, 270, 70, 17);
+        getContentPane().add(hpCpu);
+        hpCpu.setBounds(450, 270, 193, 12);
 
+        pokemonCpu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        pokemonCpu.setForeground(new java.awt.Color(255, 102, 0));
         pokemonCpu.setText("jLabel1");
+        getContentPane().add(pokemonCpu);
+        pokemonCpu.setBounds(370, 270, 70, 17);
 
+        cpu.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        cpu.setForeground(new java.awt.Color(255, 255, 255));
         cpu.setText("CPU");
+        getContentPane().add(cpu);
+        cpu.setBounds(570, 34, 130, 20);
 
+        nombreU.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        nombreU.setForeground(new java.awt.Color(255, 255, 255));
         nombreU.setText("jLabel2");
+        getContentPane().add(nombreU);
+        nombreU.setBounds(20, 34, 120, 20);
 
+        simularT.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        simularT.setForeground(new java.awt.Color(0, 51, 153));
         simularT.setText("Simular Turno");
         simularT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simularTActionPerformed(evt);
             }
         });
+        getContentPane().add(simularT);
+        simularT.setBounds(123, 320, 117, 20);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hpCpu, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pokemonCpu)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(pokemonU)
-                                .addComponent(hpUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(ataquesUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ataque, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE))
-                                    .addGap(52, 52, 52)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(cambiosUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cambio, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(cpu))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(nombreU))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(simularT)))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nombreU)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ataquesUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cambiosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ataque)
-                    .addComponent(cambio))
-                .addGap(18, 18, 18)
-                .addComponent(pokemonU)
-                .addGap(18, 18, 18)
-                .addComponent(hpUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cpu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pokemonCpu)
-                .addGap(18, 18, 18)
-                .addComponent(hpCpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(simularT)
-                .addContainerGap())
-        );
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel2.setText("HP");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(310, 260, 30, 30);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel3.setText("HP");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(660, 260, 30, 30);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/quedeberiahacertexto1.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(50, 120, 250, 30);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombateUvC2.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 710, 400);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ataquesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataquesUsuarioActionPerformed
@@ -189,30 +189,32 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     }//GEN-LAST:event_cambioActionPerformed
 
     private void simularTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularTActionPerformed
+        Pokemon[] aux;
         if(op1 == 0){
             JOptionPane.showMessageDialog(null, "El jugador debe seleccionar una opción.");
         }
         else{
-            equipoP2 = cc.realizarAccion(op1,cambiosUsuario.getSelectedIndex(),equipoP2,equipoP1, ataquesUsuario.getSelectedIndex());
-            equipoP1 = ccpu.accionCpu(equipoP1, equipoP2);
-            pokemonCpu.setText(equipoP1[0].getNombre());
-            pokemonU.setText(equipoP2[0].getNombre());
-            cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoP2)));
+            equipoHum = cc.realizarAccion(op1,cambiosUsuario.getSelectedIndex(),equipoHum,equipoMaq, ataquesUsuario.getSelectedIndex());
+            equipoMaq = ccpu.accionCpu(equipoMaq, equipoHum, ccpu.verificaHpCpu(equipoMaq));
+            pokemonCpu.setText(equipoMaq[0].getNombre());
+            pokemonU.setText(equipoHum[0].getNombre());
+            cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoHum)));
             op1=0;
-            if(cc.hpTotal(equipoP1)){
+            if(cc.hpTotal(equipoMaq)){
                 JOptionPane.showMessageDialog(null, "El ganador es "+usua1+"!");
                 this.setVisible(false);
             }
-            if(cc.hpTotal(equipoP2)){
+            if(cc.hpTotal(equipoHum)){
                 JOptionPane.showMessageDialog(null, "El ganador es CPU!");
                 this.setVisible(false);
             }
             cambiosUsuario.setEnabled(false);
             ataquesUsuario.setEnabled(false);
-            hpCpu.setValue(cc.barraHp(equipoP1));
-            System.out.println(cc.barraHp(equipoP1));
-            hpUsuario.setValue(cc.barraHp(equipoP2));
-            System.out.println(cc.barraHp(equipoP1));
+            hpCpu.setValue(cc.barraHp(equipoMaq));
+            System.out.println(cc.barraHp(equipoMaq));
+            hpUsuario.setValue(cc.barraHp(equipoHum));
+            System.out.println(cc.barraHp(equipoHum));
+            op1=0;
         }
     }//GEN-LAST:event_simularTActionPerformed
 
@@ -225,7 +227,10 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     private javax.swing.JLabel cpu;
     private javax.swing.JProgressBar hpCpu;
     private javax.swing.JProgressBar hpUsuario;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel nombreU;
     private javax.swing.JLabel pokemonCpu;
     private javax.swing.JLabel pokemonU;

@@ -87,6 +87,7 @@ public Image getIconImage(){
         getContentPane().add(tipoCombate);
         tipoCombate.setBounds(190, 110, 170, 20);
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaPrincipal2.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(3, 0, 550, 483);
@@ -95,6 +96,7 @@ public Image getIconImage(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
         VistaLogin vl = new VistaLogin(this,true);
         vl.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -109,9 +111,6 @@ public Image getIconImage(){
             //NULL POINTER EXCEPTION ??? D:
             ControladorCombateCpu ccpu = new ControladorCombateCpu(cp, nUsuarioL);
             ccpu.iniciarVUvsCpu();
-
-            JOptionPane.showMessageDialog(null, ":v");
-
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

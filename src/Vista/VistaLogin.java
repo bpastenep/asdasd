@@ -20,11 +20,9 @@ import javax.swing.JOptionPane;
  * @author Benjamin
  */
 public class VistaLogin extends javax.swing.JDialog {
-
-    /**
-     * Creates new form VistaLogin2
-     */
+    
     private ControladorPrincipal cp;
+    
     public VistaLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
