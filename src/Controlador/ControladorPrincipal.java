@@ -28,6 +28,6 @@ public class ControladorPrincipal {
     }
     
     public Entrenador simularCombate (Entrenador j1){
-        j1.getNombreE()
+        return j1;
     }
 }
