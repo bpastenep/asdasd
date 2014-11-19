@@ -3,7 +3,8 @@ package Modelo;
 public class TorreDeBatalla {
     
     private boolean cincoBatallas, venticincoBatallas, cincuentaBatallas, cienBatallas;
-
+    private int cuentaVictorias;
+    private int cuentaDerrotas;
 
 // get y set's    
     
@@ -37,6 +38,22 @@ public class TorreDeBatalla {
 
     public void setCienBatallas(boolean cienBatallas) {
         this.cienBatallas = cienBatallas;
+    }
+
+    public int getCuentaVictorias() {
+        return cuentaVictorias;
+    }
+
+    public void setCuentaVictorias(int cuentaVictorias) {
+        this.cuentaVictorias = cuentaVictorias;
+    }
+
+    public int getCuentaDerrotas() {
+        return cuentaDerrotas;
+    }
+
+    public void setCuentaDerrotas(int cuentaDerrotas) {
+        this.cuentaDerrotas = cuentaDerrotas;
     }
     
 }

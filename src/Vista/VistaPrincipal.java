@@ -8,16 +8,13 @@ import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import static sun.applet.AppletResourceLoader.getImage;
 
-/**
- *
- * @author Benjamin
- */
+
 public class VistaPrincipal extends javax.swing.JFrame {
     
     private final ControladorPrincipal cp;
     public ControladorCombate cc;
     public String nUsuarioL;
-    public String[] tC = {"Usuario vs Usuario", "Usuario vs CPU"};
+    public String[] tC = {"Usuario vs Usuario", "Usuario vs CPU", "Liga Pokémon", "Torre de Batalla"};
     
     public VistaPrincipal(ControladorPrincipal co, String n) {
         initComponents();
@@ -87,6 +84,7 @@ public Image getIconImage(){
         getContentPane().add(tipoCombate);
         tipoCombate.setBounds(190, 110, 170, 20);
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaPrincipal2.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(3, 0, 550, 483);
@@ -109,9 +107,12 @@ public Image getIconImage(){
             //NULL POINTER EXCEPTION ??? D:
             ControladorCombateCpu ccpu = new ControladorCombateCpu(cp, nUsuarioL);
             ccpu.iniciarVUvsCpu();
-
-            JOptionPane.showMessageDialog(null, ":v");
-
+        }
+        else if(tipoCombate.getSelectedIndex() == 2){
+            JOptionPane.showMessageDialog(null, "implementando...");
+        }
+        else if(tipoCombate.getSelectedIndex() == 3){
+            JOptionPane.showMessageDialog(null, "not even.");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

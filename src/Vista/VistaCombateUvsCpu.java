@@ -13,7 +13,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     private ControladorCombateCpu ccpu;
     private ControladorPrincipal cp;
     String[] equipoTest1, equipoTest2;
-    Pokemon[] equipoP1, equipoP2;
+    Pokemon[] equipoMaq, equipoHum;
     String usua1;
 
     public VistaCombateUvsCpu(ControladorCombate cco, ControladorPrincipal op, String usu1, Pokemon[] equipoCpu, Pokemon[] equipoUsuario) {
@@ -22,24 +22,24 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         System.out.println("Iniciar componentes");
         this.cp = op;
         this.cc = cco;
-        this.equipoP1 = equipoCpu;
-        this.equipoP2 = equipoUsuario;
+        this.equipoMaq = equipoCpu;
+        this.equipoHum = equipoUsuario;
         this.usua1 = usu1;
-        String[] ataquesp1= cc.asignaA(equipoP1);
-        String[] ataquesp2= cc.asignaA(equipoP2);
+        String[] ataquesp1= cc.asignaA(equipoMaq);
+        String[] ataquesp2= cc.asignaA(equipoHum);
         ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(ataquesp2));
         ataquesUsuario.setEnabled(false);
-        equipoTest1 = cc.asignaP(equipoP1);
-        equipoTest2 = cc.asignaP(equipoP2);
+        equipoTest1 = cc.asignaP(equipoMaq);
+        equipoTest2 = cc.asignaP(equipoHum);
         cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(equipoTest2));
         cambiosUsuario.setEnabled(false);
-        pokemonCpu.setText(equipoP1[0].getNombre());
-        pokemonU.setText(equipoP2[0].getNombre());
+        pokemonCpu.setText(equipoMaq[0].getNombre());
+        pokemonU.setText(equipoHum[0].getNombre());
         nombreU.setText(usu1);
         cpu.setText("CPU");
         simularT.setText("Simular Turno");
-        hpCpu.setValue(cc.barraHp(equipoP1));
-        hpUsuario.setValue(cc.barraHp(equipoP2));
+        hpCpu.setValue(cc.barraHp(equipoMaq));
+        hpUsuario.setValue(cc.barraHp(equipoHum));
         System.out.println("Crea la vista completa");
     }
 
@@ -59,6 +59,10 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         nombreU = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         simularT = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(300, 412));
+        setResizable(false);
 
         ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ataquesUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -111,13 +115,18 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(cpu))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(nombreU))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(hpCpu, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pokemonCpu)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(pokemonCpu)
                                 .addComponent(pokemonU)
-                                .addComponent(hpUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(ataquesUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -125,17 +134,12 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
                                     .addGap(52, 52, 52)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(cambiosUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cambio, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))))))
+                                        .addComponent(cambio, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)))
+                                .addComponent(hpUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(cpu))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(nombreU))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addGap(70, 70, 70)
                         .addComponent(simularT)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,9 +166,9 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
                 .addComponent(pokemonCpu)
                 .addGap(18, 18, 18)
                 .addComponent(hpCpu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(simularT)
-                .addContainerGap())
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -193,26 +197,26 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "El jugador debe seleccionar una opción.");
         }
         else{
-            equipoP2 = cc.realizarAccion(op1,cambiosUsuario.getSelectedIndex(),equipoP2,equipoP1, ataquesUsuario.getSelectedIndex());
-            equipoP1 = ccpu.accionCpu(equipoP1, equipoP2);
-            pokemonCpu.setText(equipoP1[0].getNombre());
-            pokemonU.setText(equipoP2[0].getNombre());
-            cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoP2)));
+            equipoHum = cc.realizarAccion(op1,cambiosUsuario.getSelectedIndex(),equipoHum,equipoMaq, ataquesUsuario.getSelectedIndex());
+            equipoMaq = ccpu.accionCpu(equipoMaq, equipoHum, ccpu.verificaHpCpu(equipoMaq));
+            pokemonCpu.setText(equipoMaq[0].getNombre());
+            pokemonU.setText(equipoHum[0].getNombre());
+            cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoHum)));
             op1=0;
-            if(cc.hpTotal(equipoP1)){
+            if(cc.hpTotal(equipoMaq)){
                 JOptionPane.showMessageDialog(null, "El ganador es "+usua1+"!");
                 this.setVisible(false);
             }
-            if(cc.hpTotal(equipoP2)){
+            if(cc.hpTotal(equipoHum)){
                 JOptionPane.showMessageDialog(null, "El ganador es CPU!");
                 this.setVisible(false);
             }
             cambiosUsuario.setEnabled(false);
             ataquesUsuario.setEnabled(false);
-            hpCpu.setValue(cc.barraHp(equipoP1));
-            System.out.println(cc.barraHp(equipoP1));
-            hpUsuario.setValue(cc.barraHp(equipoP2));
-            System.out.println(cc.barraHp(equipoP1));
+            hpCpu.setValue(cc.barraHp(equipoMaq));
+            System.out.println(cc.barraHp(equipoMaq));
+            hpUsuario.setValue(cc.barraHp(equipoHum));
+            System.out.println(cc.barraHp(equipoMaq));
         }
     }//GEN-LAST:event_simularTActionPerformed
 

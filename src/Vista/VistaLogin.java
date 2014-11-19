@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
-*/
-//Problema de webeo
-// :V
-//No entiendo una mierda
 package Vista;
+
 import Controlador.ControladorCreaUsuario;
 import Controlador.ControladorPrincipal;
 import Controlador.ValidaUsuario;
@@ -15,16 +8,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Benjamin
- */
-public class VistaLogin extends javax.swing.JDialog {
 
-    /**
-     * Creates new form VistaLogin2
-     */
+public class VistaLogin extends javax.swing.JDialog {
+    
     private ControladorPrincipal cp;
+    
     public VistaLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -56,9 +44,7 @@ public class VistaLogin extends javax.swing.JDialog {
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(700, 465));
         setMinimumSize(new java.awt.Dimension(700, 465));
-        setPreferredSize(new java.awt.Dimension(700, 485));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -107,8 +93,13 @@ public class VistaLogin extends javax.swing.JDialog {
         jButton2.setBounds(261, 411, 156, 23);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaLogin8.jpg"))); // NOI18N
+        jLabel4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel4KeyPressed(evt);
+            }
+        });
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, -20, 720, 510);
+        jLabel4.setBounds(0, 0, 700, 460);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -140,6 +131,10 @@ public class VistaLogin extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         cp.cerrarIniciar();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabel4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel4KeyPressed
 
     /**
      * @param args the command line arguments

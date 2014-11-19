@@ -10,6 +10,7 @@ public class ControladorCombateCpu {
     public VistaCombateUvsCpu vcpu;
     public int pCambio = 0;
     String usua1;
+    public int accion;
     
     public ControladorCombateCpu(ControladorPrincipal co, String u1){
         this.cp=co;
@@ -22,17 +23,29 @@ public class ControladorCombateCpu {
         vcpu.setVisible(true);
     }
     
-      
-    // método que determina la acción a ser realizada por la cpu
-    public Pokemon[] accionCpu(Pokemon[] listaCpu, Pokemon[] listaHumano){
-
-        if(listaCpu[0].getPS() > (listaCpu[0].getPS()/3)){
-            accionOfensiva(listaCpu, listaHumano);
+    public int verificaHpCpu(Pokemon[] listaCpu){
+        if(listaCpu[0].getPS() > 50 /*Cambiar por HP INICIAL*/){
+            this.accion = 1;
         }
-        else if(listaCpu[0].getPS() < (listaCpu[0].getPS()/3)){
-            accionDefensiva(listaCpu, listaHumano);
+        else if(listaCpu[0].getPS() <= 50 /*Cambiar por HP INICIAL*/){
+            this.accion = 2;
         }
         else if(listaCpu[0].getPS() == 0){
+            this.accion = 3;
+        }
+        return this.accion;
+    }  
+    
+    // método que determina la acción a ser realizada por la cpu
+    public Pokemon[] accionCpu(Pokemon[] listaCpu, Pokemon[] listaHumano, int caso){
+        
+        if(caso == 1){
+            accionOfensiva(listaCpu, listaHumano);
+        }
+        else if(caso == 2){
+            accionDefensiva(listaCpu, listaHumano);
+        }
+        else if(caso == 3){
             cc.cambiaDebil(listaCpu);
         }
         return listaCpu;
@@ -40,22 +53,24 @@ public class ControladorCombateCpu {
     
     
     // método que determina la acción ofensiva de la cpu
-    public void accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
+    public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
         if(listaCpu[0].getAtk() > listaCpu[0].getAtkEsp()){
-            cc.atacar(true, listaRival[0].getPS(), listaCpu[0].getAtk(), listaCpu[0].getAtkEsp(), listaCpu[0].getDef(), listaCpu[0].getDefEsp(), listaCpu);
+            listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtk());
         }
         else if(listaCpu[0].getAtk() < listaCpu[0].getAtkEsp()){
-            cc.atacar(false, listaRival[0].getPS(), listaCpu[0].getAtk(), listaCpu[0].getAtkEsp(), listaCpu[0].getDef(), listaCpu[0].getDefEsp(), listaCpu);
+            listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtkEsp());
         }
+        else if(listaCpu[0].getDef() >= listaRival[0].getAtk() && listaCpu[0].getDefEsp() >= listaRival[0].getAtkEsp()){
+            accionOfensiva(listaCpu, listaRival);
+        }
+        return listaRival;
     }
     
     
     // método que determina la acción defensiva de la cpu
-    public void accionDefensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
-        if(listaCpu[0].getDef() >= listaRival[0].getAtk() && listaCpu[0].getDefEsp() >= listaRival[0].getAtkEsp()){
-            accionOfensiva(listaCpu, listaRival);
-        }
-        else if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() >= listaRival[0].getAtkEsp()){
+    public Pokemon[] accionDefensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
+        
+        if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() >= listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
                 if(listaCpu[0].getDef() < listaCpu[i].getDef()){
                     pCambio = i;
@@ -63,6 +78,7 @@ public class ControladorCombateCpu {
                 }
                 break;
             }
+            return listaCpu;
         }
         else if(listaCpu[0].getDef() >= listaRival[0].getAtk() && listaCpu[0].getDefEsp() < listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
@@ -72,6 +88,7 @@ public class ControladorCombateCpu {
                 }
                 break;
             }
+            return listaCpu;
         }
         else if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() < listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
@@ -81,8 +98,10 @@ public class ControladorCombateCpu {
                 }
                 break;
             }
+            return listaCpu;
         }
-        
+        return null;
     }
+    
     
 }
