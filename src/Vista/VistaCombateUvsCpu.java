@@ -200,22 +200,23 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             pokemonU.setText(equipoHum[0].getNombre());
             cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoHum)));
             op1=0;
-            if(cc.hpTotal(equipoMaq)){
-                JOptionPane.showMessageDialog(null, "El ganador es "+usua1+"!");
-                this.setVisible(false);
             }
-            if(cc.hpTotal(equipoHum)){
-                JOptionPane.showMessageDialog(null, "El ganador es CPU!");
-                this.setVisible(false);
-            }
-            cambiosUsuario.setEnabled(false);
-            ataquesUsuario.setEnabled(false);
-            hpCpu.setValue(cc.barraHp(equipoMaq));
-            System.out.println(cc.barraHp(equipoMaq));
-            hpUsuario.setValue(cc.barraHp(equipoHum));
-            System.out.println(cc.barraHp(equipoHum));
-            op1=0;
+        System.out.println("El HP RESTANTE DE TU EQUIPO ES: "+cc.hpTotal(equipoHum));
+        if(cc.hpTotal(equipoMaq)){
+            JOptionPane.showMessageDialog(null, "El ganador es "+usua1+"!");
+            this.setVisible(false);
         }
+        if(cc.hpTotal(equipoHum)){
+            JOptionPane.showMessageDialog(null, "El ganador es CPU!");
+            this.setVisible(false);
+        }
+        cambiosUsuario.setEnabled(false);
+        ataquesUsuario.setEnabled(false);
+        hpCpu.setValue(cc.barraHp(equipoMaq));
+        System.out.println(cc.barraHp(equipoMaq));
+        hpUsuario.setValue(cc.barraHp(equipoHum));
+        System.out.println(cc.barraHp(equipoHum));
+        op1=0;
     }//GEN-LAST:event_simularTActionPerformed
 
 

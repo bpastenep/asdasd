@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.Pokemon;
 import Vista.VistaCombateUvsCpu;
+import javax.swing.JOptionPane;
 
 public class ControladorCombateCpu {
     public ControladorPrincipal cp;
@@ -38,7 +39,6 @@ public class ControladorCombateCpu {
     
     // método que determina la acción a ser realizada por la cpu
     public Pokemon[] accionCpu(Pokemon[] listaCpu, Pokemon[] listaHumano, int caso){
-        System.out.println("Entro a clase con opcion" + caso);
         if(caso == 1){
             accionOfensiva(listaCpu, listaHumano);
         }
@@ -56,11 +56,15 @@ public class ControladorCombateCpu {
     public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
         if(listaCpu[0].getAtk() > listaCpu[0].getAtkEsp()){
             listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtk());
-            cc.cambiaDebil(listaRival);
+            if(listaRival[0].getPS()<=0){
+                cc.cambiaDebil(listaRival);
+            }
         }
         else if(listaCpu[0].getAtk() < listaCpu[0].getAtkEsp()){
             listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtkEsp());
-            cc.cambiaDebil(listaRival);
+            if(listaRival[0].getPS()<=0){
+                cc.cambiaDebil(listaRival);
+            }
         }
         return listaRival;
     }
@@ -68,7 +72,6 @@ public class ControladorCombateCpu {
     
     // método que determina la acción defensiva de la cpu
     public Pokemon[] accionDefensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
-        System.out.println("Entra acá");
         if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() >= listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
                 if(listaCpu[0].getDef() < listaCpu[i].getDef()){
@@ -76,6 +79,7 @@ public class ControladorCombateCpu {
                     break;
                 }
             }
+            JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
             listaCpu=cc.cambio(listaCpu, pCambio);
             return listaCpu;
         }
@@ -88,6 +92,7 @@ public class ControladorCombateCpu {
                 }
                 
             }
+            JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
             listaCpu=cc.cambio(listaCpu, pCambio);
             return listaCpu;
         }
@@ -99,7 +104,8 @@ public class ControladorCombateCpu {
                 }
                 
             }
-            listaCpu=cc.cambio(listaCpu, pCambio);
+            JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
+            listaCpu=cc.cambio(listaCpu, pCambio);  
             return listaCpu;
         }
         return null;
