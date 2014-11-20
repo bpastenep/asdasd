@@ -112,7 +112,6 @@ public class VistaLogin extends javax.swing.JDialog {
         ValidaUsuario vu = new ValidaUsuario();
         try{
                 if(vu.validau(pass.getText(), user.getText()))  {
-                    JOptionPane.showMessageDialog(null, "Usuario existente. ¡Bienvenido!");
                     cp.iniciar(user.getText());
                 }
                 else{

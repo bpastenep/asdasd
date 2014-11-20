@@ -132,7 +132,7 @@ public class ControladorCombate {
         }
         else{   
                 int pos=0;
-                JOptionPane.showMessageDialog(null,listadoPkmn[selPkmn].getNombre()+ " Se encuentra DEBILITADO. Se asignará el siguiente del equipo que tenga PS:´"+listadoPkmn[selPkmn].getPS());
+                JOptionPane.showMessageDialog(null,listadoPkmn[selPkmn].getNombre()+ " Se encuentra DEBILITADO. Se asignará el siguiente del equipo que tenga PS para luchar´");
                 for(int i = 0; i < (listadoPkmn.length) ;i++){
                         if(listadoPkmn[i].getPS() > 0){
                             pos = i;

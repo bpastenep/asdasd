@@ -57,12 +57,14 @@ public class ControladorCombateCpu {
         if(listaCpu[0].getAtk() > listaCpu[0].getAtkEsp()){
             listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtk());
             if(listaRival[0].getPS()<=0){
+                listaRival[0].setPS(0);
                 cc.cambiaDebil(listaRival);
             }
         }
         else if(listaCpu[0].getAtk() < listaCpu[0].getAtkEsp()){
             listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtkEsp());
             if(listaRival[0].getPS()<=0){
+                listaRival[0].setPS(0);
                 cc.cambiaDebil(listaRival);
             }
         }
@@ -74,7 +76,7 @@ public class ControladorCombateCpu {
     public Pokemon[] accionDefensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
         if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() >= listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
-                if(listaCpu[0].getDef() < listaCpu[i].getDef()){
+                if(listaCpu[0].getDef() < listaCpu[i].getDef() && listaCpu[i].getPS()>0){
                     pCambio = i;
                     break;
                 }
@@ -85,7 +87,7 @@ public class ControladorCombateCpu {
         }
         else if(listaCpu[0].getDef() >= listaRival[0].getAtk() && listaCpu[0].getDefEsp() < listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
-                if(listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp()){
+                if(listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp() && listaCpu[i].getPS()>0){
                     pCambio = i;
                     break;
                     
@@ -98,7 +100,7 @@ public class ControladorCombateCpu {
         }
         else if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() < listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
-                if(listaCpu[0].getDef() < listaCpu[i].getDef() || listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp()){
+                if(listaCpu[0].getDef() < listaCpu[i].getDef() || listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp() && listaCpu[i].getPS()>0){
                     pCambio = i;
                    break;
                 }
