@@ -27,7 +27,8 @@ public class ControladorPrincipal {
         cu.Iniciar(this);
     }
     
-    public Entrenador simularCombate (Entrenador j1){
-        return j1;
+    public void simularCombate (Entrenador j1){
+        ControladorCombateCpu ccpu = new ControladorCombateCpu(this, j1.getNombreE());
+        ccpu.iniciarVUvsCpu();
     }
 }
