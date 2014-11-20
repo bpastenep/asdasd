@@ -40,7 +40,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         simularT.setText("Simular Turno");
         hpCpu.setValue(cc.barraHp(equipoMaq));
         hpUsuario.setValue(cc.barraHp(equipoHum));
-        System.out.println("Crea la vista completa");
+        cPokemonCPU.setText("Al equipo rival aún le quedan "+cc.pokeDeb(equipoMaq)+" pokemones");
     }
 
     @SuppressWarnings("unchecked")
@@ -61,7 +61,8 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        cPokemonCPU = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(714, 414));
         setPreferredSize(new java.awt.Dimension(714, 414));
@@ -75,7 +76,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             }
         });
         getContentPane().add(ataquesUsuario);
-        ataquesUsuario.setBounds(80, 210, 69, 20);
+        ataquesUsuario.setBounds(30, 210, 130, 20);
 
         cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cambiosUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +85,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cambiosUsuario);
-        cambiosUsuario.setBounds(210, 210, 72, 20);
+        cambiosUsuario.setBounds(202, 210, 130, 20);
 
         ataque.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ataque.setForeground(new java.awt.Color(0, 0, 204));
@@ -163,9 +164,15 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(50, 120, 250, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombateUvC2.jpg"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 710, 400);
+        cPokemonCPU.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        cPokemonCPU.setForeground(new java.awt.Color(255, 102, 0));
+        cPokemonCPU.setText("Jlabel3");
+        getContentPane().add(cPokemonCPU);
+        cPokemonCPU.setBounds(370, 300, 370, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombateUvC2.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, -10, 720, 420);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ataquesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataquesUsuarioActionPerformed
@@ -216,6 +223,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         System.out.println(cc.barraHp(equipoMaq));
         hpUsuario.setValue(cc.barraHp(equipoHum));
         System.out.println(cc.barraHp(equipoHum));
+        cPokemonCPU.setText("Al equipo rival aún le quedan "+cc.pokeDeb(equipoMaq)+" pokemones");
         op1=0;
     }//GEN-LAST:event_simularTActionPerformed
 
@@ -223,14 +231,15 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ataque;
     private javax.swing.JComboBox ataquesUsuario;
+    private javax.swing.JLabel cPokemonCPU;
     private javax.swing.JButton cambio;
     private javax.swing.JComboBox cambiosUsuario;
     private javax.swing.JLabel cpu;
     private javax.swing.JProgressBar hpCpu;
     private javax.swing.JProgressBar hpUsuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel nombreU;
     private javax.swing.JLabel pokemonCpu;

@@ -218,6 +218,16 @@ public class ControladorCombate {
        
        return equipo;
     }
+    
+    public int pokeDeb(Pokemon[] e){
+        int cont=0;
+        for(int i=0;i<e.length;i++){
+            if(e[i].getPS()>0){
+                cont=cont+1;
+            }
+        }
+        return cont;
+    }
 
     
 }

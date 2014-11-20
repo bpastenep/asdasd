@@ -76,39 +76,55 @@ public class ControladorCombateCpu {
     public Pokemon[] accionDefensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
         if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() >= listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
-                if(listaCpu[0].getDef() < listaCpu[i].getDef() && listaCpu[i].getPS()>0){
+                if(listaCpu[0].getDef() < listaCpu[i].getDef()){
+                if( listaCpu[i].getPS()>0){
                     pCambio = i;
+                    JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
+                    listaCpu=cc.cambio(listaCpu, pCambio); 
                     break;
+                    }
                 }
             }
-            JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
-            listaCpu=cc.cambio(listaCpu, pCambio);
             return listaCpu;
         }
         else if(listaCpu[0].getDef() >= listaRival[0].getAtk() && listaCpu[0].getDefEsp() < listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
-                if(listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp() && listaCpu[i].getPS()>0){
+                if(listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp()){
+                    if( listaCpu[i].getPS()>0){
                     pCambio = i;
+                    JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
+                    listaCpu=cc.cambio(listaCpu, pCambio); 
                     break;
-                    
+                    }                   
                 }
                 
             }
-            JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
-            listaCpu=cc.cambio(listaCpu, pCambio);
+            
             return listaCpu;
         }
         else if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() < listaRival[0].getAtkEsp()){
             for(int i = 0; i < listaCpu.length; i++){
-                if(listaCpu[0].getDef() < listaCpu[i].getDef() || listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp() && listaCpu[i].getPS()>0){
+                if(listaCpu[0].getDef() < listaCpu[i].getDef() || listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp()){
+                    if( listaCpu[i].getPS()>0){
                     pCambio = i;
-                   break;
+                    JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
+                    listaCpu=cc.cambio(listaCpu, pCambio); 
+                    break;
+                    }
                 }
                 
-            }
-            JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
-            listaCpu=cc.cambio(listaCpu, pCambio);  
+            } 
             return listaCpu;
+        }
+        else {
+            for(int i=0;i<listaCpu.length;i++){
+                if(listaCpu[i].getPS()>0){
+                    pCambio = i;
+                    JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
+                    listaCpu=cc.cambio(listaCpu, pCambio); 
+                    break;
+                }
+            }
         }
         return null;
     }
