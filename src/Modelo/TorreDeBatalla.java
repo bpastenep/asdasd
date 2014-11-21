@@ -3,8 +3,7 @@ package Modelo;
 public class TorreDeBatalla {
     
     private boolean cincoBatallas, venticincoBatallas, cincuentaBatallas, cienBatallas;
-    private int cuentaVictorias;
-    private int cuentaDerrotas;
+    private int cuentaVictorias, cuentaDerrotas;
 
 // get y set's    
     

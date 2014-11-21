@@ -36,9 +36,20 @@ public class ControladorCombate {
         this.usu2=usua2;
     }
     
+    /*Metodo que verifica la potencia de un movimitento
+    así se sabe si va a ser un ataque o un buff/debuff.
+    Falta una manera de determinar sobre quien se ejerce
+    el efecto*/
+    
+    public boolean tipoMovimiento(Movimiento mov){
+        if(mov.getPotencia() != 0)
+            return true;
+        else 
+            return false;
+    }
     
     
-  //Se instancia la vista  
+    //Se instancia la vista  
     public void iniciarVUvU(){
         vc= new VistaCombateUvU(this,cp,usu1,usu2,equipoP, equipo2);
         vc.setVisible(true);
@@ -50,7 +61,7 @@ public class ControladorCombate {
             int hpPkmn = listaPActual[i].getPS();
             hpT = hpT + hpPkmn;
         }
-        if(hpT<=0){
+        if(hpT <= 0){
             return true;
         }
         else
@@ -60,11 +71,10 @@ public class ControladorCombate {
     public int barraHp(Pokemon[] lista){
         int valor;
         valor = (lista[0].getPS()*100)/50;
-        //int porcentaje = Float.(valor);
         return valor;
     }
     
-//Metodo que genera el ataque
+    //Metodo que genera el ataque
     public void atacar(boolean contacto, int ps, int atk, int atkEsp, int def, int defEsp, Pokemon[] e1){
         int pos = 0;
         if(contacto){
@@ -108,7 +118,7 @@ public class ControladorCombate {
         }
     }
     
- //Cambiar un pokemon debitilitado 
+    //Cambiar un pokemon debitilitado 
     public void cambiaDebil(Pokemon[] listaActiva){
         int posicion = 0;
         JOptionPane.showMessageDialog(null, listaActiva[0].getNombre()+" ha sido debilitado.");
@@ -120,7 +130,8 @@ public class ControladorCombate {
         }
         cambio(listaActiva, posicion);
     }
-//Cambia el orden de un pokemon
+    
+    //Cambia el orden de un pokemon
     public Pokemon[] cambio(Pokemon[] listadoPkmn, int selPkmn){
         Pokemon[] listadoPokemon=null;
         if(debilitado(listadoPkmn, selPkmn)){
@@ -149,7 +160,7 @@ public class ControladorCombate {
         return listadoPokemon;
     }
 
-//Verifica que un pokemon seleccionado no esté debilitado    
+    //Verifica que un pokemon seleccionado no esté debilitado    
     public boolean debilitado(Pokemon[] e1, int index){
         if(e1[index].getPS()<=0)
             return false;
@@ -157,7 +168,7 @@ public class ControladorCombate {
             return true;
     }
 
-//Realiza la acción entre ataque o cambiar pokemon
+    //Realiza la acción entre ataque o cambiar pokemon
     public Pokemon[] realizarAccion(int op, int indiceP, Pokemon[] team1, Pokemon[] team2, int indiceA){
         if (op==1){
             //Si Opcion es igual a 1 representará que el jugdor desea atacar
@@ -173,27 +184,6 @@ public class ControladorCombate {
     }
     
     
-//Verifica que jugador es el ganador    
-    public int jugadorGanador(Pokemon[] e1, Pokemon[] e2){
-        int c1=0, c2=0;
-            for (int i=0;i<e1.length;i++){
-            for(int j=0;j<e1.length;i++){
-                if (e1[i].getPS() <= 0){
-                    c1=c1+1;
-                }
-                if (e2[j].getPS() <= 0){
-                    c2=c2+1;
-                }
-            }
-        }
-        if (c1==e1.length){
-            return 1;
-        }
-        else if(c2==e2.length){
-        return 2;
-    }
-        return 0;
-    }
 
     //Metodo que inicializa los ataques que se mostrarán en la vista
     public String[] asignaA(Pokemon[] e) {

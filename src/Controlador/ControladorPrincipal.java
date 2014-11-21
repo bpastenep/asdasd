@@ -2,9 +2,11 @@ package Controlador;
 
 import Vista.VistaPrincipal;
 import Vista.VistaLogin;
+import Vista.VistaCombateUvsCpu;
 import Modelo.Entrenador;
 
 public class ControladorPrincipal {
+    private VistaCombateUvsCpu vcpu;
     private VistaPrincipal vp;
     private VistaLogin vl;
     
@@ -27,8 +29,11 @@ public class ControladorPrincipal {
         cu.Iniciar(this);
     }
     
-    public void simularCombate (Entrenador j1){
-        ControladorCombateCpu ccpu = new ControladorCombateCpu(this, j1.getNombreE());
+    // cambiar el String por un entrenador
+    public String simularCombate (String j1){
+        ControladorCombateCpu ccpu = new ControladorCombateCpu(this, j1);
+        ControladorTorreBatalla ctdb = new ControladorTorreBatalla();
         ccpu.iniciarVUvsCpu();
+        return ctdb.ganador;
     }
 }
