@@ -12,6 +12,7 @@ public class ControladorCombateCpu {
     String usua1;
     public int accion;
     
+    
     public ControladorCombateCpu(ControladorPrincipal co, String u1){
         this.cp=co;
         this.usua1=u1;
@@ -107,7 +108,7 @@ public class ControladorCombateCpu {
                 if(listaCpu[0].getDef() < listaCpu[i].getDef() || listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp()){
                     if( listaCpu[i].getPS()>0){
                     pCambio = i;
-                    JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
+                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por: " + listaCpu[pCambio].getNombre());
                     listaCpu=cc.cambio(listaCpu, pCambio); 
                     break;
                     }
@@ -128,6 +129,30 @@ public class ControladorCombateCpu {
         }
         return null;
     }
+    
+    //Verifica que jugador es el ganador (Los recorre como una matriz? not even, wtf) (No se está usando)
+    // lo modifiqué para usarlo en la torre de batalla
+    public String jugadorGanador(Pokemon[] listaHum, Pokemon[] listaCpu){
+        int c1=0, c2=0;
+        for (int i=0;i<listaHum.length;i++){
+            if (listaHum[i].getPS() <= 0){
+                c1=c1+1;
+            }
+        }
+        for(int j = 0; j < listaCpu.length; j++){
+            if (listaCpu[j].getPS() <= 0){
+                c2=c2+1;
+            }
+        }
+        if (c1==listaHum.length){
+            return "CPU";
+        }
+        else if(c2==listaCpu.length){
+            return cc.usu1;
+        }
+        return null;
+    }
+
     
     
 }

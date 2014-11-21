@@ -2,17 +2,49 @@ package Controlador;
 
 import Modelo.TorreDeBatalla;
 import Modelo.Entrenador;
+import Vista.VistaTorreBatalla;
+import Controlador.*;
 
 public class ControladorTorreBatalla {
-    TorreDeBatalla tDB;
-    Entrenador ent;
+    public TorreDeBatalla tDB;
+    public Entrenador ent;
+    public VistaTorreBatalla vtb;
+    public ControladorPrincipal cp;
+    public ControladorCombateCpu ccpu;
+    public ControladorCombate cc;
+    public int detNumC;
+    public String ganador;
+    
+    public ControladorTorreBatalla(/*int nB*/){
+        //this.detNumC = nB;
+    }
     
     //metodo para contar nro victorias/derrotas
     
-    public int contadorBatallas(){
-        /*METODO*/
+    public int numeroCombates(){
+        if(detNumC == 1)
+            return 5;
+        else if(detNumC == 2)
+            return 25;
+        else if(detNumC == 3)
+            return 50;
+        else if(detNumC == 4)
+            return 100;
         return 0;
     }
+    
+    public int contadorBatallas(){
+        
+        return 0;
+    }
+    
+    
+    
+    public void iniciaTdB(){
+        System.out.println("entra iniciaTdB");
+        vtb = new VistaTorreBatalla();
+        vtb.setVisible(true);
+    }    
     
     public void determinaGanador(){
         if(contadorBatallas() == 5)
@@ -25,5 +57,8 @@ public class ControladorTorreBatalla {
             tDB.setCienBatallas(true);
     }
     
-    
+    public void avanceTorre(){
+        cp = new ControladorPrincipal();
+        cp.simularCombate("a");
+    }
 }
