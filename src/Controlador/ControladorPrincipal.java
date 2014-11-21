@@ -9,6 +9,7 @@ public class ControladorPrincipal {
     private VistaCombateUvsCpu vcpu;
     private VistaPrincipal vp;
     private VistaLogin vl;
+    public String ganador;
     
     public ControladorPrincipal(){
     
@@ -30,10 +31,11 @@ public class ControladorPrincipal {
     }
     
     // cambiar el String por un entrenador
-    public String simularCombate (String j1){
+    public void simularCombate (String j1){
         ControladorCombateCpu ccpu = new ControladorCombateCpu(this, j1);
-        ControladorTorreBatalla ctdb = new ControladorTorreBatalla();
         ccpu.iniciarVUvsCpu();
-        return ctdb.ganador;
+    }
+    public void setGanador(String u){
+        this.ganador=u;
     }
 }

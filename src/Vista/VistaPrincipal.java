@@ -202,7 +202,7 @@ public Image getIconImage(){
     }//GEN-LAST:event_numTdeBActionPerformed
 
     private void comienzaTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comienzaTBActionPerformed
-        ControladorTorreBatalla ctb = new ControladorTorreBatalla(/*numTdeB.getSelectedIndex()*/);
+        ControladorTorreBatalla ctb = new ControladorTorreBatalla(nUsuarioL, cp/*numTdeB.getSelectedIndex()*/);
         ctb.iniciaTdB();
     }//GEN-LAST:event_comienzaTBActionPerformed
 

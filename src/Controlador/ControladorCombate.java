@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class ControladorCombate {
     public VistaCombateUvU vc;
     public ControladorPrincipal cp;
-    public String usu1,usu2; 
+    public String usu1,usu2,ganador;
     //Esto se tiene que borrar ya que se sacará de la BD
     public Pokemon p1 = new Pokemon("Pikachu",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
     public Pokemon p2 = new Pokemon("Evee",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);

@@ -15,15 +15,16 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
     Pokemon[] equipoMaq, equipoHum;
     String usua1;
     
-    public VistaTorreBatalla() {
+    public VistaTorreBatalla(ControladorTorreBatalla ct, String usua) {
         initComponents();
-        ctb = new ControladorTorreBatalla();
+        this.ctb = ct;
         if(ctb.contadorBatallas() == 0)
             nxtCombate.setText("Comenzar");
         else
             nxtCombate.setText("Siguiente combate");
         vistaP.setText("Menú Principal");
-        
+        this.usua1=usua;
+        UsuarioTB.setText(usua1);
     }
     
     
@@ -38,6 +39,7 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
         jProgressBar2 = new javax.swing.JProgressBar();
         nxtCombate = new javax.swing.JButton();
         vistaP = new javax.swing.JButton();
+        UsuarioTB = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(401, 470));
 
@@ -59,6 +61,8 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
             }
         });
 
+        UsuarioTB.setText("Usuario");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,14 +75,17 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
                         .addComponent(modo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nroBatallas)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(nxtCombate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(vistaP, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jProgressBar2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(nxtCombate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(vistaP, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nroBatallas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(UsuarioTB)
+                                .addGap(69, 69, 69)))))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -89,7 +96,9 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(nroBatallas)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nroBatallas)
+                    .addComponent(UsuarioTB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nxtCombate)
@@ -103,8 +112,7 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nxtCombateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nxtCombateActionPerformed
-        ctb = new ControladorTorreBatalla();
-        ctb.avanceTorre();
+       this.ctb.avanceTorre();
         
     }//GEN-LAST:event_nxtCombateActionPerformed
 
@@ -115,6 +123,7 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel UsuarioTB;
     private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel modo;

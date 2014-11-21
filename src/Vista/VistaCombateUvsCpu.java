@@ -214,7 +214,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         ccpu.jugadorGanador(equipoHum, equipoMaq);
         if(ccpu.jugadorGanador(equipoHum, equipoMaq) == usua1){
             JOptionPane.showMessageDialog(null, "El ganador es " + usua1 + "!");
-            ctb.ganador = usua1;
+            cp.setGanador(usua1);
             this.setVisible(false);
         }
         if(ccpu.jugadorGanador(equipoHum, equipoMaq) == "CPU"){
