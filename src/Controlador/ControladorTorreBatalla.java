@@ -61,8 +61,7 @@ public class ControladorTorreBatalla {
     }
     
     public void avanceTorre(){
-        cp.simularCombate(usu);
-       
+        this.usu = cp.simularCombate(usu);
         System.out.println("Pasa el intento de simulación del combate");
         if(validaGanador(cp.ganador)){
             JOptionPane.showMessageDialog(null, "El usuario ganó ´1 en la torre de batalla ");
@@ -72,7 +71,7 @@ public class ControladorTorreBatalla {
     }
     
     public boolean validaGanador(String u){
-        JOptionPane.showMessageDialog(null, "Entra a éste metodo");
+        JOptionPane.showMessageDialog(null, "Entra a éste metodo con Usuario recibido " + u + "Y usuario a comparar" +usu);
         if(u.compareToIgnoreCase(usu)==0){
             return true;
         }

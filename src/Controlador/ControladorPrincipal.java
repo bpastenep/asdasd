@@ -31,10 +31,12 @@ public class ControladorPrincipal {
     }
     
     // cambiar el String por un entrenador
-    public void simularCombate (String j1){
+    public String simularCombate (String j1){
         ControladorCombateCpu ccpu = new ControladorCombateCpu(this, j1);
         ccpu.iniciarVUvsCpu();
+        return j1;
     }
+    
     public void setGanador(String u){
         this.ganador=u;
     }
