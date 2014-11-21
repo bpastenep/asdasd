@@ -17,11 +17,13 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     public String[] equipoTest1, equipoTest2;
     public Pokemon[] equipoMaq, equipoHum;
     public String usua1;
+    public boolean combateF;
 
     public VistaCombateUvsCpu(ControladorCombateCpu cpuu,ControladorCombate cco, ControladorPrincipal op, String usu1, Pokemon[] equipoCpu, Pokemon[] equipoUsuario) {
         
         initComponents();
         this.cp = op;
+        combateF=false;
         this.cc = cco;
         this.equipoMaq = equipoCpu;
         this.equipoHum = equipoUsuario;
@@ -67,7 +69,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(714, 414));
-        setPreferredSize(new java.awt.Dimension(714, 414));
+        setModal(true);
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -111,7 +113,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         getContentPane().add(cambio);
         cambio.setBounds(200, 170, 90, 25);
         getContentPane().add(hpUsuario);
-        hpUsuario.setBounds(100, 270, 193, 14);
+        hpUsuario.setBounds(100, 270, 193, 12);
 
         pokemonU.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         pokemonU.setForeground(new java.awt.Color(0, 51, 204));
@@ -119,7 +121,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         getContentPane().add(pokemonU);
         pokemonU.setBounds(10, 270, 70, 17);
         getContentPane().add(hpCpu);
-        hpCpu.setBounds(450, 270, 193, 14);
+        hpCpu.setBounds(450, 270, 193, 12);
 
         pokemonCpu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         pokemonCpu.setForeground(new java.awt.Color(255, 102, 0));
@@ -203,6 +205,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "El jugador debe seleccionar una opción.");
         }
         else{
+            combateF=true;
             equipoHum = cc.realizarAccion(op1,cambiosUsuario.getSelectedIndex(),equipoHum,equipoMaq, ataquesUsuario.getSelectedIndex());
             equipoMaq = ccpu.accionCpu(equipoMaq, equipoHum, ccpu.verificaHpCpu(equipoMaq));
             pokemonCpu.setText(equipoMaq[0].getNombre());
@@ -210,18 +213,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoHum)));
             op1=0;
             }
-        System.out.println("El HP RESTANTE DE TU EQUIPO ES: "+cc.hpTotal(equipoHum));
-        ccpu.jugadorGanador(equipoHum, equipoMaq);
-        if(ccpu.jugadorGanador(equipoHum, equipoMaq) == usua1){
-            JOptionPane.showMessageDialog(null, "El ganador es " + usua1 + "!");
-            cp.setGanador(usua1);
-            this.setVisible(false);
-        }
-        if(ccpu.jugadorGanador(equipoHum, equipoMaq) == "CPU"){
-            JOptionPane.showMessageDialog(null, "El ganador es CPU!");
-            ctb.ganador = "CPU";
-            this.setVisible(false);
-        }
+        ccpu.Ganador(equipoHum, equipoMaq);
         cambiosUsuario.setEnabled(false);
         ataquesUsuario.setEnabled(false);
         hpCpu.setValue(cc.barraHp(equipoMaq));
@@ -230,6 +222,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         System.out.println(cc.barraHp(equipoHum));
         cPokemonCPU.setText("Al equipo rival aún le quedan "+cc.pokeDeb(equipoMaq)+" pokemones");
         op1=0;
+        
     }//GEN-LAST:event_simularTActionPerformed
 
 

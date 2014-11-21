@@ -4,6 +4,8 @@ import Modelo.TorreDeBatalla;
 import Modelo.Entrenador;
 import Vista.VistaTorreBatalla;
 import Controlador.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ControladorTorreBatalla {
@@ -13,12 +15,14 @@ public class ControladorTorreBatalla {
     public ControladorPrincipal cp;
     public ControladorCombateCpu ccpu;
     public ControladorCombate cc;
-    public int detNumC;
+    public int detNumC, numCV;
     public String usu;
     public String ganador;
     
+    
     public ControladorTorreBatalla(String usua, ControladorPrincipal co/*int nB*/){
         //this.detNumC = nB;
+        this.numCV =0;
         this.cp=co;
         this.usu=usua;
     }
@@ -61,27 +65,29 @@ public class ControladorTorreBatalla {
     }
     
     public void avanceTorre(){
-        this.usu = cp.simularCombate(usu);
-        System.out.println("Pasa el intento de simulación del combate");
-        if(validaGanador(cp.ganador)){
-            JOptionPane.showMessageDialog(null, "El usuario ganó ´1 en la torre de batalla ");
-        }
-        else
-            JOptionPane.showMessageDialog(null, "El usuario no gano nah en la torre de batalla ");
-    }
+            cp.simularCombate(usu);
+            if(validaGanador(cp.ganador)){
+                numCV=numCV+1;
+            }
+     }
+        
     
     public boolean validaGanador(String u){
-        JOptionPane.showMessageDialog(null, "Entra a éste metodo con Usuario recibido " + u + "Y usuario a comparar" +usu);
         if(u.compareToIgnoreCase(usu)==0){
             return true;
         }
         else
             return false;
     }
+    
     public ControladorTorreBatalla getcTb(){
         return this;
     }
     public void setGanador(String g){
         this.ganador=g;
+    }
+
+    public int getCBatallas() {
+        return this.numCV;
     }
 }

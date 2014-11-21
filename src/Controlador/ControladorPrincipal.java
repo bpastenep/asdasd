@@ -4,12 +4,15 @@ import Vista.VistaPrincipal;
 import Vista.VistaLogin;
 import Vista.VistaCombateUvsCpu;
 import Modelo.Entrenador;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControladorPrincipal {
     private VistaCombateUvsCpu vcpu;
     private VistaPrincipal vp;
     private VistaLogin vl;
     public String ganador;
+    ControladorCombateCpu ccpu;
     
     public ControladorPrincipal(){
     
@@ -31,10 +34,9 @@ public class ControladorPrincipal {
     }
     
     // cambiar el String por un entrenador
-    public String simularCombate (String j1){
-        ControladorCombateCpu ccpu = new ControladorCombateCpu(this, j1);
+    public void simularCombate (String j1){
+        this.ccpu = new ControladorCombateCpu(this, j1);
         ccpu.iniciarVUvsCpu();
-        return j1;
     }
     
     public void setGanador(String u){

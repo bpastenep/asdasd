@@ -22,6 +22,7 @@ public class ControladorCombateCpu {
     public void iniciarVUvsCpu(){
         vcpu = new VistaCombateUvsCpu(this, cc, this.cp, cc.usu1, cc.equipoP, cc.equipo2);
         vcpu.setVisible(true);
+        System.out.println("deberia de aparecer vista");
     }
     
     public int verificaHpCpu(Pokemon[] listaCpu){
@@ -152,6 +153,30 @@ public class ControladorCombateCpu {
         }
         return null;
     }
+    
+    public boolean combateT(){
+        if(vcpu.combateF){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    public String Ganador(Pokemon[] e1, Pokemon[] e2){
+           if(jugadorGanador(e1, e2) == usua1){
+            JOptionPane.showMessageDialog(null, "El ganador es " + usua1 + "!");
+            cp.setGanador(usua1);
+            vcpu.setVisible(false);
+            return usua1;
+           }
+           else if(jugadorGanador(e1,e2)=="CPU"){
+            JOptionPane.showMessageDialog(null, "El ganador es CPU!");
+            cp.setGanador("CPU");
+            vcpu.setVisible(false);
+            return "CPU";
+           }
+           return null;
+    }   
 
     
     
