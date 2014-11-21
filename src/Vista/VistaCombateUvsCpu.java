@@ -196,7 +196,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     }//GEN-LAST:event_cambioActionPerformed
 
     private void simularTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularTActionPerformed
-        Pokemon[] aux;
+
         if(op1 == 0){
             JOptionPane.showMessageDialog(null, "El jugador debe seleccionar una opción.");
         }
@@ -208,7 +208,6 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoHum)));
             op1=0;
             }
-        System.out.println("El HP RESTANTE DE TU EQUIPO ES: "+cc.hpTotal(equipoHum));
         if(cc.hpTotal(equipoMaq)){
             JOptionPane.showMessageDialog(null, "El ganador es "+usua1+"!");
             this.setVisible(false);
