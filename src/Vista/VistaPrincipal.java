@@ -41,7 +41,6 @@ public Image getIconImage(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         simulaCombate = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -57,14 +56,13 @@ public Image getIconImage(){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(553, 483));
+        setMinimumSize(new java.awt.Dimension(530, 483));
+        setPreferredSize(new java.awt.Dimension(530, 605));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Vista principal");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(241, 38, 138, 14);
-
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 0, 0));
         jButton1.setText("Cerrar Sesión");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +72,8 @@ public Image getIconImage(){
         getContentPane().add(jButton1);
         jButton1.setBounds(190, 340, 170, 23);
 
+        simulaCombate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        simulaCombate.setForeground(new java.awt.Color(255, 0, 0));
         simulaCombate.setText("Simular Combate");
         simulaCombate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +81,7 @@ public Image getIconImage(){
             }
         });
         getContentPane().add(simulaCombate);
-        simulaCombate.setBounds(130, 100, 130, 23);
+        simulaCombate.setBounds(120, 100, 140, 23);
         getContentPane().add(jLabel3);
         jLabel3.setBounds(241, 13, 109, 0);
         getContentPane().add(jLabel4);
@@ -96,6 +96,8 @@ public Image getIconImage(){
         getContentPane().add(tipoCombate);
         tipoCombate.setBounds(290, 100, 120, 20);
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 0, 0));
         jButton2.setText("Torre de Batalla");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +107,8 @@ public Image getIconImage(){
         getContentPane().add(jButton2);
         jButton2.setBounds(130, 200, 130, 23);
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 0, 0));
         jButton3.setText("Liga Pokémon");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +118,8 @@ public Image getIconImage(){
         getContentPane().add(jButton3);
         jButton3.setBounds(190, 290, 170, 23);
 
+        comienzaCombate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        comienzaCombate.setForeground(new java.awt.Color(255, 0, 0));
         comienzaCombate.setText("OK");
         comienzaCombate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +129,8 @@ public Image getIconImage(){
         getContentPane().add(comienzaCombate);
         comienzaCombate.setBounds(240, 140, 70, 30);
 
+        comienzaTB.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        comienzaTB.setForeground(new java.awt.Color(255, 0, 0));
         comienzaTB.setText("OK");
         comienzaTB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,9 +150,9 @@ public Image getIconImage(){
         numTdeB.setBounds(290, 200, 120, 20);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaPrincipal2.jpg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaPrinciplNew666uchihamadara.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(3, 0, 550, 483);
+        jLabel5.setBounds(0, 0, 530, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -212,7 +220,6 @@ public Image getIconImage(){
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -34,8 +34,6 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        modo = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         nroBatallas = new javax.swing.JLabel();
         jProgressBar2 = new javax.swing.JProgressBar();
         nxtCombate = new javax.swing.JButton();
@@ -43,87 +41,63 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
         UsuarioTB = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         batallasG = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(401, 470));
+        setMinimumSize(new java.awt.Dimension(735, 420));
+        setPreferredSize(new java.awt.Dimension(735, 420));
+        getContentPane().setLayout(null);
 
-        modo.setText("Torre de Batalla");
-
+        nroBatallas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        nroBatallas.setForeground(new java.awt.Color(204, 0, 0));
         nroBatallas.setText("jLabel1");
+        getContentPane().add(nroBatallas);
+        nroBatallas.setBounds(240, 140, 140, 15);
+        getContentPane().add(jProgressBar2);
+        jProgressBar2.setBounds(220, 350, 315, 25);
 
+        nxtCombate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        nxtCombate.setForeground(new java.awt.Color(204, 0, 0));
         nxtCombate.setText("jButton1");
         nxtCombate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nxtCombateActionPerformed(evt);
             }
         });
+        getContentPane().add(nxtCombate);
+        nxtCombate.setBounds(200, 290, 130, 23);
 
+        vistaP.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        vistaP.setForeground(new java.awt.Color(204, 0, 0));
         vistaP.setText("jButton2");
         vistaP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vistaPActionPerformed(evt);
             }
         });
+        getContentPane().add(vistaP);
+        vistaP.setBounds(410, 290, 130, 23);
 
+        UsuarioTB.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        UsuarioTB.setForeground(new java.awt.Color(0, 0, 0));
         UsuarioTB.setText("Usuario");
+        getContentPane().add(UsuarioTB);
+        UsuarioTB.setBounds(420, 140, 130, 15);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setText("Batallas ganadas :D");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(240, 170, 140, 15);
 
+        batallasG.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        batallasG.setForeground(new java.awt.Color(0, 0, 0));
         batallasG.setText("jLabel2");
+        getContentPane().add(batallasG);
+        batallasG.setBounds(420, 170, 110, 15);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(modo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(nxtCombate, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(vistaP, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(batallasG))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(nroBatallas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(UsuarioTB)))
-                                .addGap(69, 69, 69)))))
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(modo)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nroBatallas)
-                    .addComponent(UsuarioTB))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(batallasG))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nxtCombate)
-                    .addComponent(vistaP))
-                .addGap(18, 18, 18)
-                .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaTorredeBatalla.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 710, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,9 +118,8 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
     private javax.swing.JLabel UsuarioTB;
     private javax.swing.JLabel batallasG;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel modo;
     private javax.swing.JLabel nroBatallas;
     private javax.swing.JButton nxtCombate;
     private javax.swing.JButton vistaP;
