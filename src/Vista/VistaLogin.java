@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import Modelo.Entrenador;
+import java.sql.SQLException;
 
 
 public class VistaLogin extends javax.swing.JDialog {
@@ -109,7 +111,29 @@ public class VistaLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_userActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ValidaUsuario vu = new ValidaUsuario();
+        Entrenador e = new Entrenador();
+        //Validación de que el usuario EXISTA en la BD
+        if(user.getText().isEmpty() && pass.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un nombre de usuario o contraseña");
+        }
+        else{
+             try {
+            String u=user.getText();
+            String p=pass.getText();
+            if(e.verificaEntrenador(u,p)){
+                cp.iniciar(u);
+            }
+            else{
+               JOptionPane.showMessageDialog(null, "Usuario o contraseñas NO VALIDOS"); 
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "El usuario NO EXISTE");
+        } 
+       }
+
+        //VALIDACION MEDIANTE ARCHIVO DE TEXTO
+        /*ValidaUsuario vu = new ValidaUsuario();
         try{
                 if(vu.validau(pass.getText(), user.getText()))  {
                     cp.iniciar(user.getText());
@@ -120,7 +144,7 @@ public class VistaLogin extends javax.swing.JDialog {
             } 
         catch(IOException ex) {
                 Logger.getLogger(VistaCreaU.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }*/ 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
