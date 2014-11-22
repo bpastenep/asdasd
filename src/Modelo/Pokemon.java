@@ -29,7 +29,7 @@ public class Pokemon extends EspeciePokemon {
     }
     public Pokemon(String name, int a, int d, int ae, int de, int hp){
         this.setNombre(name);
-        setPSi(hp);
+        setPS(hp);
         setAtk(a);
         setDef(d);
         setAtkEsp(ae);
