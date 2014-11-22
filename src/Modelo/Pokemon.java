@@ -1,18 +1,35 @@
 package Modelo;
 
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
 
 public class Pokemon extends EspeciePokemon {
-    public int PS, atk, def, atkEsp, defEsp;
-    public String estado;
+    public int PSi, PS, atk, def, atkEsp, defEsp,nV,idPokemon,idFamilia;
+    public String estado,nombre;
     public MovAprendido movimientos = new MovAprendido();
     public Habilidad habilidad;
     
+   public Pokemon[] creaEquipo(int idE) throws SQLException {
+        ConsultaSQL datosP = new ConsultaSQL();
+        Pokemon[] equipoP = new Pokemon[11];
+        datosP.setResult("select POKEMON.*  from pokemon inner join equipopokemon on (equipopokemon.ID_ENTRENADOR="+idE);
+        int r=0;
+        while(datosP.getResult().next()){
+            if(r<6){
+                equipoP[r].idFamilia=datosP.getResult().getInt(1);
+                equipoP[r].idPokemon=datosP.getResult().getInt(2);
+                
+                r=r+1;  
+            }
+        }
+        datosP.cerrarConexion();
+        return equipoP;
+    }
     public Pokemon(String name, int a, int d, int ae, int de, int hp){
         this.setNombre(name);
-        setPS(hp);
+        setPSi(hp);
         setAtk(a);
         setDef(d);
         setAtkEsp(ae);
@@ -23,11 +40,15 @@ public class Pokemon extends EspeciePokemon {
         
     }
 // get y set's  
+
+    Pokemon() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
     
     public int getPS(){
-        return PS;
+        return PSi;
     }
     
     public int getAtaque(){
@@ -35,7 +56,7 @@ public class Pokemon extends EspeciePokemon {
     }
 
     public void setPS(int PS) {
-        this.PS = PS;
+        this.PSi = PS;
     }
 
     public int getAtk() {
@@ -93,5 +114,9 @@ public class Pokemon extends EspeciePokemon {
     public void setHabilidad(Habilidad habilidad) {
         this.habilidad = habilidad;
     }
+
+    
+    
+    
     
 }
