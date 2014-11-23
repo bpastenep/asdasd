@@ -28,14 +28,11 @@ public class Pokemon extends EspeciePokemon {
         for(int i=0;i<equipoP.length;i++){
             equipoP[i]=new Pokemon();
         }
-        System.out.println("Y recibo la ID de entrenador: "+idE);
         datosP.setResult("select *  from pokemon inner join equipopokemon on(equipopokemon.ID_ENTRENADOR="+idE+" and pokemon.ID_POKEMON=equipopokemon.ID_POKEMON)");
         int r=0;
         while(datosP.getResult().next()){
             if(r<6){
-                System.out.println("Hola(?)");
                 equipoP[r].setIdFamilia(datosP.getResult().getInt(1));
-                System.out.println("Y llamo al pokemon: "+datosP.getResult().getString(3) );
                 equipoP[r].setIdPokemon(datosP.getResult().getInt(2));
                 equipoP[r].movimientos.setMovimientosA(movimientos.asignaAtaquesAprendidos(datosP.getResult().getInt(2)));
                 equipoP[r].setNombre(datosP.getResult().getString(3));
@@ -61,6 +58,7 @@ public class Pokemon extends EspeciePokemon {
         setDef(d);
         setAtkEsp(ae);
         setDefEsp(d);
+        setPSi(50);
         for(int i=0;i<4;i++){
             movimientos.asignarAtaques();
         }
@@ -77,7 +75,7 @@ public class Pokemon extends EspeciePokemon {
         return getIdPokemon();
     }
     public int getPS(){
-        return getPSi();
+        return this.PS;
     }
     
     public int getAtaque(){
@@ -85,7 +83,7 @@ public class Pokemon extends EspeciePokemon {
     }
 
     public void setPS(int PS) {
-        this.setPSi(PS);
+        this.PS=PS;
     }
 
     public int getAtk() {
@@ -185,7 +183,7 @@ public class Pokemon extends EspeciePokemon {
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {

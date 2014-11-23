@@ -45,8 +45,8 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         pokemonActivo2.setText(equipoP2[0].getNombre());
         usuv1.setText(usu1);
         usuv2.setText(usu2);
-        Hp1.setText(Integer.toString(equipoP1[0].getPS()));
-        Hp2.setText(Integer.toString(equipoP2[0].getPS()));
+        Hp1.setText(Integer.toString(equipoP1[0].getPSi()));
+        Hp2.setText(Integer.toString(equipoP2[0].getPSi()));
         barraHp1.setValue(cc.barraHp(equipoP1));
         barraHp2.setValue(100);
     }   
