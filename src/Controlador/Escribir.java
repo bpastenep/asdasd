@@ -28,7 +28,7 @@ public class Escribir {
             String linea;
             linea = user+";"+pass;
             ValidaUsuario valida = new ValidaUsuario();
-            if (valida.validae(user)){
+           /* if (valida.validae(user)){
                 pw.println(linea);
                 //x=1;
                 JOptionPane.showMessageDialog(null, "Usuario Creado con exito");
@@ -37,7 +37,7 @@ public class Escribir {
             else{
                 JOptionPane.showMessageDialog(null, "El usuario YA EXISTE, intente otro");
                 //x=0;
-            }
+            }*/
             //if(x==1){
                 cu.cerrar();
         //}    

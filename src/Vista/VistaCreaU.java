@@ -23,10 +23,20 @@ public class VistaCreaU extends javax.swing.JDialog {
      * Creates new form VistaCreaU2
      */
     private final ControladorCreaUsuario cu;
+    
     public VistaCreaU(ControladorCreaUsuario parent, boolean modal) {
-        //super(parent, modal);
         initComponents();
         this.cu=parent;
+        String[] nvl = new String[100];
+        for (int niveles=0; niveles<100; niveles++){
+            nvl[niveles]=""+(niveles+1);
+        }
+        NvP1.setModel(new javax.swing.DefaultComboBoxModel(nvl));
+        NvP2.setModel(new javax.swing.DefaultComboBoxModel(nvl));
+        NvP3.setModel(new javax.swing.DefaultComboBoxModel(nvl));
+        NvP4.setModel(new javax.swing.DefaultComboBoxModel(nvl));
+        NvP5.setModel(new javax.swing.DefaultComboBoxModel(nvl));
+        NvP6.setModel(new javax.swing.DefaultComboBoxModel(nvl));
     }
 
     @SuppressWarnings("unchecked")
@@ -48,7 +58,7 @@ public class VistaCreaU extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        ata1poke1 = new javax.swing.JComboBox();
+        ata10poke2 = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -57,36 +67,42 @@ public class VistaCreaU extends javax.swing.JDialog {
         ata3poke1 = new javax.swing.JComboBox();
         ata4poke1 = new javax.swing.JComboBox();
         ata1poke2 = new javax.swing.JComboBox();
+        ata1poke300 = new javax.swing.JComboBox();
+        ata2poke2 = new javax.swing.JComboBox();
+        ata3poke2 = new javax.swing.JComboBox();
+        ata4poke2 = new javax.swing.JComboBox();
         ata1poke3 = new javax.swing.JComboBox();
+        ata2poke3 = new javax.swing.JComboBox();
+        ata3poke3 = new javax.swing.JComboBox();
+        ata4poke3 = new javax.swing.JComboBox();
         ata1poke4 = new javax.swing.JComboBox();
+        ata2poke4 = new javax.swing.JComboBox();
+        ata3poke4 = new javax.swing.JComboBox();
+        ata4poke4 = new javax.swing.JComboBox();
         ata1poke5 = new javax.swing.JComboBox();
-        ata1poke6 = new javax.swing.JComboBox();
-        ata1poke7 = new javax.swing.JComboBox();
-        ata1poke8 = new javax.swing.JComboBox();
-        ata1poke9 = new javax.swing.JComboBox();
-        ata1poke10 = new javax.swing.JComboBox();
-        ata1poke11 = new javax.swing.JComboBox();
-        ata1poke12 = new javax.swing.JComboBox();
-        ata1poke13 = new javax.swing.JComboBox();
-        ata1poke14 = new javax.swing.JComboBox();
-        ata1poke15 = new javax.swing.JComboBox();
-        ata1poke16 = new javax.swing.JComboBox();
-        ata1poke17 = new javax.swing.JComboBox();
-        ata1poke18 = new javax.swing.JComboBox();
+        ata2poke5 = new javax.swing.JComboBox();
+        ata3poke5 = new javax.swing.JComboBox();
+        ata4poke5 = new javax.swing.JComboBox();
         ata1poke19 = new javax.swing.JComboBox();
         ata1poke20 = new javax.swing.JComboBox();
         ata1poke21 = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
-        jComboBox3 = new javax.swing.JComboBox();
-        jComboBox4 = new javax.swing.JComboBox();
-        jComboBox5 = new javax.swing.JComboBox();
-        jComboBox6 = new javax.swing.JComboBox();
+        NvP6 = new javax.swing.JComboBox();
+        NvP1 = new javax.swing.JComboBox();
+        NvP2 = new javax.swing.JComboBox();
+        NvP3 = new javax.swing.JComboBox();
+        NvP4 = new javax.swing.JComboBox();
+        NvP5 = new javax.swing.JComboBox();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 300));
-        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/newnombredeusuario.png"))); // NOI18N
@@ -167,9 +183,9 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(280, 160, 60, 14);
 
-        ata1poke1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke1);
-        ata1poke1.setBounds(170, 240, 56, 20);
+        ata10poke2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata10poke2);
+        ata10poke2.setBounds(170, 240, 56, 20);
 
         jLabel7.setText("Ataque1");
         getContentPane().add(jLabel7);
@@ -208,84 +224,84 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(ata1poke2);
         ata1poke2.setBounds(380, 400, 56, 20);
 
+        ata1poke300.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata1poke300);
+        ata1poke300.setBounds(170, 200, 56, 20);
+
+        ata2poke2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata2poke2);
+        ata2poke2.setBounds(240, 240, 56, 20);
+
+        ata3poke2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata3poke2);
+        ata3poke2.setBounds(310, 240, 56, 20);
+
+        ata4poke2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata4poke2);
+        ata4poke2.setBounds(380, 240, 56, 20);
+
         ata1poke3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(ata1poke3);
-        ata1poke3.setBounds(170, 200, 56, 20);
+        ata1poke3.setBounds(170, 280, 56, 20);
+
+        ata2poke3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata2poke3);
+        ata2poke3.setBounds(240, 280, 56, 20);
+
+        ata3poke3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata3poke3);
+        ata3poke3.setBounds(310, 280, 56, 20);
+
+        ata4poke3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata4poke3);
+        ata4poke3.setBounds(380, 280, 56, 20);
 
         ata1poke4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(ata1poke4);
-        ata1poke4.setBounds(240, 240, 56, 20);
+        ata1poke4.setBounds(170, 320, 56, 20);
+
+        ata2poke4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata2poke4);
+        ata2poke4.setBounds(240, 320, 56, 20);
+
+        ata3poke4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata3poke4);
+        ata3poke4.setBounds(310, 320, 56, 20);
+
+        ata4poke4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata4poke4);
+        ata4poke4.setBounds(380, 320, 56, 20);
 
         ata1poke5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(ata1poke5);
-        ata1poke5.setBounds(310, 240, 56, 20);
+        ata1poke5.setBounds(170, 360, 56, 20);
 
-        ata1poke6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke6);
-        ata1poke6.setBounds(380, 240, 56, 20);
-
-        ata1poke7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke7);
-        ata1poke7.setBounds(170, 280, 56, 20);
-
-        ata1poke8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke8);
-        ata1poke8.setBounds(240, 280, 56, 20);
-
-        ata1poke9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke9);
-        ata1poke9.setBounds(310, 280, 56, 20);
-
-        ata1poke10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke10);
-        ata1poke10.setBounds(380, 280, 56, 20);
-
-        ata1poke11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke11);
-        ata1poke11.setBounds(170, 320, 56, 20);
-
-        ata1poke12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke12);
-        ata1poke12.setBounds(240, 320, 56, 20);
-
-        ata1poke13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke13);
-        ata1poke13.setBounds(310, 320, 56, 20);
-
-        ata1poke14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke14);
-        ata1poke14.setBounds(380, 320, 56, 20);
-
-        ata1poke15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke15);
-        ata1poke15.setBounds(170, 360, 56, 20);
-
-        ata1poke16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ata1poke16.addActionListener(new java.awt.event.ActionListener() {
+        ata2poke5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ata2poke5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ata1poke16ActionPerformed(evt);
+                ata2poke5ActionPerformed(evt);
             }
         });
-        getContentPane().add(ata1poke16);
-        ata1poke16.setBounds(240, 360, 56, 20);
+        getContentPane().add(ata2poke5);
+        ata2poke5.setBounds(240, 360, 56, 20);
 
-        ata1poke17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ata1poke17.addActionListener(new java.awt.event.ActionListener() {
+        ata3poke5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ata3poke5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ata1poke17ActionPerformed(evt);
+                ata3poke5ActionPerformed(evt);
             }
         });
-        getContentPane().add(ata1poke17);
-        ata1poke17.setBounds(310, 360, 56, 20);
+        getContentPane().add(ata3poke5);
+        ata3poke5.setBounds(310, 360, 56, 20);
 
-        ata1poke18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ata1poke18.addActionListener(new java.awt.event.ActionListener() {
+        ata4poke5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ata4poke5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ata1poke18ActionPerformed(evt);
+                ata4poke5ActionPerformed(evt);
             }
         });
-        getContentPane().add(ata1poke18);
-        ata1poke18.setBounds(380, 360, 56, 20);
+        getContentPane().add(ata4poke5);
+        ata4poke5.setBounds(380, 360, 56, 20);
 
         ata1poke19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ata1poke19.addActionListener(new java.awt.event.ActionListener() {
@@ -318,29 +334,51 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(jLabel11);
         jLabel11.setBounds(530, 160, 23, 14);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(520, 400, 56, 20);
+        NvP6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(NvP6);
+        NvP6.setBounds(520, 400, 56, 20);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(520, 200, 56, 20);
+        NvP1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(NvP1);
+        NvP1.setBounds(520, 200, 56, 20);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3);
-        jComboBox3.setBounds(520, 240, 56, 20);
+        NvP2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(NvP2);
+        NvP2.setBounds(520, 240, 56, 20);
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox4);
-        jComboBox4.setBounds(520, 280, 56, 20);
+        NvP3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(NvP3);
+        NvP3.setBounds(520, 280, 56, 20);
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox5);
-        jComboBox5.setBounds(520, 320, 56, 20);
+        NvP4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(NvP4);
+        NvP4.setBounds(520, 320, 56, 20);
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox6);
-        jComboBox6.setBounds(520, 360, 56, 20);
+        NvP5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(NvP5);
+        NvP5.setBounds(520, 360, 56, 20);
+
+        jLabel12.setText("Nombre");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(670, 160, 37, 14);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(670, 200, 6, 20);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(670, 240, 6, 20);
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(670, 280, 6, 20);
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(670, 320, 6, 20);
+        getContentPane().add(jTextField5);
+        jTextField5.setBounds(670, 360, 6, 20);
+        getContentPane().add(jTextField6);
+        jTextField6.setBounds(670, 400, 6, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -350,19 +388,12 @@ public class VistaCreaU extends javax.swing.JDialog {
     }//GEN-LAST:event_userActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          if (user.getText().isEmpty() || pass.getText().isEmpty()){
+        //Validaciones correspondientes   
+        if (user.getText().isEmpty() || pass.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña vacíos");
         }
         else{
-            String linea;
-            Escribir es = new Escribir();
-            try {
-                es.escribirArchivo(user.getText(), pass.getText(), true, cu); 
-                this.setVisible(false);
-                
-            } catch (IOException ex) {
-                Logger.getLogger(VistaCreaU.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -374,17 +405,17 @@ public class VistaCreaU extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_ata1poke2ActionPerformed
 
-    private void ata1poke16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke16ActionPerformed
+    private void ata2poke5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata2poke5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ata1poke16ActionPerformed
+    }//GEN-LAST:event_ata2poke5ActionPerformed
 
-    private void ata1poke17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke17ActionPerformed
+    private void ata3poke5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata3poke5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ata1poke17ActionPerformed
+    }//GEN-LAST:event_ata3poke5ActionPerformed
 
-    private void ata1poke18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke18ActionPerformed
+    private void ata4poke5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata4poke5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ata1poke18ActionPerformed
+    }//GEN-LAST:event_ata4poke5ActionPerformed
 
     private void ata1poke19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke19ActionPerformed
         // TODO add your handling code here:
@@ -398,46 +429,51 @@ public class VistaCreaU extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_ata1poke21ActionPerformed
 
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox ata1poke1;
-    private javax.swing.JComboBox ata1poke10;
-    private javax.swing.JComboBox ata1poke11;
-    private javax.swing.JComboBox ata1poke12;
-    private javax.swing.JComboBox ata1poke13;
-    private javax.swing.JComboBox ata1poke14;
-    private javax.swing.JComboBox ata1poke15;
-    private javax.swing.JComboBox ata1poke16;
-    private javax.swing.JComboBox ata1poke17;
-    private javax.swing.JComboBox ata1poke18;
+    private javax.swing.JComboBox NvP1;
+    private javax.swing.JComboBox NvP2;
+    private javax.swing.JComboBox NvP3;
+    private javax.swing.JComboBox NvP4;
+    private javax.swing.JComboBox NvP5;
+    private javax.swing.JComboBox NvP6;
+    private javax.swing.JComboBox ata10poke2;
     private javax.swing.JComboBox ata1poke19;
     private javax.swing.JComboBox ata1poke2;
     private javax.swing.JComboBox ata1poke20;
     private javax.swing.JComboBox ata1poke21;
     private javax.swing.JComboBox ata1poke3;
+    private javax.swing.JComboBox ata1poke300;
     private javax.swing.JComboBox ata1poke4;
     private javax.swing.JComboBox ata1poke5;
-    private javax.swing.JComboBox ata1poke6;
-    private javax.swing.JComboBox ata1poke7;
-    private javax.swing.JComboBox ata1poke8;
-    private javax.swing.JComboBox ata1poke9;
     private javax.swing.JComboBox ata2poke1;
+    private javax.swing.JComboBox ata2poke2;
+    private javax.swing.JComboBox ata2poke3;
+    private javax.swing.JComboBox ata2poke4;
+    private javax.swing.JComboBox ata2poke5;
     private javax.swing.JComboBox ata3poke1;
+    private javax.swing.JComboBox ata3poke2;
+    private javax.swing.JComboBox ata3poke3;
+    private javax.swing.JComboBox ata3poke4;
+    private javax.swing.JComboBox ata3poke5;
     private javax.swing.JComboBox ata4poke1;
+    private javax.swing.JComboBox ata4poke2;
+    private javax.swing.JComboBox ata4poke3;
+    private javax.swing.JComboBox ata4poke4;
+    private javax.swing.JComboBox ata4poke5;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
-    private javax.swing.JComboBox jComboBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -446,6 +482,12 @@ public class VistaCreaU extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JPasswordField pass;
     private javax.swing.JComboBox poke1;
     private javax.swing.JComboBox poke2;
