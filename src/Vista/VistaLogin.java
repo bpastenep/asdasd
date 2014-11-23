@@ -128,6 +128,7 @@ public class VistaLogin extends javax.swing.JDialog {
             }
             
         } catch (SQLException ex) {
+                 System.out.println(ex);
             JOptionPane.showMessageDialog(null, "El usuario NO EXISTE");
         } 
        }

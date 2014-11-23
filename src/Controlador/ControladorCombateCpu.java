@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.Pokemon;
 import Vista.VistaCombateUvsCpu;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class ControladorCombateCpu {
@@ -13,7 +14,7 @@ public class ControladorCombateCpu {
     public int accion;
     
     
-    public ControladorCombateCpu(ControladorPrincipal co, String u1){
+    public ControladorCombateCpu(ControladorPrincipal co, String u1) throws SQLException{
         this.cp=co;
         this.usua1=u1;
         this.cc=new ControladorCombate(this.cp, this.usua1, "CPU");
@@ -22,8 +23,7 @@ public class ControladorCombateCpu {
     public void iniciarVUvsCpu(){
         vcpu = new VistaCombateUvsCpu(this, cc, this.cp, cc.usu1, cc.equipoP, cc.equipo2);
         vcpu.setVisible(true);
-        System.out.println("deberia de aparecer vista");
-    }
+     }
     
     public int verificaHpCpu(Pokemon[] listaCpu){
         System.out.println("El PS es: "+ listaCpu[0].getPS());

@@ -18,7 +18,7 @@ public class Entrenador {
     
     public boolean verificaEntrenador(String u, String p)throws SQLException{
         ConsultaSQL datosE = new ConsultaSQL();
-        datosE.setResult("select nombreE, from ENTRENADOR where nombre_entrenador='"+u+"'");
+        datosE.setResult("select pass from ENTRENADOR where nombre_entrenador='"+u+"'");
         while(datosE.getResult().next()){
             if(datosE.getResult().getString(1).equalsIgnoreCase(p)){
                 datosE.cerrarConexion();
@@ -31,11 +31,13 @@ public class Entrenador {
     
     public void creaEntrenador(String nombreE)throws SQLException{
         ConsultaSQL datosE = new ConsultaSQL();
+        System.out.println("El usuario recibido es: "+nombreE);
         datosE.setResult("select nombre_entrenador,id_entrenador,id_medalla from ENTRENADOR where nombre_entrenador='"+nombreE+"'");
         while(datosE.getResult().next()){
             this.nombreE=datosE.getResult().getString(1);
             this.nroMedallas=datosE.getResult().getInt(2);
             this.idE=datosE.getResult().getInt(2);
+            System.out.println("con ID :"+datosE.getResult().getInt(2) );
         }
         if(this.nroMedallas==1){
             this.nroMedallas=0;

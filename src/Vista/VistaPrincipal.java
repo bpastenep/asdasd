@@ -3,6 +3,9 @@ package Vista;
 import Controlador.*;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static sun.applet.AppletResourceLoader.getImage;
 
@@ -159,8 +162,7 @@ public Image getIconImage(){
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        VistaLogin vl = new VistaLogin(this,true);
-        vl.setVisible(true);
+        cp.iniciarL();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void simulaCombateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simulaCombateActionPerformed
@@ -193,12 +195,24 @@ public Image getIconImage(){
     private void comienzaCombateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comienzaCombateActionPerformed
         if(tipoCombate.getSelectedIndex() == 1){
             String usuario2 = JOptionPane.showInputDialog("Ingrese nombre del segundo usuario: ");
-            ControladorCombate cc = new ControladorCombate(cp,nUsuarioL,usuario2);
-            cc.iniciarVUvU();
+            ControladorCombate cc;
+            try { cc = new ControladorCombate(cp,nUsuarioL,usuario2);
+                cc.iniciarVUvU();
+            } 
+            catch (SQLException ex) {
+                Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
         else if(tipoCombate.getSelectedIndex() == 2){
-            ControladorCombateCpu ccpu = new ControladorCombateCpu(cp, nUsuarioL);
-            ccpu.iniciarVUvsCpu();
+            ControladorCombateCpu ccpu ;
+            try {
+                ccpu = new ControladorCombateCpu(cp, nUsuarioL);
+                ccpu.iniciarVUvsCpu();
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }//GEN-LAST:event_comienzaCombateActionPerformed
 

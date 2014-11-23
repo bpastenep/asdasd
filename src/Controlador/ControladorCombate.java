@@ -6,13 +6,17 @@ import Modelo.MovAprendido;
 import Modelo.Movimiento;
 import Modelo.Pokemon;
 import Vista.VistaCombateUvU;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class ControladorCombate {
     public VistaCombateUvU vc;
     public ControladorPrincipal cp;
     public String usu1,usu2,ganador;
+    Entrenador j1=new Entrenador();
+    Entrenador j2=new Entrenador();
     //Esto se tiene que borrar ya que se sacará de la BD
+    
     public Pokemon p1 = new Pokemon("Pikachu",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
     public Pokemon p2 = new Pokemon("Evee",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
     public Pokemon p3 = new Pokemon("Bulbasaur",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
@@ -25,22 +29,23 @@ public class ControladorCombate {
     public Pokemon p10 = new Pokemon("Celebi",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
     public Pokemon p11 = new Pokemon("Mew",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
     public Pokemon p12 = new Pokemon("Charizard",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    public Pokemon[] equipoP= {p1,p2,p3,p4,p5,p6};
+    public Pokemon[] equipoP;
     public Pokemon[] equipo2={p7,p8,p9,p10,p11,p12};
     public int hpFinal;
     
     //Contstructor  
-    public ControladorCombate(ControladorPrincipal op, String nusurio, String usua2) {
+    public ControladorCombate(ControladorPrincipal op, String nusurio, String usua2) throws SQLException {
         this.usu1=nusurio;
         this.cp=op;
         this.usu2=usua2;
+        j1.creaEntrenador(usu1);
+        equipoP=j1.getePokemon();
     }
     
     /*Metodo que verifica la potencia de un movimitento
     así se sabe si va a ser un ataque o un buff/debuff.
     Falta una manera de determinar sobre quien se ejerce
     el efecto*/
-    
     public boolean tipoMovimiento(Movimiento mov){
         if(mov.getPotencia() != 0)
             return true;
@@ -50,7 +55,9 @@ public class ControladorCombate {
     
     
     //Se instancia la vista  
-    public void iniciarVUvU(){
+    public void iniciarVUvU() throws SQLException{
+        j2.creaEntrenador(usu2);
+        equipo2=j2.getePokemon();
         vc= new VistaCombateUvU(this,cp,usu1,usu2,equipoP, equipo2);
         vc.setVisible(true);
     }
@@ -173,7 +180,7 @@ public class ControladorCombate {
         if (op==1){
             //Si Opcion es igual a 1 representará que el jugdor desea atacar
             
-            atacar(team1[0].movimientos.movimientosA[indiceA].isContacto(),team2[0].getPS(),team1[0].getAtaque()
+            atacar(team1[0].getMovimientos().getMovimientosA()[indiceA].isContacto(),team2[0].getPS(),team1[0].getAtaque()
                     ,team1[0].getAtkEsp(),team2[0].getDef(), team2[0].getDefEsp(), team2);
         }
         //Acá se debe agregar la opción de poder cambiar al pokemon con el que se tiene que pelear 
@@ -187,11 +194,9 @@ public class ControladorCombate {
 
     //Metodo que inicializa los ataques que se mostrarán en la vista
     public String[] asignaA(Pokemon[] e) {
-        MovAprendido ma;
-        ma=e[0].getMovimientos();
-        String[] ataques = new String[ma.movimientosA.length];
-        for (int i=0;i<ma.movimientosA.length;i++){
-            ataques[i]=ma.movimientosA[i].getNombre();
+        String[] ataques = new String[e[0].getMovimientos().getMovimientosA().length];
+        for (int i=0;i<e[0].getMovimientos().getMovimientosA().length;i++){
+            ataques[i]=e[0].getMovimientos().getMovimientosA()[i].getNombre().trim();
         }
         return ataques;    
     }
@@ -201,7 +206,7 @@ public class ControladorCombate {
        String[] equipo=new String[e.length];
        for (int i=0;i<e.length;i++){
             if(e[i].getPS()<=0)
-                equipo[i]="DEB "+e[i].getNombre();
+                equipo[i]="DEB "+e[i].getNombre().replaceAll(" ","");
             else
                equipo[i]=e[i].getNombre();
        }

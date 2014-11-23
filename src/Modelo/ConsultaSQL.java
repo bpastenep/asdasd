@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class ConsultaSQL {
 
@@ -23,7 +24,7 @@ public class ConsultaSQL {
             url = "jdbc:derby://localhost:1527/pokemon;user=pokemon;password=pokemon";
             conexion=DriverManager.getConnection(url);
             sentencia= conexion.createStatement();            
-           // System.out.println("Conexion a Base de Datos "+url+" . . . . .Ok");
+            //System.out.println("Conexion a Base de Datos "+url+" . . . . .Ok");
 
         }
         catch (SQLException ex) {

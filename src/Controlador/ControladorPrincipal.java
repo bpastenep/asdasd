@@ -4,6 +4,7 @@ import Vista.VistaPrincipal;
 import Vista.VistaLogin;
 import Vista.VistaCombateUvsCpu;
 import Modelo.Entrenador;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +35,7 @@ public class ControladorPrincipal {
     }
     
     // cambiar el String por un entrenador
-    public void simularCombate (String j1){
+    public void simularCombate (String j1) throws SQLException{
         this.ccpu = new ControladorCombateCpu(this, j1);
         ccpu.iniciarVUvsCpu();
     }

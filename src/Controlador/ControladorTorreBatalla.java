@@ -4,6 +4,7 @@ import Modelo.TorreDeBatalla;
 import Modelo.Entrenador;
 import Vista.VistaTorreBatalla;
 import Controlador.*;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -64,7 +65,7 @@ public class ControladorTorreBatalla {
             tDB.setCienBatallas(true);
     }
     
-    public void avanceTorre(){
+    public void avanceTorre() throws SQLException{
             cp.simularCombate(usu);
             if(validaGanador(cp.ganador)){
                 numCV=numCV+1;

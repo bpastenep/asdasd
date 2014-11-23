@@ -14,12 +14,11 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     private ControladorCombateCpu ccpu;
     private ControladorPrincipal cp;
     private ControladorTorreBatalla ctb;
-    public String[] equipoTest1, equipoTest2;
     public Pokemon[] equipoMaq, equipoHum;
     public String usua1;
     public boolean combateF;
 
-    public VistaCombateUvsCpu(ControladorCombateCpu cpuu,ControladorCombate cco, ControladorPrincipal op, String usu1, Pokemon[] equipoCpu, Pokemon[] equipoUsuario) {
+    public VistaCombateUvsCpu(ControladorCombateCpu cpuu,ControladorCombate cco, ControladorPrincipal op, String usu1, Pokemon[] equipoUsuario, Pokemon[] equipoCpu) {
         
         initComponents();
         this.cp = op;
@@ -28,14 +27,10 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         this.equipoMaq = equipoCpu;
         this.equipoHum = equipoUsuario;
         this.usua1 = usu1;
-        this.ccpu = cpuu;
-        String[] ataquesp1= cc.asignaA(equipoMaq);
-        String[] ataquesp2= cc.asignaA(equipoHum);
-        ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(ataquesp2));
+        this.ccpu = cpuu;    
+        ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaA(equipoHum)));
         ataquesUsuario.setEnabled(false);
-        equipoTest1 = cc.asignaP(equipoMaq);
-        equipoTest2 = cc.asignaP(equipoHum);
-        cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(equipoTest2));
+        cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoHum)));
         cambiosUsuario.setEnabled(false);
         pokemonCpu.setText(equipoMaq[0].getNombre());
         pokemonU.setText(equipoHum[0].getNombre());
@@ -214,6 +209,7 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             op1=0;
             }
         ccpu.Ganador(equipoHum, equipoMaq);
+        ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaA(equipoHum)));
         cambiosUsuario.setEnabled(false);
         ataquesUsuario.setEnabled(false);
         hpCpu.setValue(cc.barraHp(equipoMaq));

@@ -3,24 +3,50 @@ package Modelo;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.JOptionPane;
 
 
 public class Pokemon extends EspeciePokemon {
-    public int PSi, PS, atk, def, atkEsp, defEsp,nV,idPokemon,idFamilia;
-    public String estado,nombre;
-    public MovAprendido movimientos = new MovAprendido();
-    public Habilidad habilidad;
+    private int PSi;
+    private int PS;
+    private int atk;
+    private int def;
+    private int atkEsp;
+    private int defEsp;
+    private int nV;
+    private int idPokemon;
+    private int idFamilia;
+    private int vel;
+    private String estado;
+    private String nombre;
+    private MovAprendido movimientos=new MovAprendido();
+    private Habilidad habilidad;
     
    public Pokemon[] creaEquipo(int idE) throws SQLException {
         ConsultaSQL datosP = new ConsultaSQL();
-        Pokemon[] equipoP = new Pokemon[11];
-        datosP.setResult("select POKEMON.*  from pokemon inner join equipopokemon on (equipopokemon.ID_ENTRENADOR="+idE);
+        Pokemon[] equipoP = new Pokemon[6];
+        for(int i=0;i<equipoP.length;i++){
+            equipoP[i]=new Pokemon();
+        }
+        System.out.println("Y recibo la ID de entrenador: "+idE);
+        datosP.setResult("select *  from pokemon inner join equipopokemon on(equipopokemon.ID_ENTRENADOR="+idE+" and pokemon.ID_POKEMON=equipopokemon.ID_POKEMON)");
         int r=0;
         while(datosP.getResult().next()){
             if(r<6){
-                equipoP[r].idFamilia=datosP.getResult().getInt(1);
-                equipoP[r].idPokemon=datosP.getResult().getInt(2);
-                
+                System.out.println("Hola(?)");
+                equipoP[r].setIdFamilia(datosP.getResult().getInt(1));
+                System.out.println("Y llamo al pokemon: "+datosP.getResult().getString(3) );
+                equipoP[r].setIdPokemon(datosP.getResult().getInt(2));
+                equipoP[r].movimientos.setMovimientosA(movimientos.asignaAtaquesAprendidos(datosP.getResult().getInt(2)));
+                equipoP[r].setNombre(datosP.getResult().getString(3));
+                equipoP[r].setnV(datosP.getResult().getInt(4));
+                equipoP[r].setPSi(datosP.getResult().getInt(5));
+                equipoP[r].setPS(datosP.getResult().getInt(6));
+                equipoP[r].setAtk(datosP.getResult().getInt(7));
+                equipoP[r].setAtkEsp(datosP.getResult().getInt(8));
+                equipoP[r].setDef(datosP.getResult().getInt(9));
+                equipoP[r].setDefEsp(datosP.getResult().getInt(10));
+                equipoP[r].setVel(datosP.getResult().getInt(11));
                 r=r+1;  
             }
         }
@@ -28,6 +54,7 @@ public class Pokemon extends EspeciePokemon {
         return equipoP;
     }
     public Pokemon(String name, int a, int d, int ae, int de, int hp){
+        movimientos.asignarAtaques();
         this.setNombre(name);
         setPS(hp);
         setAtk(a);
@@ -42,13 +69,15 @@ public class Pokemon extends EspeciePokemon {
 // get y set's  
 
     Pokemon() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  
     }
     
 
-    
+    public int getidP(){
+        return getIdPokemon();
+    }
     public int getPS(){
-        return PSi;
+        return getPSi();
     }
     
     public int getAtaque(){
@@ -56,7 +85,7 @@ public class Pokemon extends EspeciePokemon {
     }
 
     public void setPS(int PS) {
-        this.PSi = PS;
+        this.setPSi(PS);
     }
 
     public int getAtk() {
@@ -114,6 +143,56 @@ public class Pokemon extends EspeciePokemon {
     public void setHabilidad(Habilidad habilidad) {
         this.habilidad = habilidad;
     }
+
+    public int getPSi() {
+        return PSi;
+    }
+
+    public void setPSi(int PSi) {
+        this.PSi = PSi;
+    }
+
+    public int getnV() {
+        return nV;
+    }
+
+    public void setnV(int nV) {
+        this.nV = nV;
+    }
+
+    public int getIdPokemon() {
+        return idPokemon;
+    }
+
+    public void setIdPokemon(int idPokemon) {
+        this.idPokemon = idPokemon;
+    }
+
+    public int getIdFamilia() {
+        return idFamilia;
+    }
+
+    public void setIdFamilia(int idFamilia) {
+        this.idFamilia = idFamilia;
+    }
+
+    public int getVel() {
+        return vel;
+    }
+
+    public void setVel(int vel) {
+        this.vel = vel;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+
 
     
     
