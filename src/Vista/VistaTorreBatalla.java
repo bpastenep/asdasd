@@ -4,6 +4,9 @@ import Controlador.ControladorCombateCpu;
 import Controlador.ControladorPrincipal;
 import Controlador.ControladorTorreBatalla;
 import Modelo.Pokemon;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class VistaTorreBatalla extends javax.swing.JDialog {
     
@@ -43,13 +46,15 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
         batallasG = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(735, 420));
-        setPreferredSize(new java.awt.Dimension(735, 420));
+        setMinimumSize(new java.awt.Dimension(715, 440));
+        setModal(true);
+        setPreferredSize(new java.awt.Dimension(715, 440));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         nroBatallas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         nroBatallas.setForeground(new java.awt.Color(204, 0, 0));
-        nroBatallas.setText("jLabel1");
+        nroBatallas.setText("Entrenador");
         getContentPane().add(nroBatallas);
         nroBatallas.setBounds(240, 140, 140, 15);
         getContentPane().add(jProgressBar2);
@@ -78,7 +83,6 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
         vistaP.setBounds(410, 290, 130, 23);
 
         UsuarioTB.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        UsuarioTB.setForeground(new java.awt.Color(0, 0, 0));
         UsuarioTB.setText("Usuario");
         getContentPane().add(UsuarioTB);
         UsuarioTB.setBounds(420, 140, 130, 15);
@@ -90,22 +94,23 @@ public class VistaTorreBatalla extends javax.swing.JDialog {
         jLabel1.setBounds(240, 170, 140, 15);
 
         batallasG.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        batallasG.setForeground(new java.awt.Color(0, 0, 0));
         batallasG.setText("jLabel2");
         getContentPane().add(batallasG);
         batallasG.setBounds(420, 170, 110, 15);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaTorredeBatalla.jpg"))); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(715, 430));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 710, 420);
+        jLabel2.setBounds(0, 0, 720, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void nxtCombateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nxtCombateActionPerformed
-       this.ctb.avanceTorre();
-       batallasG.setText(""+ctb.getCBatallas());
-        
+        try{
+            this.ctb.avanceTorre ();
+            batallasG.setText(""+ctb.getCBatallas());
+        }catch (SQLException s){}
     }//GEN-LAST:event_nxtCombateActionPerformed
 
     private void vistaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vistaPActionPerformed

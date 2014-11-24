@@ -81,7 +81,7 @@ public class ControladorCombateCpu {
                 if(listaCpu[0].getDef() < listaCpu[i].getDef()){
                 if( listaCpu[i].getPS()>0){
                     pCambio = i;
-                    JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
+                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
                     listaCpu=cc.cambio(listaCpu, pCambio); 
                     break;
                     }
@@ -94,7 +94,7 @@ public class ControladorCombateCpu {
                 if(listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp()){
                     if( listaCpu[i].getPS()>0){
                     pCambio = i;
-                    JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
+                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
                     listaCpu=cc.cambio(listaCpu, pCambio); 
                     break;
                     }                   
@@ -122,7 +122,7 @@ public class ControladorCombateCpu {
             for(int i=0;i<listaCpu.length;i++){
                 if(listaCpu[i].getPS()>0){
                     pCambio = i;
-                    JOptionPane.showMessageDialog(null, "¡Cuidado! tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
+                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
                     listaCpu=cc.cambio(listaCpu, pCambio); 
                     break;
                 }

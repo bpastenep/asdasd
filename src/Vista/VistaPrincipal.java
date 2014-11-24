@@ -13,18 +13,19 @@ import static sun.applet.AppletResourceLoader.getImage;
 public class VistaPrincipal extends javax.swing.JFrame {
     
     private final ControladorPrincipal cp;
-    public ControladorTorreBatalla ctdb;
-    public ControladorCombate cc;
-    public ControladorLiga cl;
-    public String nUsuarioL;
-    public String[] tC = {"Tipo de combate", "Usuario vs Usuario", "Usuario vs CPU"};
-    public String[] nTdeB = {"Numero de Batallas", "5", "25", "50", "100"};
+    private ControladorTorreBatalla ctdb;
+    private ControladorCombate cc;
+    private ControladorLiga cl;
+    private ControladorCombateCpuVs ccpuvs;
+    private String nUsuarioL;
+    private String[] tC = {"Tipo de combate", "Usuario vs Usuario", "Usuario vs CPU", "CPU vs CPU"};
+    private String[] nTdeB = {"Numero de Batallas", "5", "25", "50", "100"};
     
     
     public VistaPrincipal(ControladorPrincipal co, String n) {
         initComponents();
         this.cp = co;
-        this.nUsuarioL=n;
+        this.nUsuarioL = n;
         this.jLabel4.setText(n);
         tipoCombate.setModel(new javax.swing.DefaultComboBoxModel(tC));
         comienzaCombate.setVisible(false);
@@ -195,7 +196,6 @@ public Image getIconImage(){
     private void comienzaCombateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comienzaCombateActionPerformed
         if(tipoCombate.getSelectedIndex() == 1){
             String usuario2 = JOptionPane.showInputDialog("Ingrese nombre del segundo usuario: ");
-            ControladorCombate cc;
             try { cc = new ControladorCombate(cp,nUsuarioL,usuario2);
                 cc.iniciarVUvU();
             } 
@@ -212,7 +212,15 @@ public Image getIconImage(){
             } catch (SQLException ex) {
                 Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+        }
+        else if(tipoCombate.getSelectedIndex() == 3){
+            try {
+                cc = new ControladorCombate(cp, "CPU", "CPU 2");
+                ccpuvs = new ControladorCombateCpuVs(cp);
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ccpuvs.combateEntreCpu(cc.equipoP, cc.equipo2);
         }
     }//GEN-LAST:event_comienzaCombateActionPerformed
 
