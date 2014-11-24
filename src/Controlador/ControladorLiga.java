@@ -11,9 +11,9 @@ public class ControladorLiga {
     private String nombreRegion;
     private String[] listaEntrenadores = new String[8];
     
-    public ControladorLiga(){
+    public ControladorLiga() throws SQLException{
         this.region = (int)(Math.random()*(6)+1);
-        casosRegiones(this.region);
+        casosRegiones(region);
     }
     
     public void combateRandom() throws SQLException{
@@ -31,24 +31,16 @@ public class ControladorLiga {
         System.out.println(getNombreRegion());
     }
     
-    public void casosRegiones(int numRegion){
-        switch(numRegion){
-            case 1: setNombreRegion("Kanto");
-                    break;
-            case 2: setNombreRegion("Johto");
-                    break;
-            case 3: setNombreRegion("Hoenn");
-                    break;
-            case 4: setNombreRegion("Sinnoh");
-                    break;
-            case 5: setNombreRegion("Teselia");
-                    break;
-            case 6: setNombreRegion("Kalos");
-                    break;
+    public void casosRegiones(int numRegion) throws SQLException{
+        ConsultaSQL consultaRegion = new ConsultaSQL();
+        consultaRegion.setResult("SELECT NOMBRE_REGION WHERE ID_REGION =" + numRegion);
+        while(consultaRegion.getResult().next()){
+            setNombreRegion(consultaRegion.getResult().getString(1));
         }
     }
     
-    public void iniciarVliga(){
+    public void iniciarVliga() throws SQLException{
+        System.out.println("hola");
         vl = new VistaLiga();
         vl.setVisible(true);
     }

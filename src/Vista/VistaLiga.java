@@ -1,15 +1,21 @@
 package Vista;
 
 import Controlador.ControladorLiga;
+import java.sql.SQLException;
+import Controlador.ControladorSeleccionPokemon;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class VistaLiga extends javax.swing.JDialog {
 
     private ControladorLiga cL;
     private int region;
+    private ControladorSeleccionPokemon cSePo;
     
-    public VistaLiga() {
+    public VistaLiga() throws SQLException {
         initComponents();
         this.cL = new ControladorLiga();
+        this.cSePo = new ControladorSeleccionPokemon();
         this.nombreRegion.setText("LIGA POKEMON");
         this.combateLider.setText("Inicia Combate");
     }
@@ -82,7 +88,9 @@ public class VistaLiga extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void combateLiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combateLiderActionPerformed
-        
+        try {
+            cSePo.iniciarSeleccion();
+        } catch(SQLException e){}
     }//GEN-LAST:event_combateLiderActionPerformed
 
 

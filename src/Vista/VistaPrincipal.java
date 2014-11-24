@@ -3,6 +3,7 @@ package Vista;
 import Controlador.*;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +52,7 @@ public Image getIconImage(){
         jLabel4 = new javax.swing.JLabel();
         tipoCombate = new javax.swing.JComboBox();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ligaPkmn = new javax.swing.JButton();
         comienzaCombate = new javax.swing.JButton();
         comienzaTB = new javax.swing.JButton();
         numTdeB = new javax.swing.JComboBox();
@@ -61,7 +62,6 @@ public Image getIconImage(){
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(530, 483));
-        setPreferredSize(new java.awt.Dimension(530, 605));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -111,16 +111,16 @@ public Image getIconImage(){
         getContentPane().add(jButton2);
         jButton2.setBounds(130, 200, 130, 23);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 0, 0));
-        jButton3.setText("Liga Pokémon");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ligaPkmn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ligaPkmn.setForeground(new java.awt.Color(255, 0, 0));
+        ligaPkmn.setText("Liga Pokémon");
+        ligaPkmn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ligaPkmnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(190, 290, 170, 23);
+        getContentPane().add(ligaPkmn);
+        ligaPkmn.setBounds(190, 290, 170, 23);
 
         comienzaCombate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         comienzaCombate.setForeground(new java.awt.Color(255, 0, 0));
@@ -186,12 +186,16 @@ public Image getIconImage(){
         numTdeB.setEnabled(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ligaPkmnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ligaPkmnActionPerformed
         comienzaCombate.setVisible(false);
         tipoCombate.setEnabled(false);
-        cl = new ControladorLiga();
-        cl.iniciarVliga();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        try {
+            cl = new ControladorLiga();
+            System.out.println("hola");
+            cl.iniciarVliga();
+        } catch (SQLException ex){System.out.println("nope");
+        }
+    }//GEN-LAST:event_ligaPkmnActionPerformed
 
     private void comienzaCombateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comienzaCombateActionPerformed
         if(tipoCombate.getSelectedIndex() == 1){
@@ -241,10 +245,10 @@ public Image getIconImage(){
     private javax.swing.JButton comienzaTB;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton ligaPkmn;
     private javax.swing.JComboBox numTdeB;
     private javax.swing.JButton simulaCombate;
     private javax.swing.JComboBox tipoCombate;
