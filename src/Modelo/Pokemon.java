@@ -66,7 +66,7 @@ public class Pokemon extends EspeciePokemon {
     }
 // get y set's  
 
-    Pokemon() {
+     public Pokemon() {
   
     }
     
@@ -188,6 +188,23 @@ public class Pokemon extends EspeciePokemon {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String[] muestraPokemonBD() throws SQLException {
+        String[] equipoa= new String[10000];
+        ConsultaSQL nombres = new ConsultaSQL();
+        nombres.setResult("select nombre_familiapokemon from familia_pokemon");
+        int r=0;
+        while(nombres.getResult().next()){
+            equipoa[r]=nombres.getResult().getString(1);
+            r=r+1;
+        }
+        String[] equipoP=new String[r+1];
+        equipoP[0]="Selecciona tu Pokémon";
+        for (int i=1;i<r+1;i++){
+            equipoP[i]=equipoa[i];
+        }
+        return equipoP;
     }
 
 
