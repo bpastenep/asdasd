@@ -23,7 +23,7 @@ public class VistaCreaU extends javax.swing.JDialog {
      * Creates new form VistaCreaU2
      */
     private final ControladorCreaUsuario cu;
-    
+ -   
     public VistaCreaU(ControladorCreaUsuario parent, boolean modal) {
         initComponents();
         this.cu=parent;
