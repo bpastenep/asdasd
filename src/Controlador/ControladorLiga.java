@@ -12,8 +12,10 @@ public class ControladorLiga {
     private String[] listaEntrenadores = new String[8];
     
     public ControladorLiga() throws SQLException{
+        System.out.println("Entra al constructor");
         this.region = (int)(Math.random()*(6)+1);
         casosRegiones(region);
+        System.out.println("Sale del controlador");
     }
     
     public void combateRandom() throws SQLException{
@@ -33,8 +35,9 @@ public class ControladorLiga {
     
     public void casosRegiones(int numRegion) throws SQLException{
         ConsultaSQL consultaRegion = new ConsultaSQL();
-        consultaRegion.setResult("SELECT NOMBRE_REGION WHERE ID_REGION =" + numRegion);
+        consultaRegion.setResult("SELECT NOMBRE_REGION from region WHERE ID_REGION =" + numRegion);
         while(consultaRegion.getResult().next()){
+            System.out.println("Entra al while con valor: "+consultaRegion.getResult().getString(1));
             setNombreRegion(consultaRegion.getResult().getString(1));
         }
     }

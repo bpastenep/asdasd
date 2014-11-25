@@ -190,10 +190,12 @@ public Image getIconImage(){
         comienzaCombate.setVisible(false);
         tipoCombate.setEnabled(false);
         try {
-            cl = new ControladorLiga();
             System.out.println("hola");
+            cl = new ControladorLiga();
+            System.out.println("hola"); 
+            
             cl.iniciarVliga();
-        } catch (SQLException ex){System.out.println("nope");
+        } catch (SQLException ex){System.out.println(ex);
         }
     }//GEN-LAST:event_ligaPkmnActionPerformed
 

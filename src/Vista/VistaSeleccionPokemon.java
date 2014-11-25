@@ -9,7 +9,7 @@ public class VistaSeleccionPokemon extends javax.swing.JPanel {
     public VistaSeleccionPokemon() {
         initComponents();
         cSP = new ControladorSeleccionPokemon();
-        pkmn1.setModel(new javax.swing.DefaultComboBoxModel(cSP.getListaPkmnCB()));
+        String[] opcLista = new String[0];        
     }
 
     @SuppressWarnings("unchecked")
@@ -60,7 +60,7 @@ public class VistaSeleccionPokemon extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pkmn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pkmn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -72,7 +72,7 @@ public class VistaSeleccionPokemon extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pkmn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pkmn6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(85, 85, 85))
+                .addGap(71, 71, 71))
         );
     }// </editor-fold>//GEN-END:initComponents
 

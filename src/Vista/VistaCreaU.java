@@ -69,8 +69,7 @@ public class VistaCreaU extends javax.swing.JDialog {
         ata1poke6.setVisible(false);
         ata2poke6.setVisible(false);
         ata3poke6.setVisible(false);
-        ata4poke6.setVisible(false);
-        
+        ata4poke6.setVisible(false);        
     }
 
     @SuppressWarnings("unchecked")
