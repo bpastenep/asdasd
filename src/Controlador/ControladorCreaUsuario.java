@@ -6,7 +6,9 @@
 
 package Controlador;
 
+import Modelo.Pokemon;
 import Vista.VistaCreaU;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,13 +17,19 @@ import Vista.VistaCreaU;
 public class ControladorCreaUsuario {
     private VistaCreaU vu;
     private ControladorPrincipal cp;
-    public void Iniciar(ControladorPrincipal op) {
+    public void Iniciar(ControladorPrincipal op) throws SQLException {
         VistaCreaU vu = new VistaCreaU(this,true);
         vu.setVisible(true);
         this.cp=op;
     }
 
-    void cerrar() {
+    public String[] devuelvePoke() throws SQLException{
+        String[] nombreP;
+        Pokemon poke = new Pokemon();
+        nombreP = poke.muestraPokemonBD();
+        return nombreP;
+    }
+    public void cerrar() {
        this.cp.iniciarL();
        this.vu.setVisible(false);
        

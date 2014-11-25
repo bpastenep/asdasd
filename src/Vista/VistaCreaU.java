@@ -9,6 +9,7 @@ package Vista;
 import Controlador.Escribir;
 import Controlador.ControladorCreaUsuario;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,12 +24,14 @@ public class VistaCreaU extends javax.swing.JDialog {
      * Creates new form VistaCreaU2
      */
     private final ControladorCreaUsuario cu;
- -   
-    public VistaCreaU(ControladorCreaUsuario parent, boolean modal) {
+    
+    public VistaCreaU(ControladorCreaUsuario parent, boolean modal) throws SQLException {
         initComponents();
         this.cu=parent;
-        String[] nvl = new String[100];
-        for (int niveles=0; niveles<100; niveles++){
+        String[] nvl = new String[101];
+        nvl[0]="¿Nivel?";
+        String[] pokeBD = parent.devuelvePoke();
+        for (int niveles=1; niveles<100; niveles++){
             nvl[niveles]=""+(niveles+1);
         }
         NvP1.setModel(new javax.swing.DefaultComboBoxModel(nvl));
@@ -37,6 +40,37 @@ public class VistaCreaU extends javax.swing.JDialog {
         NvP4.setModel(new javax.swing.DefaultComboBoxModel(nvl));
         NvP5.setModel(new javax.swing.DefaultComboBoxModel(nvl));
         NvP6.setModel(new javax.swing.DefaultComboBoxModel(nvl));
+        poke1.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        poke2.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        poke3.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        poke4.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        poke5.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        poke6.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        ata1poke1.setVisible(false);
+        ata2poke1.setVisible(false);
+        ata3poke1.setVisible(false);
+        ata4poke1.setVisible(false);
+        ata1poke2.setVisible(false);
+        ata2poke2.setVisible(false);
+        ata3poke2.setVisible(false);
+        ata4poke2.setVisible(false);
+        ata1poke3.setVisible(false);
+        ata2poke3.setVisible(false);
+        ata3poke3.setVisible(false);
+        ata4poke3.setVisible(false);
+        ata1poke4.setVisible(false);
+        ata2poke4.setVisible(false);
+        ata3poke4.setVisible(false);
+        ata4poke4.setVisible(false);
+        ata1poke5.setVisible(false);
+        ata2poke5.setVisible(false);
+        ata3poke5.setVisible(false);
+        ata4poke5.setVisible(false);
+        ata1poke6.setVisible(false);
+        ata2poke6.setVisible(false);
+        ata3poke6.setVisible(false);
+        ata4poke6.setVisible(false);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -58,7 +92,7 @@ public class VistaCreaU extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        ata10poke2 = new javax.swing.JComboBox();
+        ata1poke2 = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -66,8 +100,8 @@ public class VistaCreaU extends javax.swing.JDialog {
         ata2poke1 = new javax.swing.JComboBox();
         ata3poke1 = new javax.swing.JComboBox();
         ata4poke1 = new javax.swing.JComboBox();
-        ata1poke2 = new javax.swing.JComboBox();
-        ata1poke300 = new javax.swing.JComboBox();
+        ata4poke6 = new javax.swing.JComboBox();
+        ata1poke1 = new javax.swing.JComboBox();
         ata2poke2 = new javax.swing.JComboBox();
         ata3poke2 = new javax.swing.JComboBox();
         ata4poke2 = new javax.swing.JComboBox();
@@ -83,9 +117,9 @@ public class VistaCreaU extends javax.swing.JDialog {
         ata2poke5 = new javax.swing.JComboBox();
         ata3poke5 = new javax.swing.JComboBox();
         ata4poke5 = new javax.swing.JComboBox();
-        ata1poke19 = new javax.swing.JComboBox();
-        ata1poke20 = new javax.swing.JComboBox();
-        ata1poke21 = new javax.swing.JComboBox();
+        ata1poke6 = new javax.swing.JComboBox();
+        ata2poke6 = new javax.swing.JComboBox();
+        ata3poke6 = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         NvP6 = new javax.swing.JComboBox();
         NvP1 = new javax.swing.JComboBox();
@@ -94,12 +128,12 @@ public class VistaCreaU extends javax.swing.JDialog {
         NvP4 = new javax.swing.JComboBox();
         NvP5 = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        nombre1 = new javax.swing.JTextField();
+        nombre2 = new javax.swing.JTextField();
+        nombre3 = new javax.swing.JTextField();
+        nombre4 = new javax.swing.JTextField();
+        nombre5 = new javax.swing.JTextField();
+        nombre6 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 300));
@@ -183,9 +217,9 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(280, 160, 60, 14);
 
-        ata10poke2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata10poke2);
-        ata10poke2.setBounds(170, 240, 56, 20);
+        ata1poke2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata1poke2);
+        ata1poke2.setBounds(170, 240, 56, 20);
 
         jLabel7.setText("Ataque1");
         getContentPane().add(jLabel7);
@@ -215,18 +249,18 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(ata4poke1);
         ata4poke1.setBounds(380, 200, 56, 20);
 
-        ata1poke2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ata1poke2.addActionListener(new java.awt.event.ActionListener() {
+        ata4poke6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ata4poke6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ata1poke2ActionPerformed(evt);
+                ata4poke6ActionPerformed(evt);
             }
         });
-        getContentPane().add(ata1poke2);
-        ata1poke2.setBounds(380, 400, 56, 20);
+        getContentPane().add(ata4poke6);
+        ata4poke6.setBounds(380, 400, 56, 20);
 
-        ata1poke300.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(ata1poke300);
-        ata1poke300.setBounds(170, 200, 56, 20);
+        ata1poke1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(ata1poke1);
+        ata1poke1.setBounds(170, 200, 56, 20);
 
         ata2poke2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(ata2poke2);
@@ -303,32 +337,32 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(ata4poke5);
         ata4poke5.setBounds(380, 360, 56, 20);
 
-        ata1poke19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ata1poke19.addActionListener(new java.awt.event.ActionListener() {
+        ata1poke6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ata1poke6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ata1poke19ActionPerformed(evt);
+                ata1poke6ActionPerformed(evt);
             }
         });
-        getContentPane().add(ata1poke19);
-        ata1poke19.setBounds(170, 400, 56, 20);
+        getContentPane().add(ata1poke6);
+        ata1poke6.setBounds(170, 400, 56, 20);
 
-        ata1poke20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ata1poke20.addActionListener(new java.awt.event.ActionListener() {
+        ata2poke6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ata2poke6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ata1poke20ActionPerformed(evt);
+                ata2poke6ActionPerformed(evt);
             }
         });
-        getContentPane().add(ata1poke20);
-        ata1poke20.setBounds(240, 400, 56, 20);
+        getContentPane().add(ata2poke6);
+        ata2poke6.setBounds(240, 400, 56, 20);
 
-        ata1poke21.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ata1poke21.addActionListener(new java.awt.event.ActionListener() {
+        ata3poke6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ata3poke6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ata1poke21ActionPerformed(evt);
+                ata3poke6ActionPerformed(evt);
             }
         });
-        getContentPane().add(ata1poke21);
-        ata1poke21.setBounds(310, 400, 56, 20);
+        getContentPane().add(ata3poke6);
+        ata3poke6.setBounds(310, 400, 56, 20);
 
         jLabel11.setText("Nivel");
         getContentPane().add(jLabel11);
@@ -361,24 +395,30 @@ public class VistaCreaU extends javax.swing.JDialog {
         jLabel12.setText("Nombre");
         getContentPane().add(jLabel12);
         jLabel12.setBounds(670, 160, 37, 14);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(670, 200, 6, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(670, 240, 6, 20);
+        getContentPane().add(nombre1);
+        nombre1.setBounds(670, 200, 120, 20);
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        nombre2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                nombre2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(670, 280, 6, 20);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(670, 320, 6, 20);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(670, 360, 6, 20);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(670, 400, 6, 20);
+        getContentPane().add(nombre2);
+        nombre2.setBounds(670, 240, 120, 20);
+
+        nombre3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombre3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nombre3);
+        nombre3.setBounds(670, 280, 120, 20);
+        getContentPane().add(nombre4);
+        nombre4.setBounds(670, 320, 120, 20);
+        getContentPane().add(nombre5);
+        nombre5.setBounds(670, 360, 120, 20);
+        getContentPane().add(nombre6);
+        nombre6.setBounds(670, 400, 120, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -398,12 +438,16 @@ public class VistaCreaU extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void poke1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poke1ActionPerformed
-        // TODO add your handling code here:
+        if(poke1.getSelectedIndex()!=0){
+            
+            ata1poke1.setVisible(true);
+            
+        }
     }//GEN-LAST:event_poke1ActionPerformed
 
-    private void ata1poke2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke2ActionPerformed
+    private void ata4poke6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata4poke6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ata1poke2ActionPerformed
+    }//GEN-LAST:event_ata4poke6ActionPerformed
 
     private void ata2poke5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata2poke5ActionPerformed
         // TODO add your handling code here:
@@ -417,21 +461,25 @@ public class VistaCreaU extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_ata4poke5ActionPerformed
 
-    private void ata1poke19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke19ActionPerformed
+    private void ata1poke6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ata1poke19ActionPerformed
+    }//GEN-LAST:event_ata1poke6ActionPerformed
 
-    private void ata1poke20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke20ActionPerformed
+    private void ata2poke6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata2poke6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ata1poke20ActionPerformed
+    }//GEN-LAST:event_ata2poke6ActionPerformed
 
-    private void ata1poke21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke21ActionPerformed
+    private void ata3poke6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata3poke6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ata1poke21ActionPerformed
+    }//GEN-LAST:event_ata3poke6ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void nombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_nombre3ActionPerformed
+
+    private void nombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombre2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,30 +493,30 @@ public class VistaCreaU extends javax.swing.JDialog {
     private javax.swing.JComboBox NvP4;
     private javax.swing.JComboBox NvP5;
     private javax.swing.JComboBox NvP6;
-    private javax.swing.JComboBox ata10poke2;
-    private javax.swing.JComboBox ata1poke19;
+    private javax.swing.JComboBox ata1poke1;
     private javax.swing.JComboBox ata1poke2;
-    private javax.swing.JComboBox ata1poke20;
-    private javax.swing.JComboBox ata1poke21;
     private javax.swing.JComboBox ata1poke3;
-    private javax.swing.JComboBox ata1poke300;
     private javax.swing.JComboBox ata1poke4;
     private javax.swing.JComboBox ata1poke5;
+    private javax.swing.JComboBox ata1poke6;
     private javax.swing.JComboBox ata2poke1;
     private javax.swing.JComboBox ata2poke2;
     private javax.swing.JComboBox ata2poke3;
     private javax.swing.JComboBox ata2poke4;
     private javax.swing.JComboBox ata2poke5;
+    private javax.swing.JComboBox ata2poke6;
     private javax.swing.JComboBox ata3poke1;
     private javax.swing.JComboBox ata3poke2;
     private javax.swing.JComboBox ata3poke3;
     private javax.swing.JComboBox ata3poke4;
     private javax.swing.JComboBox ata3poke5;
+    private javax.swing.JComboBox ata3poke6;
     private javax.swing.JComboBox ata4poke1;
     private javax.swing.JComboBox ata4poke2;
     private javax.swing.JComboBox ata4poke3;
     private javax.swing.JComboBox ata4poke4;
     private javax.swing.JComboBox ata4poke5;
+    private javax.swing.JComboBox ata4poke6;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -482,12 +530,12 @@ public class VistaCreaU extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField nombre1;
+    private javax.swing.JTextField nombre2;
+    private javax.swing.JTextField nombre3;
+    private javax.swing.JTextField nombre4;
+    private javax.swing.JTextField nombre5;
+    private javax.swing.JTextField nombre6;
     private javax.swing.JPasswordField pass;
     private javax.swing.JComboBox poke1;
     private javax.swing.JComboBox poke2;

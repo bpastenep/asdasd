@@ -28,7 +28,7 @@ public class ControladorPrincipal {
         this.vl.setVisible(true);
     }
 
-    public void cerrarIniciar() {
+    public void cerrarIniciar() throws SQLException {
         this.vl.setVisible(true);
         ControladorCreaUsuario cu = new ControladorCreaUsuario();
         cu.Iniciar(this);
