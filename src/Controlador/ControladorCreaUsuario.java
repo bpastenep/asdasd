@@ -16,6 +16,7 @@ import java.sql.SQLException;
  */
 public class ControladorCreaUsuario {
     private VistaCreaU vu;
+    Pokemon poke = new Pokemon();
     private ControladorPrincipal cp;
     public void Iniciar(ControladorPrincipal op) throws SQLException {
         VistaCreaU vu = new VistaCreaU(this,true);
@@ -25,7 +26,6 @@ public class ControladorCreaUsuario {
 
     public String[] devuelvePoke() throws SQLException{
         String[] nombreP;
-        Pokemon poke = new Pokemon();
         nombreP = poke.muestraPokemonBD();
         return nombreP;
     }
@@ -35,4 +35,9 @@ public class ControladorCreaUsuario {
        
     }
     
+    public String[] devuelveA(String nombreP) throws SQLException{
+        String[] ataqueP;
+        ataqueP=poke.muestraAtaquePBD(nombreP);
+        return ataqueP;
+    }
 }

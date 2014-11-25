@@ -202,9 +202,27 @@ public class Pokemon extends EspeciePokemon {
         String[] equipoP=new String[r+1];
         equipoP[0]="Selecciona tu Pokémon";
         for (int i=1;i<r+1;i++){
-            equipoP[i]=equipoa[i];
+            equipoP[i]=equipoa[i-1];
         }
         return equipoP;
+    }
+
+    public String[] muestraAtaquePBD(String nombreP) throws SQLException {
+        String[] ataquesA = new String[10000];
+        ConsultaSQL ataques = new ConsultaSQL();
+        ataques.setResult("select movimiento.nombre_movimiento  from movimiento inner join movimientos_posibles  on (movimiento.ID_MOVIMIENTO=movimientos_posibles.id_movimiento) inner join familia_pokemon on(familia_pokemon.ID_FAMILIAPOKEMON=movimientos_posibles.ID_FAMILIAPOKEMON) where familia_pokemon.NOMBRE_FAMILIAPOKEMON='"+nombreP+"'");
+        int r=0;
+        while(ataques.getResult().next()){
+            ataquesA[r]=ataques.getResult().getString(1);
+            r=r+1;
+        }
+        String[] ataquesF = new String[r+1];
+        ataquesF[0]="Seleccione";
+        for (int i=1;i<r+1;i++){
+            ataquesF[i]=ataquesA[i-1];
+            System.out.println("Ataques asignados :"+ataquesF[i]);
+        }
+        return ataquesF;
     }
 
 
