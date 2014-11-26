@@ -38,7 +38,11 @@ public class ControladorCombate {
         this.usu1=nusurio;
         this.cp=op;
         this.usu2=usua2;
+        try{
         j1.creaEntrenador(usu1);
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
         equipoP=j1.getePokemon();
     }
     
@@ -196,6 +200,7 @@ public class ControladorCombate {
     public String[] asignaA(Pokemon[] e) {
         String[] ataques = new String[e[0].getMovimientos().getMovimientosA().length];
         for (int i=0;i<e[0].getMovimientos().getMovimientosA().length;i++){
+            JOptionPane.showMessageDialog(null, "CREA UN MOVIMIENTO(?)");
             ataques[i]=e[0].getMovimientos().getMovimientosA()[i].getNombre().trim();
         }
         return ataques;    

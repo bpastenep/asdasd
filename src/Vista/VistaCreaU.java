@@ -543,7 +543,6 @@ public class VistaCreaU extends javax.swing.JDialog {
             String[] poke5 = {nombre5.getText(),Integer.toString(LvPoke5.getSelectedIndex()),(String)ata1poke5.getSelectedItem(),(String)ata2poke5.getSelectedItem(),(String)ata3poke5.getSelectedItem(),(String)ata4poke5.getSelectedItem(),(String)pokem5.getSelectedItem()};
             String[] poke6 = {nombre6.getText(),Integer.toString(LvPoke6.getSelectedIndex()),(String)ata1poke6.getSelectedItem(),(String)ata2poke6.getSelectedItem(),(String)ata3poke6.getSelectedItem(),(String)ata4poke6.getSelectedItem(),(String)pokem6.getSelectedItem()};
             try {
-                JOptionPane.showMessageDialog(null, "Entra al try");
                 cu.creaU(poke1,poke2,poke3,poke4,poke5,poke6, user.getText(), pass.getText());
                 JOptionPane.showMessageDialog(null, "Usuario creado con exito");
             } catch (SQLException ex) {

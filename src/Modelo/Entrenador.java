@@ -22,9 +22,7 @@ public class Entrenador {
         while(datosE.getResult().next()){
             id=datosE.getResult().getInt(1);
         }
-        JOptionPane.showMessageDialog(null, "Intenta crear el usuario");
         datosE.getUpdate("insert into entrenador (id_entrenador,id_medalla,id_region,nombre_entrenador,categoria_entrenador,pass) values ("+(id+1)+",1,1,'"+u+"','Entrenador','"+p+"')");
-        JOptionPane.showMessageDialog(null, "pasa la creación del usuario");
         return(id+1);
     }
     public boolean verificaEntrenador(String u, String p)throws SQLException{
@@ -41,6 +39,7 @@ public class Entrenador {
     }
     
     public void creaEntrenador(String nombreE)throws SQLException{
+        JOptionPane.showMessageDialog(null, "Está recibiendo el nombre de usuario: "+nombreE); 
         ConsultaSQL datosE = new ConsultaSQL();
         datosE.setResult("select nombre_entrenador,id_entrenador,id_medalla from ENTRENADOR where nombre_entrenador='"+nombreE+"'");
         while(datosE.getResult().next()){
@@ -54,6 +53,7 @@ public class Entrenador {
         Pokemon p = new Pokemon();
         this.equipoPokemon=p.creaEquipo(idE);
         datosE.cerrarConexion();
+        JOptionPane.showMessageDialog(null, "Usuario asignado correctamente"); 
     }
     
 // get y set's   
@@ -88,6 +88,12 @@ public class Entrenador {
 
     public void setNroMedallas(int nroMedallas) {
         this.nroMedallas = nroMedallas;
+    }
+
+    public void asignaEquipo(int idE, int idP, int idF) throws SQLException {
+        ConsultaSQL insertaE = new ConsultaSQL();
+        insertaE.getUpdate("insert into equipopokemon (id_familiapokemon,id_pokemon,id_entrenador) values ("+idF+","+idP+","+idE+")");
+        insertaE.cerrarConexion();
     }
 
 }

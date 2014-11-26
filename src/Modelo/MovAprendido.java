@@ -45,7 +45,7 @@ public class MovAprendido extends Movimiento {
         this.m = m;
     }
 
-    public void creaMov(String ata1, String ata2, String ata3, String ata4, int idE, int id1, String nombre) throws SQLException {
+    public int creaMov(String ata1, String ata2, String ata3, String ata4, int idE, int id1, String nombre) throws SQLException {
         int idF=0;
         int[] idMov = new int[4];
         int[] pps = new int[4];
@@ -65,6 +65,6 @@ public class MovAprendido extends Movimiento {
         for (int j=0;j<4;j++){
             sql.getUpdate("insert into movimiento_aprendido (id_movimiento,id_familiapokemon,POK_ID_FAMILIAPOKEMON,ID_POKEMON,PUNTOSPODERRESTANTES_MOVIMIENTOPOKEMON) values ("+idMov[j]+","+idF+","+idF+","+id1+ ","+pps[j]+")");
         }
-        
+     return idF;   
     }
 }
