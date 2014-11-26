@@ -6,10 +6,11 @@
 
 package Vista;
 
-import Controlador.Escribir;
 import Controlador.ControladorCreaUsuario;
+import Controlador.Escribir;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -38,12 +39,12 @@ public class VistaCreaU extends javax.swing.JDialog {
         LvPoke4.setModel(new javax.swing.DefaultComboBoxModel(nvl));
         LvPoke5.setModel(new javax.swing.DefaultComboBoxModel(nvl));
         LvPoke6.setModel(new javax.swing.DefaultComboBoxModel(nvl));
-        poke1.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
-        poke2.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
-        poke3.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
-        poke4.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
-        poke5.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
-        poke6.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        pokem1.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        pokem2.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        pokem3.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        pokem4.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        pokem5.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
+        pokem6.setModel(new javax.swing.DefaultComboBoxModel(pokeBD));
         ata1poke1.setVisible(false);
         ata2poke1.setVisible(false);
         ata3poke1.setVisible(false);
@@ -79,12 +80,12 @@ public class VistaCreaU extends javax.swing.JDialog {
         user = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
-        poke1 = new javax.swing.JComboBox();
-        poke3 = new javax.swing.JComboBox();
-        poke6 = new javax.swing.JComboBox();
-        poke5 = new javax.swing.JComboBox();
-        poke2 = new javax.swing.JComboBox();
-        poke4 = new javax.swing.JComboBox();
+        pokem1 = new javax.swing.JComboBox();
+        pokem3 = new javax.swing.JComboBox();
+        pokem6 = new javax.swing.JComboBox();
+        pokem5 = new javax.swing.JComboBox();
+        pokem2 = new javax.swing.JComboBox();
+        pokem4 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -169,59 +170,59 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(jButton1);
         jButton1.setBounds(350, 470, 110, 23);
 
-        poke1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        poke1.addActionListener(new java.awt.event.ActionListener() {
+        pokem1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pokem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                poke1ActionPerformed(evt);
+                pokem1ActionPerformed(evt);
             }
         });
-        getContentPane().add(poke1);
-        poke1.setBounds(10, 200, 150, 20);
+        getContentPane().add(pokem1);
+        pokem1.setBounds(10, 200, 150, 20);
 
-        poke3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        poke3.addActionListener(new java.awt.event.ActionListener() {
+        pokem3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pokem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                poke3ActionPerformed(evt);
+                pokem3ActionPerformed(evt);
             }
         });
-        getContentPane().add(poke3);
-        poke3.setBounds(10, 280, 150, 20);
+        getContentPane().add(pokem3);
+        pokem3.setBounds(10, 280, 150, 20);
 
-        poke6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        poke6.addActionListener(new java.awt.event.ActionListener() {
+        pokem6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pokem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                poke6ActionPerformed(evt);
+                pokem6ActionPerformed(evt);
             }
         });
-        getContentPane().add(poke6);
-        poke6.setBounds(10, 400, 150, 20);
+        getContentPane().add(pokem6);
+        pokem6.setBounds(10, 400, 150, 20);
 
-        poke5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        poke5.addActionListener(new java.awt.event.ActionListener() {
+        pokem5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pokem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                poke5ActionPerformed(evt);
+                pokem5ActionPerformed(evt);
             }
         });
-        getContentPane().add(poke5);
-        poke5.setBounds(10, 360, 150, 20);
+        getContentPane().add(pokem5);
+        pokem5.setBounds(10, 360, 150, 20);
 
-        poke2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        poke2.addActionListener(new java.awt.event.ActionListener() {
+        pokem2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pokem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                poke2ActionPerformed(evt);
+                pokem2ActionPerformed(evt);
             }
         });
-        getContentPane().add(poke2);
-        poke2.setBounds(10, 240, 150, 20);
+        getContentPane().add(pokem2);
+        pokem2.setBounds(10, 240, 150, 20);
 
-        poke4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        poke4.addActionListener(new java.awt.event.ActionListener() {
+        pokem4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pokem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                poke4ActionPerformed(evt);
+                pokem4ActionPerformed(evt);
             }
         });
-        getContentPane().add(poke4);
-        poke4.setBounds(10, 320, 150, 20);
+        getContentPane().add(pokem4);
+        pokem4.setBounds(10, 320, 150, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/seleccionatuequipopokemon.png"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -535,19 +536,31 @@ public class VistaCreaU extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña vacíos");
         }
         else{
-            
+            String[] poke1 = {nombre1.getText(),Integer.toString(LvPoke1.getSelectedIndex()),(String)ata1poke1.getSelectedItem(),(String)ata2poke1.getSelectedItem(),(String)ata3poke1.getSelectedItem(),(String)ata4poke1.getSelectedItem(),(String)pokem1.getSelectedItem()};
+            String[] poke2 = {nombre2.getText(),Integer.toString(LvPoke2.getSelectedIndex()),(String)ata1poke2.getSelectedItem(),(String)ata2poke2.getSelectedItem(),(String)ata3poke2.getSelectedItem(),(String)ata4poke2.getSelectedItem(),(String)pokem2.getSelectedItem()};
+            String[] poke3 = {nombre3.getText(),Integer.toString(LvPoke3.getSelectedIndex()),(String)ata1poke3.getSelectedItem(),(String)ata2poke3.getSelectedItem(),(String)ata3poke3.getSelectedItem(),(String)ata4poke3.getSelectedItem(),(String)pokem3.getSelectedItem()};
+            String[] poke4 = {nombre4.getText(),Integer.toString(LvPoke4.getSelectedIndex()),(String)ata1poke4.getSelectedItem(),(String)ata2poke4.getSelectedItem(),(String)ata3poke4.getSelectedItem(),(String)ata4poke4.getSelectedItem(),(String)pokem4.getSelectedItem()};
+            String[] poke5 = {nombre5.getText(),Integer.toString(LvPoke5.getSelectedIndex()),(String)ata1poke5.getSelectedItem(),(String)ata2poke5.getSelectedItem(),(String)ata3poke5.getSelectedItem(),(String)ata4poke5.getSelectedItem(),(String)pokem5.getSelectedItem()};
+            String[] poke6 = {nombre6.getText(),Integer.toString(LvPoke6.getSelectedIndex()),(String)ata1poke6.getSelectedItem(),(String)ata2poke6.getSelectedItem(),(String)ata3poke6.getSelectedItem(),(String)ata4poke6.getSelectedItem(),(String)pokem6.getSelectedItem()};
+            try {
+                JOptionPane.showMessageDialog(null, "Entra al try");
+                cu.creaU(poke1,poke2,poke3,poke4,poke5,poke6, user.getText(), pass.getText());
+                JOptionPane.showMessageDialog(null, "Usuario creado con exito");
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void poke1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poke1ActionPerformed
-        if(poke1.getSelectedIndex()!=0){
+    private void pokem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokem1ActionPerformed
+        if(pokem1.getSelectedIndex()!=0){
             
             ata1poke1.setVisible(true);
             ata2poke1.setVisible(false);
             ata3poke1.setVisible(false);
             ata4poke1.setVisible(false);
             try {
-                ataqueP1 = cu.devuelveA((String)poke1.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem1.getSelectedItem());
                 ata1poke1.setModel(new javax.swing.DefaultComboBoxModel(ataqueP1));
             } catch (SQLException ex) {
                 System.out.println(ex);
@@ -555,7 +568,7 @@ public class VistaCreaU extends javax.swing.JDialog {
             
             
         }
-    }//GEN-LAST:event_poke1ActionPerformed
+    }//GEN-LAST:event_pokem1ActionPerformed
 
     private void ata4poke6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata4poke6ActionPerformed
         // TODO add your handling code here:
@@ -564,7 +577,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata2poke5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata2poke5ActionPerformed
        if(ata2poke5.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke5.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem5.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-2];
                 int i=0;
                 int j=0;
@@ -586,7 +599,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata3poke5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata3poke5ActionPerformed
         if(ata3poke5.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke5.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem5.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-3];
                 int i=0;
                 int j=0;
@@ -613,7 +626,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata1poke6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke6ActionPerformed
          if(ata1poke6.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke6.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem6.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-1];
                 int i=0;
                 int j=0;
@@ -635,7 +648,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata2poke6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata2poke6ActionPerformed
        if(ata2poke6.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke6.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem6.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-2];
                 int i=0;
                 int j=0;
@@ -657,7 +670,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata3poke6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata3poke6ActionPerformed
         if(ata3poke6.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke6.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem6.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-3];
                 int i=0;
                 int j=0;
@@ -688,7 +701,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata1poke1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke1ActionPerformed
         if(ata1poke1.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke1.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem1.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-1];
                 int i=0;
                 int j=0;
@@ -710,7 +723,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata2poke1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata2poke1ActionPerformed
        if(ata2poke1.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke1.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem1.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-2];
                 int i=0;
                 int j=0;
@@ -732,7 +745,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata3poke1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata3poke1ActionPerformed
         if(ata3poke1.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke1.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem1.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-3];
                 int i=0;
                 int j=0;
@@ -753,13 +766,13 @@ public class VistaCreaU extends javax.swing.JDialog {
     }//GEN-LAST:event_ata3poke1ActionPerformed
 
     private void ata4poke1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata4poke1ActionPerformed
-
+       
     }//GEN-LAST:event_ata4poke1ActionPerformed
 
     private void ata1poke2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke2ActionPerformed
           if(ata1poke2.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke2.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem2.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-1];
                 int i=0;
                 int j=0;
@@ -778,15 +791,15 @@ public class VistaCreaU extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_ata1poke2ActionPerformed
 
-    private void poke2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poke2ActionPerformed
-       if(poke2.getSelectedIndex()!=0){
+    private void pokem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokem2ActionPerformed
+       if(pokem2.getSelectedIndex()!=0){
             
             ata1poke2.setVisible(true);
             ata2poke2.setVisible(false);
             ata3poke2.setVisible(false);
             ata4poke2.setVisible(false);
             try {
-                ataqueP1 = cu.devuelveA((String)poke2.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem2.getSelectedItem());
                 ata1poke2.setModel(new javax.swing.DefaultComboBoxModel(ataqueP1));
             } catch (SQLException ex) {
                 System.out.println(ex);
@@ -794,12 +807,12 @@ public class VistaCreaU extends javax.swing.JDialog {
             
             
         }
-    }//GEN-LAST:event_poke2ActionPerformed
+    }//GEN-LAST:event_pokem2ActionPerformed
 
     private void ata2poke2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata2poke2ActionPerformed
        if(ata2poke2.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke2.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem2.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-2];
                 int i=0;
                 int j=0;
@@ -821,7 +834,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata3poke2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata3poke2ActionPerformed
         if(ata3poke2.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke2.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem2.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-3];
                 int i=0;
                 int j=0;
@@ -844,7 +857,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata4poke2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata4poke2ActionPerformed
         if(ata1poke3.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke3.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem3.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-1];
                 int i=0;
                 int j=0;
@@ -863,15 +876,15 @@ public class VistaCreaU extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_ata4poke2ActionPerformed
 
-    private void poke3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poke3ActionPerformed
-        if(poke3.getSelectedIndex()!=0){
+    private void pokem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokem3ActionPerformed
+        if(pokem3.getSelectedIndex()!=0){
             
             ata1poke3.setVisible(true);
             ata2poke3.setVisible(false);
             ata3poke3.setVisible(false);
             ata4poke3.setVisible(false);
             try {
-                ataqueP1 = cu.devuelveA((String)poke3.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem3.getSelectedItem());
                 ata1poke3.setModel(new javax.swing.DefaultComboBoxModel(ataqueP1));
             } catch (SQLException ex) {
                 System.out.println(ex);
@@ -879,17 +892,17 @@ public class VistaCreaU extends javax.swing.JDialog {
             
             
         }
-    }//GEN-LAST:event_poke3ActionPerformed
+    }//GEN-LAST:event_pokem3ActionPerformed
 
-    private void poke4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poke4ActionPerformed
-        if(poke4.getSelectedIndex()!=0){
+    private void pokem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokem4ActionPerformed
+        if(pokem4.getSelectedIndex()!=0){
             
             ata1poke4.setVisible(true);
             ata2poke4.setVisible(false);
             ata3poke4.setVisible(false);
             ata4poke4.setVisible(false);
             try {
-                ataqueP1 = cu.devuelveA((String)poke4.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem4.getSelectedItem());
                 ata1poke4.setModel(new javax.swing.DefaultComboBoxModel(ataqueP1));
             } catch (SQLException ex) {
                 System.out.println(ex);
@@ -897,17 +910,17 @@ public class VistaCreaU extends javax.swing.JDialog {
             
             
         }
-    }//GEN-LAST:event_poke4ActionPerformed
+    }//GEN-LAST:event_pokem4ActionPerformed
 
-    private void poke5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poke5ActionPerformed
-        if(poke5.getSelectedIndex()!=0){
+    private void pokem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokem5ActionPerformed
+        if(pokem5.getSelectedIndex()!=0){
             
             ata1poke5.setVisible(true);
             ata2poke5.setVisible(false);
             ata3poke5.setVisible(false);
             ata4poke5.setVisible(false);
             try {
-                ataqueP1 = cu.devuelveA((String)poke5.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem5.getSelectedItem());
                 ata1poke5.setModel(new javax.swing.DefaultComboBoxModel(ataqueP1));
             } catch (SQLException ex) {
                 System.out.println(ex);
@@ -915,17 +928,17 @@ public class VistaCreaU extends javax.swing.JDialog {
             
             
         }
-    }//GEN-LAST:event_poke5ActionPerformed
+    }//GEN-LAST:event_pokem5ActionPerformed
 
-    private void poke6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poke6ActionPerformed
-       if(poke6.getSelectedIndex()!=0){
+    private void pokem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokem6ActionPerformed
+       if(pokem6.getSelectedIndex()!=0){
             
             ata1poke6.setVisible(true);
             ata2poke6.setVisible(false);
             ata3poke6.setVisible(false);
             ata4poke6.setVisible(false);
             try {
-                ataqueP1 = cu.devuelveA((String)poke6.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem6.getSelectedItem());
                 ata1poke6.setModel(new javax.swing.DefaultComboBoxModel(ataqueP1));
             } catch (SQLException ex) {
                 System.out.println(ex);
@@ -933,12 +946,12 @@ public class VistaCreaU extends javax.swing.JDialog {
             
             
         }
-    }//GEN-LAST:event_poke6ActionPerformed
+    }//GEN-LAST:event_pokem6ActionPerformed
 
     private void ata1poke3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke3ActionPerformed
         if(ata1poke3.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke3.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem3.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-1];
                 int i=0;
                 int j=0;
@@ -960,7 +973,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata1poke4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke4ActionPerformed
        if(ata1poke4.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke4.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem4.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-1];
                 int i=0;
                 int j=0;
@@ -982,7 +995,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata2poke3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata2poke3ActionPerformed
         if(ata2poke3.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke3.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem3.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-2];
                 int i=0;
                 int j=0;
@@ -1004,7 +1017,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata2poke4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata2poke4ActionPerformed
         if(ata2poke4.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke4.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem4.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-2];
                 int i=0;
                 int j=0;
@@ -1026,7 +1039,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata3poke3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata3poke3ActionPerformed
         if(ata3poke3.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke3.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem3.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-3];
                 int i=0;
                 int j=0;
@@ -1049,7 +1062,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata3poke4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata3poke4ActionPerformed
         if(ata3poke4.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke4.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem4.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-3];
                 int i=0;
                 int j=0;
@@ -1072,7 +1085,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private void ata1poke5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ata1poke5ActionPerformed
          if(ata1poke5.getSelectedIndex()!=0){
             try {
-                ataqueP1 = cu.devuelveA((String)poke5.getSelectedItem());
+                ataqueP1 = cu.devuelveA((String)pokem5.getSelectedItem());
                 String[] ataqueP1_2 = new String[ataqueP1.length-1];
                 int i=0;
                 int j=0;
@@ -1151,12 +1164,12 @@ public class VistaCreaU extends javax.swing.JDialog {
     private javax.swing.JTextField nombre5;
     private javax.swing.JTextField nombre6;
     private javax.swing.JPasswordField pass;
-    private javax.swing.JComboBox poke1;
-    private javax.swing.JComboBox poke2;
-    private javax.swing.JComboBox poke3;
-    private javax.swing.JComboBox poke4;
-    private javax.swing.JComboBox poke5;
-    private javax.swing.JComboBox poke6;
+    private javax.swing.JComboBox pokem1;
+    private javax.swing.JComboBox pokem2;
+    private javax.swing.JComboBox pokem3;
+    private javax.swing.JComboBox pokem4;
+    private javax.swing.JComboBox pokem5;
+    private javax.swing.JComboBox pokem6;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }

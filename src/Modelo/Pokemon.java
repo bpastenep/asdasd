@@ -22,6 +22,7 @@ public class Pokemon extends EspeciePokemon {
     private MovAprendido movimientos=new MovAprendido();
     private Habilidad habilidad;
     
+   //Crea un equipo para un entrenador, ya asignado en la Base de Datos 
    public Pokemon[] creaEquipo(int idE) throws SQLException {
         ConsultaSQL datosP = new ConsultaSQL();
         Pokemon[] equipoP = new Pokemon[6];
@@ -225,6 +226,44 @@ public class Pokemon extends EspeciePokemon {
         return ataquesF;
     }
 
+    public int creaP(String mote, String nvl, String nombre) throws SQLException {
+        ConsultaSQL poke = new ConsultaSQL();
+        poke.setResult("select ID_FAMILIAPOKEMON,ataquebase_familiapokemon,ataquemax_familiapokemon,ataqueespecialbase_familiapokemon,ataqueespecialmax_familiapokemon,defensabase_familiapokemon,defensamax_familiapokemon,defensaespecialbase_familiapokemon,defensaespecialmax_familiapokemon,velocidadbase_familiapokemon,velocidadmax_familiapokemon,hpbase_familiapokemon,hpmax_familiapokemon from familia_pokemon where nombre_familiapokemon='"+nombre+"'");
+        int idF=0,atkB=0,atkM=0,atkEB=0,atkEM=0,defB=0,defM=0,defEB=0,defEM=0,velB=0,velM=0,hpB=0,hpM=0;
+        while(poke.getResult().next()){
+            idF=poke.getResult().getInt(1);
+            atkB=poke.getResult().getInt(2);
+            atkM=poke.getResult().getInt(3);
+            atkEB=poke.getResult().getInt(4);
+            atkEM=poke.getResult().getInt(5);
+            defB=poke.getResult().getInt(6);
+            defM=poke.getResult().getInt(7);
+            defEB=poke.getResult().getInt(8);
+            defEM=poke.getResult().getInt(9);
+            velB=poke.getResult().getInt(10);
+            velM=poke.getResult().getInt(11);
+            hpB=poke.getResult().getInt(12);
+            hpM=poke.getResult().getInt(12);
+        }
+        int idP=0;
+        poke.setResult("select pokemon.ID_pokemon from pokemon order by id_pokemon");
+        while(poke.getResult().next()){
+            idP=poke.getResult().getInt(1);
+        }
+        int ataque=0,ataqueE=0,defensa=0,defensaE=0,velocidad=0,puntosS=0;
+        ataque=calculaPorc(atkB,atkM,Integer.parseInt(nvl));
+        ataqueE=calculaPorc(atkEB,atkEM,Integer.parseInt(nvl));
+        defensa=calculaPorc(defB,defM,Integer.parseInt(nvl));
+        defensaE=calculaPorc(defEB,defEM,Integer.parseInt(nvl));
+        velocidad=calculaPorc(velB,velM,Integer.parseInt(nvl));
+        puntosS=calculaPorc(hpB,hpM,Integer.parseInt(nvl));
+        poke.getUpdate("insert into pokemon (id_familiapokemon,id_pokemon,pseudonimo_pokemon,nivel_pokemon,puntossaludtotales_pokemon,puntossaludrestantes,ataque_pokemon,ataqueespecial_pokemon,defensa_pokemon,defensaespecial_pokemon,velocidad_pokemon) values ("+idF+","+(idP+1)+",'"+mote+"',"+nvl+","+puntosS+","+puntosS+","+ataque+","+ataqueE+","+defensa+","+defensaE+","+velocidad+")");
+        return (idP+1);
+    }
+
+    public int calculaPorc(int base, int maximo, int nvl){
+        return (int)(base+(((nvl)*(maximo-base))/100));
+    }
 
 
     
