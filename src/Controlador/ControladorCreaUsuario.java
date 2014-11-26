@@ -10,13 +10,11 @@ import Modelo.Pokemon;
 import Vista.VistaCreaU;
 import java.sql.SQLException;
 
-/**
- *
- * @author Benjamin
- */
 public class ControladorCreaUsuario {
+    
     private VistaCreaU vu;
     private ControladorPrincipal cp;
+    
     public void Iniciar(ControladorPrincipal op) throws SQLException {
         VistaCreaU vu = new VistaCreaU(this,true);
         vu.setVisible(true);
@@ -32,7 +30,6 @@ public class ControladorCreaUsuario {
     public void cerrar() {
        this.cp.iniciarL();
        this.vu.setVisible(false);
-       
     }
     
 }

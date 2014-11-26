@@ -190,9 +190,7 @@ public Image getIconImage(){
         comienzaCombate.setVisible(false);
         tipoCombate.setEnabled(false);
         try {
-            System.out.println("hola");
             cl = new ControladorLiga();
-            System.out.println("hola"); 
             
             cl.iniciarVliga();
         } catch (SQLException ex){System.out.println(ex);

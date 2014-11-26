@@ -1,21 +1,21 @@
 package Vista;
 
 import Controlador.ControladorLiga;
+import Controlador.ControladorSP;
 import java.sql.SQLException;
-import Controlador.ControladorSeleccionPokemon;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class VistaLiga extends javax.swing.JDialog {
 
     private ControladorLiga cL;
-    private int region;
-    private ControladorSeleccionPokemon cSePo;
+    private ControladorSP cSP;
+   
     
     public VistaLiga() throws SQLException {
         initComponents();
         this.cL = new ControladorLiga();
-        this.cSePo = new ControladorSeleccionPokemon();
+        this.cSP = new ControladorSP();
         this.nombreRegion.setText("LIGA POKEMON");
         this.combateLider.setText("Inicia Combate");
     }
@@ -30,6 +30,10 @@ public class VistaLiga extends javax.swing.JDialog {
         segundaFase = new javax.swing.JButton();
         nombreRegion = new javax.swing.JLabel();
 
+        setTitle("Liga Pokemon");
+        setMinimumSize(new java.awt.Dimension(632, 372));
+        setResizable(false);
+
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -37,14 +41,19 @@ public class VistaLiga extends javax.swing.JDialog {
             }
         });
 
-        combateLider.setText("jButton2");
+        combateLider.setText("Comenzar");
         combateLider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combateLiderActionPerformed(evt);
             }
         });
 
-        segundaFase.setText("jButton2");
+        segundaFase.setText(":v");
+        segundaFase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                segundaFaseActionPerformed(evt);
+            }
+        });
 
         nombreRegion.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         nombreRegion.setText("jLabel1");
@@ -54,17 +63,17 @@ public class VistaLiga extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(combateLider)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, Short.MAX_VALUE)
-                .addComponent(segundaFase)
-                .addGap(103, 103, 103))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(267, 267, 267)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(nombreRegion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(combateLider)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
+                .addComponent(segundaFase)
+                .addGap(103, 103, 103))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,9 +98,13 @@ public class VistaLiga extends javax.swing.JDialog {
 
     private void combateLiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combateLiderActionPerformed
         try {
-            cSePo.iniciarSeleccion();
-        } catch(SQLException e){}
+            cSP.iniciaVSP();
+        }catch(SQLException e){System.out.println(e);}
     }//GEN-LAST:event_combateLiderActionPerformed
+
+    private void segundaFaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_segundaFaseActionPerformed
+
+    }//GEN-LAST:event_segundaFaseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
