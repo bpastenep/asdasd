@@ -359,6 +359,10 @@ public class VistaCombateUvU extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "El ganador es "+getUsua1());
                 this.setVisible(false);
             }
+            setAtaquesp1(cc.asignaA(equipoP1));
+            setAtaquesp2(cc.asignaA(equipoP2));
+            ataques1.setModel(new javax.swing.DefaultComboBoxModel(getAtaquesp1()));
+            ataques2.setModel(new javax.swing.DefaultComboBoxModel(getAtaquesp2()));
             pokemon1.setEnabled(false);
             pokemon2.setEnabled(false);
             ataques1.setEnabled(false);
