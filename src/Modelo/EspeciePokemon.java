@@ -4,7 +4,7 @@ package Modelo;
 
 abstract class EspeciePokemon {
     private String nombre, especie, natPrimaria, natSecundaria;
-    private int nPokedex, nivel;
+    private int nPokedex;
 
 // get y set's
     
@@ -48,12 +48,12 @@ abstract class EspeciePokemon {
         this.nPokedex = nPokedex;
     }
 
-    public int getNivel() {
+    /*public int getNivel() {
         return nivel;
     }
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
-    }
+    }*/
     
 }

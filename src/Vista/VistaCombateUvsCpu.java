@@ -5,6 +5,9 @@ import Controlador.ControladorCombateCpu;
 import Controlador.ControladorPrincipal;
 import Controlador.ControladorTorreBatalla;
 import Modelo.Pokemon;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -201,7 +204,11 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         }
         else{
             combateF=true;
-            equipoHum = cc.realizarAccion(op1,cambiosUsuario.getSelectedIndex(),equipoHum,equipoMaq, ataquesUsuario.getSelectedIndex());
+            try {
+                equipoHum = cc.realizarAccion(op1,cambiosUsuario.getSelectedIndex(),equipoHum,equipoMaq, ataquesUsuario.getSelectedIndex());
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaCombateUvsCpu.class.getName()).log(Level.SEVERE, null, ex);
+            }
             equipoMaq = ccpu.accionCpu(equipoMaq, equipoHum, ccpu.verificaHpCpu(equipoMaq));
             pokemonCpu.setText(equipoMaq[0].getNombre());
             pokemonU.setText(equipoHum[0].getNombre());

@@ -20,8 +20,8 @@ public class ControladorCombateCpuVs {
         this.cp = co;
         this.ccpu = new ControladorCombateCpu(cp, "CPU");
         this.cc = new ControladorCombate(cp, "CPU", "CPU_2");
-        setCpu1(cc.equipoP);
-        setCpu2(cc.equipo2);
+        setCpu1(cc.getEquipoP());
+        setCpu2(cc.getEquipo2());
     }
     
     public int hpEquipo(Pokemon[] listaPokemon){

@@ -1,45 +1,49 @@
 package Vista;
+
 import Controlador.ControladorCombate;
 import Controlador.ControladorPrincipal;
 import Modelo.Pokemon;
+import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 public class VistaCombateUvU extends javax.swing.JDialog {
     
     int op1;
     int op2;
     private ControladorCombate cc;
     private ControladorPrincipal cp;
-    String[] equipoTest1;
-    String[] equipoTest2;
-    Pokemon[] equipoP1;
-    Pokemon[] equipoP2;
-    String usua1;
-    String usua2;
+    private String[] equipoTest1;
+    private String[] equipoTest2;
+    private String[] ataquesp1;
+    private String[] ataquesp2;
+    private Pokemon[] equipoP1;
+    private Pokemon[] equipoP2;
+    private String usua1;
+    private String usua2;
     //Pokemones creados para la prueba
     
-    /**
-     * Creates new form VentanaCombate
-     */
     public VistaCombateUvU(ControladorCombate cco, ControladorPrincipal op,String usu1, String usu2, Pokemon[] equipo, Pokemon[] equipo2) {
         initComponents();
         this.cp = op;
         this.cc = cco;
-        this.equipoP1 = equipo;
-        this.equipoP2 = equipo2;
-        this.usua1=usu1;
-        this.usua2=usu2;
-        System.out.println(equipoP1[0].getNombre()+ " "+ equipo2[0].getNombre());
-        String[] ataquesp1=cc.asignaA(equipoP1);
-        String[] ataquesp2=cc.asignaA(equipoP2);
-        ataques1.setModel(new javax.swing.DefaultComboBoxModel(ataquesp1));
+        setEquipoP1(equipo);
+        setEquipoP2(equipo2);
+        setUsua1(usu1);
+        setUsua2(usu2);
+        setAtaquesp1(cc.asignaA(equipoP1));
+        setAtaquesp2(cc.asignaA(equipoP2));
+        ataques1.setModel(new javax.swing.DefaultComboBoxModel(getAtaquesp1()));
         ataques1.setEnabled(false);
-        ataques2.setModel(new javax.swing.DefaultComboBoxModel(ataquesp2));
+        ataques2.setModel(new javax.swing.DefaultComboBoxModel(getAtaquesp2()));
         ataques2.setEnabled(false);
         equipoTest1 = cc.asignaP(equipoP1);
         equipoTest2 = cc.asignaP(equipoP2);
-        pokemon1.setModel(new javax.swing.DefaultComboBoxModel(equipoTest1));
+        pokemon1.setModel(new javax.swing.DefaultComboBoxModel(getEquipoTest1()));
         pokemon1.setEnabled(false);
-        pokemon2.setModel(new javax.swing.DefaultComboBoxModel(equipoTest2));
+        pokemon2.setModel(new javax.swing.DefaultComboBoxModel(getEquipoTest2()));
         pokemon2.setEnabled(false);
         pokemonActivo1.setText(equipoP1[0].getNombre());
         pokemonActivo2.setText(equipoP2[0].getNombre());
@@ -48,11 +52,15 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         Hp1.setText(Integer.toString(equipoP1[0].getPSi()));
         Hp2.setText(Integer.toString(equipoP2[0].getPSi()));
         barraHp1.setValue(cc.barraHp(equipoP1));
-        barraHp2.setValue(100);
-    }   
-
+        barraHp2.setValue(cc.barraHp(equipoP2));
+        barraHp1.setForeground(Color.GREEN);
+        barraHp2.setForeground(Color.GREEN);
+        pp1.setText("PP: "+ Integer.toString(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP()));
+        pp2.setText("PP: "+ Integer.toString(getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP()));
+    } 
     
-
+   
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,10 +91,13 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         barraHp1 = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        pp1 = new javax.swing.JLabel();
+        pp2 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(714, 404));
+        setModal(true);
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -250,12 +261,23 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(40, 110, 250, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombateNew2.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 710, 390);
+        pp1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        pp1.setForeground(new java.awt.Color(255, 255, 255));
+        pp1.setText("jLabel5");
+        getContentPane().add(pp1);
+        pp1.setBounds(50, 250, 80, 14);
+
+        pp2.setText("jLabel5");
+        getContentPane().add(pp2);
+        pp2.setBounds(410, 250, 100, 14);
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCombateNew2.jpg"))); // NOI18N
+        fondo.setText("jLabel1");
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 710, 390);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -287,44 +309,73 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     }//GEN-LAST:event_pokemon1ActionPerformed
 
     private void ataques1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataques1ActionPerformed
-        // TODO add your handling code here:
+        pp1.setText("PP: "+ Integer.toString(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP()));
+        if(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP() <= 0 || getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP() <= 0){
+                jButton1.setVisible(false);
+        }
+        else
+             jButton1.setVisible(true);
     }//GEN-LAST:event_ataques1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(op1==0 || op2==0){ // <<-- if Interviene en la ejecucion??
+        if(op1==0 || op2==0){
             JOptionPane.showMessageDialog(null, "¡Ambos jugadores deben seleccionar una opción!");
         }
         else{
-            equipoP2=cc.realizarAccion(op2,pokemon2.getSelectedIndex(),equipoP2,equipoP1, ataques2.getSelectedIndex());
-            equipoP1=cc.realizarAccion(op1,pokemon1.getSelectedIndex(),equipoP1,equipoP2, ataques1.getSelectedIndex());
-            pokemonActivo1.setText(equipoP1[0].getNombre());
-            pokemonActivo2.setText(equipoP2[0].getNombre());
-            Hp1.setText(Integer.toString(equipoP1[0].getPS()));
-            Hp2.setText(Integer.toString(equipoP2[0].getPS()));
-            pokemon1.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoP1)));
-            pokemon2.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoP2)));
+            
+            try {
+                setEquipoP2(cc.realizarAccion(op2, pokemon2.getSelectedIndex(), getEquipoP2(), getEquipoP1(), ataques2.getSelectedIndex()));
+                equipoP2[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].setpP(equipoP2[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP()- 1);
+                pp2.setText("PP: "+ Integer.toString(getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP()));
+                if(getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP() <= 0){
+                    jButton1.setVisible(false);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaCombateUvU.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                setEquipoP1(cc.realizarAccion(op1, pokemon1.getSelectedIndex(), getEquipoP1(), getEquipoP2(), ataques1.getSelectedIndex()));
+                equipoP1[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].setpP(equipoP1[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP()- 1);
+                pp1.setText("PP: "+ Integer.toString(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP()));
+                if(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP() <= 0){
+                    jButton1.setVisible(false);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaCombateUvU.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pokemonActivo1.setText(getEquipoP1()[0].getNombre());
+            pokemonActivo2.setText(getEquipoP2()[0].getNombre());
+            Hp1.setText(Integer.toString(getEquipoP1()[0].getPS()));
+            Hp2.setText(Integer.toString(getEquipoP2()[0].getPS()));
+            pokemon1.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(getEquipoP1())));
+            pokemon2.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(getEquipoP2())));
             op1=0;
             op2=0;
-            if(cc.hpTotal(equipoP1)){
-                JOptionPane.showMessageDialog(null, "El ganador es "+usua2);
+            if(cc.hpTotal(getEquipoP1())){
+                JOptionPane.showMessageDialog(null, "El ganador es "+getUsua2());
                 this.setVisible(false);
             }
-            if(cc.hpTotal(equipoP2)){
-                JOptionPane.showMessageDialog(null, "El ganador es "+usua1);
+            if(cc.hpTotal(getEquipoP2())){
+                JOptionPane.showMessageDialog(null, "El ganador es "+getUsua1());
                 this.setVisible(false);
             }
             pokemon1.setEnabled(false);
             pokemon2.setEnabled(false);
             ataques1.setEnabled(false);
             ataques2.setEnabled(false);
-            barraHp1.setValue(cc.barraHp(equipoP1));
-            System.out.println(cc.barraHp(equipoP1));
-            barraHp2.setValue(cc.barraHp(equipoP2));
-            System.out.println(cc.barraHp(equipoP1));        }
+            barraHp1.setValue(cc.barraHp(getEquipoP1()));
+            System.out.println(cc.barraHp(getEquipoP1()));
+            barraHp2.setValue(cc.barraHp(getEquipoP2()));
+            System.out.println(cc.barraHp(getEquipoP1()));        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ataques2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataques2ActionPerformed
-        
+        pp2.setText("PP: "+ Integer.toString(getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP()));
+        if(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP() <= 0 || getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP() <= 0){
+            jButton1.setVisible(false);
+        }
+        else
+            jButton1.setVisible(true);
     }//GEN-LAST:event_ataques2ActionPerformed
 
     /**
@@ -339,12 +390,12 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     private javax.swing.JComboBox ataques2;
     private javax.swing.JProgressBar barraHp1;
     private javax.swing.JProgressBar barraHp2;
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -353,7 +404,73 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     private javax.swing.JComboBox pokemon2;
     private javax.swing.JLabel pokemonActivo1;
     private javax.swing.JLabel pokemonActivo2;
+    private javax.swing.JLabel pp1;
+    private javax.swing.JLabel pp2;
     private javax.swing.JLabel usuv1;
     private javax.swing.JLabel usuv2;
     // End of variables declaration//GEN-END:variables
+
+    public String[] getEquipoTest1() {
+        return equipoTest1;
+    }
+
+    public void setEquipoTest1(String[] equipoTest1) {
+        this.equipoTest1 = equipoTest1;
+    }
+
+    public String[] getEquipoTest2() {
+        return equipoTest2;
+    }
+
+    public void setEquipoTest2(String[] equipoTest2) {
+        this.equipoTest2 = equipoTest2;
+    }
+
+    public String[] getAtaquesp1() {
+        return ataquesp1;
+    }
+
+    public void setAtaquesp1(String[] ataquesp1) {
+        this.ataquesp1 = ataquesp1;
+    }
+
+    public String[] getAtaquesp2() {
+        return ataquesp2;
+    }
+
+    public void setAtaquesp2(String[] ataquesp2) {
+        this.ataquesp2 = ataquesp2;
+    }
+
+    public Pokemon[] getEquipoP1() {
+        return equipoP1;
+    }
+
+    public void setEquipoP1(Pokemon[] equipoP1) {
+        this.equipoP1 = equipoP1;
+    }
+
+    public Pokemon[] getEquipoP2() {
+        return equipoP2;
+    }
+
+    public void setEquipoP2(Pokemon[] equipoP2) {
+        this.equipoP2 = equipoP2;
+    }
+
+    public String getUsua1() {
+        return usua1;
+    }
+
+    public void setUsua1(String usua1) {
+        this.usua1 = usua1;
+    }
+
+    public String getUsua2() {
+        return usua2;
+    }
+
+    public void setUsua2(String usua2) {
+        this.usua2 = usua2;
+    }
 }

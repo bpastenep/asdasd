@@ -46,6 +46,7 @@ public class VistaLogin extends javax.swing.JDialog {
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("POKÉMON");
         setMinimumSize(new java.awt.Dimension(700, 465));
         setResizable(false);
         getContentPane().setLayout(null);
@@ -104,6 +105,7 @@ public class VistaLogin extends javax.swing.JDialog {
         jLabel4.setBounds(0, 0, 700, 460);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
@@ -130,8 +132,8 @@ public class VistaLogin extends javax.swing.JDialog {
         } catch (SQLException ex) {
                  System.out.println(ex);
             JOptionPane.showMessageDialog(null, "El usuario NO EXISTE");
-        } 
-       }
+            } 
+        }
 
         //VALIDACION MEDIANTE ARCHIVO DE TEXTO
         /*ValidaUsuario vu = new ValidaUsuario();

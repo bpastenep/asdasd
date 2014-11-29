@@ -7,19 +7,9 @@ import javax.swing.JOptionPane;
 
 
 public class Pokemon extends EspeciePokemon {
-    private int PSi;
-    private int PS;
-    private int atk;
-    private int def;
-    private int atkEsp;
-    private int defEsp;
-    private int nV;
-    private int idPokemon;
-    private int idFamilia;
-    private int vel;
-    private String estado;
-    private String nombre;
-    private MovAprendido movimientos=new MovAprendido();
+    private int PSi, PS, atk, def, atkEsp, defEsp, nV, idPokemon, idFamilia, vel;
+    private String estado, nombre;
+    private MovAprendido movimientos = new MovAprendido();
     private Habilidad habilidad;
     
    //Crea un equipo para un entrenador, ya asignado en la Base de Datos 

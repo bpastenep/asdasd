@@ -21,7 +21,7 @@ public class ControladorCombateCpu {
     }
     
     public void iniciarVUvsCpu(){
-        vcpu = new VistaCombateUvsCpu(this, cc, this.cp, cc.usu1, cc.equipoP, cc.equipo2);
+        vcpu = new VistaCombateUvsCpu(this, cc, this.cp, cc.getUsu1(), cc.getEquipoP(), cc.getEquipo2());
         vcpu.setVisible(true);
      }
     
@@ -53,6 +53,7 @@ public class ControladorCombateCpu {
         return listaCpu;
     }
     
+    public void buscaDebilidad(int elHum, int elCpu){}
     
     // método que determina la acción ofensiva de la cpu
     public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
@@ -101,7 +102,6 @@ public class ControladorCombateCpu {
                 }
                 
             }
-            
             return listaCpu;
         }
         else if(listaCpu[0].getDef() < listaRival[0].getAtk() && listaCpu[0].getDefEsp() < listaRival[0].getAtkEsp()){
@@ -149,7 +149,7 @@ public class ControladorCombateCpu {
             return "CPU";
         }
         else if(c2==listaCpu.length){
-            return cc.usu1;
+            return cc.getUsu1();
         }
         return null;
     }
@@ -176,8 +176,5 @@ public class ControladorCombateCpu {
             return "CPU";
            }
            return null;
-    }   
-
-    
-    
+    }
 }

@@ -159,6 +159,7 @@ public Image getIconImage(){
         jLabel5.setBounds(0, 0, 530, 580);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -224,7 +225,7 @@ public Image getIconImage(){
             } catch (SQLException ex) {
                 Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            ccpuvs.combateEntreCpu(cc.equipoP, cc.equipo2);
+            ccpuvs.combateEntreCpu(cc.getEquipoP(), cc.getEquipo2());
         }
     }//GEN-LAST:event_comienzaCombateActionPerformed
 
