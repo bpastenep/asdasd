@@ -200,7 +200,6 @@ public class ControladorCombate {
     public String[] asignaA(Pokemon[] e) {
         String[] ataques = new String[e[0].getMovimientos().getMovimientosA().length];
         for (int i=0;i<e[0].getMovimientos().getMovimientosA().length;i++){
-            JOptionPane.showMessageDialog(null, "CREA UN MOVIMIENTO(?)");
             ataques[i]=e[0].getMovimientos().getMovimientosA()[i].getNombre().trim();
         }
         return ataques;    

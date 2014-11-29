@@ -9,6 +9,7 @@ package Controlador;
 import Modelo.Entrenador;
 import Modelo.MovAprendido;
 import Modelo.Pokemon;
+import Modelo.TorreDeBatalla;
 import Vista.VistaCreaU;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class ControladorCreaUsuario {
     Pokemon poke = new Pokemon();
     Entrenador entre = new Entrenador();
     MovAprendido mov = new MovAprendido();
+    TorreDeBatalla tb = new TorreDeBatalla();
     private ControladorPrincipal cp;
     public void Iniciar(ControladorPrincipal op) throws SQLException {
         VistaCreaU vu = new VistaCreaU(this,true);
@@ -68,5 +70,6 @@ public class ControladorCreaUsuario {
         id6=poke.creaP(poke6[0],poke6[1],poke6[6]);
         idF6=mov.creaMov(poke6[2],poke6[3],poke6[4],poke6[5],idE,id6,poke6[6]);
         entre.asignaEquipo(idE,id6,idF6);
+        tb.inicializa(idE);
     }
 }
