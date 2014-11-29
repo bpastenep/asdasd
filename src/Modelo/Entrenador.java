@@ -15,7 +15,18 @@ public class Entrenador {
     public void cambiarPokemon(){
         
     }
-    
+    public int creaE(String u, String p) throws SQLException{
+        ConsultaSQL datosE = new ConsultaSQL();
+        datosE.setResult("select id_entrenador from entrenador order by id_entrenador");
+        int id=0;
+        while(datosE.getResult().next()){
+            id=datosE.getResult().getInt(1);
+        }
+        JOptionPane.showMessageDialog(null, "Intenta crear el usuario");
+        datosE.getUpdate("insert into entrenador (id_entrenador,id_medalla,id_region,nombre_entrenador,categoria_entrenador,pass) values ("+(id+1)+",1,1,'"+u+"','Entrenador','"+p+"')");
+        JOptionPane.showMessageDialog(null, "pasa la creación del usuario");
+        return(id+1);
+    }
     public boolean verificaEntrenador(String u, String p)throws SQLException{
         ConsultaSQL datosE = new ConsultaSQL();
         datosE.setResult("select pass from ENTRENADOR where nombre_entrenador='"+u+"'");

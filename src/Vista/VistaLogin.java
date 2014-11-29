@@ -155,7 +155,10 @@ public class VistaLogin extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             cp.cerrarIniciar();
-        } catch (SQLException e){}
+        }
+        catch (SQLException ex){
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel4KeyPressed
