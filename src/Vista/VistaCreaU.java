@@ -132,24 +132,27 @@ public class VistaCreaU extends javax.swing.JDialog {
         LvPoke4 = new javax.swing.JComboBox();
         LvPoke5 = new javax.swing.JComboBox();
         LvPoke6 = new javax.swing.JComboBox();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(400, 300));
         getContentPane().setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/newnombredeusuario.png"))); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 102));
         jLabel2.setText("Nombre de Usuario");
         jLabel2.setMaximumSize(new java.awt.Dimension(160, 20));
         jLabel2.setMinimumSize(new java.awt.Dimension(160, 20));
         jLabel2.setPreferredSize(new java.awt.Dimension(160, 20));
         jLabel2.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(100, 60, 170, 20);
+        jLabel2.setBounds(120, 90, 170, 20);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/newcontraseña.png"))); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 102));
         jLabel3.setText("Contraseña");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(110, 90, 160, 20);
+        jLabel3.setBounds(120, 120, 160, 20);
 
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,9 +160,9 @@ public class VistaCreaU extends javax.swing.JDialog {
             }
         });
         getContentPane().add(user);
-        user.setBounds(320, 60, 130, 20);
+        user.setBounds(320, 90, 130, 20);
         getContentPane().add(pass);
-        pass.setBounds(320, 90, 130, 20);
+        pass.setBounds(320, 120, 130, 20);
 
         jButton1.setText("Registrarse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -226,16 +229,20 @@ public class VistaCreaU extends javax.swing.JDialog {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/seleccionatuequipopokemon.png"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 120, 310, 40);
+        jLabel4.setBounds(0, 140, 310, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/seleccionanombredeuuario.png"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(200, 10, 310, 40);
+        jLabel5.setBounds(10, 60, 310, 30);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
         jLabel1.setText("Pokemon");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 170, 50, 14);
+        jLabel1.setBounds(50, 180, 70, 15);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 102));
         jLabel6.setText("Ataques");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(360, 160, 60, 14);
@@ -249,21 +256,29 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(ata1poke2);
         ata1poke2.setBounds(170, 240, 90, 20);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 255));
         jLabel7.setText("Ataque1");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(190, 180, 50, 14);
+        jLabel7.setBounds(190, 180, 70, 15);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 255));
         jLabel8.setText("Ataque 2");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(310, 180, 50, 14);
+        jLabel8.setBounds(310, 180, 60, 15);
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 255));
         jLabel9.setText("Ataque 3");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(430, 180, 50, 14);
+        jLabel9.setBounds(420, 180, 70, 15);
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 255));
         jLabel10.setText("Ataque 4");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(550, 180, 50, 14);
+        jLabel10.setBounds(540, 180, 70, 15);
 
         ata2poke1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ata2poke1.addActionListener(new java.awt.event.ActionListener() {
@@ -462,13 +477,17 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(ata3poke6);
         ata3poke6.setBounds(410, 400, 90, 20);
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 102));
         jLabel11.setText("Nivel");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(680, 170, 23, 14);
+        jLabel11.setBounds(680, 170, 50, 20);
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 102));
         jLabel12.setText("Nombre");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(790, 170, 37, 14);
+        jLabel12.setBounds(780, 170, 50, 15);
         getContentPane().add(nombre1);
         nombre1.setBounds(750, 200, 120, 20);
 
@@ -523,6 +542,10 @@ public class VistaCreaU extends javax.swing.JDialog {
         getContentPane().add(LvPoke6);
         LvPoke6.setBounds(660, 400, 70, 20);
 
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaCreaUFinal.jpg"))); // NOI18N
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(0, 0, 900, 520);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -543,7 +566,6 @@ public class VistaCreaU extends javax.swing.JDialog {
             String[] poke5 = {nombre5.getText(),Integer.toString(LvPoke5.getSelectedIndex()),(String)ata1poke5.getSelectedItem(),(String)ata2poke5.getSelectedItem(),(String)ata3poke5.getSelectedItem(),(String)ata4poke5.getSelectedItem(),(String)pokem5.getSelectedItem()};
             String[] poke6 = {nombre6.getText(),Integer.toString(LvPoke6.getSelectedIndex()),(String)ata1poke6.getSelectedItem(),(String)ata2poke6.getSelectedItem(),(String)ata3poke6.getSelectedItem(),(String)ata4poke6.getSelectedItem(),(String)pokem6.getSelectedItem()};
             try {
-                JOptionPane.showMessageDialog(null, "Entra al try");
                 cu.creaU(poke1,poke2,poke3,poke4,poke5,poke6, user.getText(), pass.getText());
                 JOptionPane.showMessageDialog(null, "Usuario creado con exito");
             } catch (SQLException ex) {
@@ -1149,6 +1171,7 @@ public class VistaCreaU extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

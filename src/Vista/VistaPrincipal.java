@@ -20,7 +20,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ControladorCombateCpuVs ccpuvs;
     private String nUsuarioL;
     private String[] tC = {"Tipo de combate", "Usuario vs Usuario", "Usuario vs CPU", "CPU vs CPU"};
-    private String[] nTdeB = {"Numero de Batallas", "5", "25", "50", "100"};
+    private String[] nTdeB = {"Numero de Batallas", "5", "25", "50", "100", "Continuar"};
     
     
     public VistaPrincipal(ControladorPrincipal co, String n) {
@@ -57,6 +57,7 @@ public Image getIconImage(){
         comienzaTB = new javax.swing.JButton();
         numTdeB = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
@@ -158,6 +159,10 @@ public Image getIconImage(){
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 530, 580);
 
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(40, 240, 160, 14);
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -182,6 +187,7 @@ public Image getIconImage(){
     }//GEN-LAST:event_tipoCombateActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(null, "IMPORTANTE: En caso de ya tener datos en la Torre de Batalla, sino selecciona continuar, perderá su progreso");
         comienzaCombate.setVisible(false);
         tipoCombate.setEnabled(false);
         numTdeB.setEnabled(true);
@@ -237,8 +243,15 @@ public Image getIconImage(){
     }//GEN-LAST:event_numTdeBActionPerformed
 
     private void comienzaTBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comienzaTBActionPerformed
-        ControladorTorreBatalla ctb = new ControladorTorreBatalla(nUsuarioL, cp/*numTdeB.getSelectedIndex()*/);
-        ctb.iniciaTdB();
+        ControladorTorreBatalla ctb;
+        
+        try {
+            ctb = new ControladorTorreBatalla(nUsuarioL, cp,numTdeB.getSelectedIndex());
+            ctb.iniciaTdB();
+        } catch (SQLException ex) {
+            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_comienzaTBActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -246,6 +259,7 @@ public Image getIconImage(){
     private javax.swing.JButton comienzaTB;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

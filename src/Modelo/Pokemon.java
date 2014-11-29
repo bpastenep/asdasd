@@ -248,7 +248,7 @@ public class Pokemon extends EspeciePokemon {
         velocidad=calculaPorc(velB,velM,Integer.parseInt(nvl));
         puntosS=calculaPorc(hpB,hpM,Integer.parseInt(nvl));
         poke.getUpdate("insert into pokemon (id_familiapokemon,id_pokemon,pseudonimo_pokemon,nivel_pokemon,puntossaludtotales_pokemon,puntossaludrestantes,ataque_pokemon,ataqueespecial_pokemon,defensa_pokemon,defensaespecial_pokemon,velocidad_pokemon) values ("+idF+","+(idP+1)+",'"+mote+"',"+nvl+","+puntosS+","+puntosS+","+ataque+","+ataqueE+","+defensa+","+defensaE+","+velocidad+")");
-        return (idP+1);
+        return idP+1;
     }
 
     public int calculaPorc(int base, int maximo, int nvl){

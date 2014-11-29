@@ -10,75 +10,90 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class ControladorTorreBatalla {
-    public TorreDeBatalla tDB;
-    public Entrenador ent;
-    public VistaTorreBatalla vtb;
-    public ControladorPrincipal cp;
-    public ControladorCombateCpu ccpu;
-    public ControladorCombate cc;
-    public int detNumC, numCV;
-    public String usu;
-    public String ganador;
+    private TorreDeBatalla tDB = new TorreDeBatalla();
+    private Entrenador ent;
+    private VistaTorreBatalla vtb;
+    private ControladorPrincipal cp;
+    private ControladorCombateCpu ccpu;
+    private ControladorCombate cc;
+    private int detNumC;//Numero de combates recibidos desde la vistaPrincipal
+    private int numCV;//Numero de combates vencidos 
+    private int cantidadCombateGanar;
+    private String usu;
+    private String ganador;
+    private boolean conti;
+    private int selec;
     
     
-    public ControladorTorreBatalla(String usua, ControladorPrincipal co/*int nB*/){
-        //this.detNumC = nB;
+    public ControladorTorreBatalla(String usua, ControladorPrincipal co,int nB) throws SQLException{
+        this.detNumC = nB;
         this.numCV =0;
         this.cp=co;
         this.usu=usua;
+        if(nB!=5){
+            conti=false;
+            this.cantidadCombateGanar=numeroCombates();
+            this.selec=nB;
+        }
+        else{
+            conti=true;
+            this.cantidadCombateGanar=Integer.parseInt(tDB.tipoTorre(usu).trim());
+            this.selec=tDB.cantBatallas(cantidadCombateGanar);
+        }
     }
     
     //metodo para contar nro victorias/derrotas
     
-    public int numeroCombates(){
-        if(detNumC == 1)
+    public int numeroCombates() throws SQLException{
+        if(getDetNumC() == 1)
             return 5;
-        else if(detNumC == 2)
+        else if(getDetNumC() == 2)
             return 25;
-        else if(detNumC == 3)
+        else if(getDetNumC() == 3)
             return 50;
-        else if(detNumC == 4)
+        else 
             return 100;
-        return 0;
+    }
+            
+
+    public void validarTerminoTDB(){
+        if(cantidadCombateGanar==getCBatallas()){
+            JOptionPane.showMessageDialog(null, "HAS GANADO! FELICITACIONES");
+            vtb.setVisible(false);
+        }
     }
     
-    public int contadorBatallas(){
-        
-        return 0;
-    }
-    
-    
-    
-    public void iniciaTdB(){
-        vtb = new VistaTorreBatalla(this,usu);
-        vtb.setVisible(true);
+    public void iniciaTdB() throws SQLException{
+        setVtb(new VistaTorreBatalla(this, getUsu(),conti));
+        getVtb().setVisible(true);
     }    
     
-    public void determinaGanador(){
-        if(contadorBatallas() == 5)
-            tDB.setCincoBatallas(true);
-        if(contadorBatallas() == 25)
-            tDB.setVenticincoBatallas(true);
-        if(contadorBatallas() == 50)
-            tDB.setCincuentaBatallas(true);
-        if(contadorBatallas() == 100)
-            tDB.setCienBatallas(true);
-    }
     
+
     public void avanceTorre() throws SQLException{
-            cp.simularCombate(usu);
-            if(validaGanador(cp.ganador)){
-                numCV=numCV+1;
+            getCp().simularCombate(getUsu());
+            if(validaGanador(getCp().ganador)){
+                setNumCV(getNumCV() + 1);
             }
+            else {
+                JOptionPane.showMessageDialog(null, "HAS PERDIDO!, VOLVERÁS AL MENU PRINCIPAL");
+                vtb.setVisible(false);
+            }
+            
      }
         
     
     public boolean validaGanador(String u){
-        if(u.compareToIgnoreCase(usu)==0){
+        if(u.compareToIgnoreCase(getUsu())==0){
             return true;
         }
         else
             return false;
+    }
+    
+    public void guardarRegistro() throws SQLException {
+        System.out.println("Cantidad de batallas: "+getCBatallas()+"Usuario :"+usu);
+        tDB.actualizar(getCBatallas(),usu,selec);
     }
     
     public ControladorTorreBatalla getcTb(){
@@ -89,6 +104,98 @@ public class ControladorTorreBatalla {
     }
 
     public int getCBatallas() {
-        return this.numCV;
+        return this.getNumCV();
     }
+
+    public TorreDeBatalla gettDB() {
+        return tDB;
+    }
+
+    public void settDB(TorreDeBatalla tDB) {
+        this.tDB = tDB;
+    }
+
+    public Entrenador getEnt() {
+        return ent;
+    }
+
+    public void setEnt(Entrenador ent) {
+        this.ent = ent;
+    }
+
+    public VistaTorreBatalla getVtb() {
+        return vtb;
+    }
+
+    public void setVtb(VistaTorreBatalla vtb) {
+        this.vtb = vtb;
+    }
+
+    public ControladorPrincipal getCp() {
+        return cp;
+    }
+
+    public void setCp(ControladorPrincipal cp) {
+        this.cp = cp;
+    }
+
+    public ControladorCombateCpu getCcpu() {
+        return ccpu;
+    }
+
+    public void setCcpu(ControladorCombateCpu ccpu) {
+        this.ccpu = ccpu;
+    }
+
+    public ControladorCombate getCc() {
+        return cc;
+    }
+
+    public void setCc(ControladorCombate cc) {
+        this.cc = cc;
+    }
+
+    public int getDetNumC() {
+        return detNumC;
+    }
+
+    public void setDetNumC(int detNumC) {
+        this.detNumC = detNumC;
+    }
+
+    public int getNumCV() {
+        return numCV;
+    }
+
+    public void setNumCV(int numCV) {
+        this.numCV = numCV;
+    }
+
+    public String getUsu() {
+        return usu;
+    }
+
+    public void setUsu(String usu) {
+        this.usu = usu;
+    }
+
+    public String getGanador() {
+        return ganador;
+    }
+
+    public int cBatallas(String usua1) throws SQLException {
+        this.numCV=tDB.batallasDB(usu);
+        return tDB.batallasDB(usu);
+    }
+    public int getCantidadCombateGanar(){
+        return this.cantidadCombateGanar;
+    }
+
+    public int retornaPorcen() {
+        int valor =(int)((getCBatallas()*100)/ cantidadCombateGanar);
+        System.out.println(valor);
+        return valor;
+    }
+
+
 }

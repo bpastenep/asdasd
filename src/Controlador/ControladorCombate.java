@@ -42,7 +42,11 @@ public class ControladorCombate {
         this.usu1=nusurio;
         this.cp=op;
         this.usu2=usua2;
+        try{
         j1.creaEntrenador(usu1);
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
         equipoP=j1.getePokemon();
     }
     

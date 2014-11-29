@@ -3,6 +3,7 @@ package Modelo;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
+import javax.swing.JOptionPane;
 
 
 public class Movimiento {
