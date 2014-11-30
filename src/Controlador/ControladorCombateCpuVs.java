@@ -38,8 +38,10 @@ public class ControladorCombateCpuVs {
         while(hpEquipo(listaCpu1) > 0 && hpEquipo(listaCpu2) > 0){
             System.out.println("entro a combate");
             /*se actualizan las listas de cada cpu a partir de la acción que realizan*/
+            try{
             listaCpu1 = ccpu.accionCpu(listaCpu1, listaCpu2, ccpu.verificaHpCpu(listaCpu1));
             listaCpu2 = ccpu.accionCpu(listaCpu2, listaCpu1, ccpu.verificaHpCpu(listaCpu2));
+            }catch(SQLException ex){}
             if(hpEquipo(listaCpu1) == 0){
                 System.out.println("setea ganador 1");
                 setGanador("CPU 2, con " + listaCpu2[0].getNombre());

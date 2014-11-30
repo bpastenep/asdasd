@@ -13,7 +13,7 @@ public class ControladorCombateCpu {
     private int pCambio = 0;
     private String usua1;
     private int accion;
-    
+    private int cteCambio;
     
     public ControladorCombateCpu(ControladorPrincipal co, String u1) throws SQLException{
         this.cp=co;
@@ -41,7 +41,7 @@ public class ControladorCombateCpu {
     }  
     
     // método que determina la acción a ser realizada por la cpu
-    public Pokemon[] accionCpu(Pokemon[] listaCpu, Pokemon[] listaHumano, int caso){
+    public Pokemon[] accionCpu(Pokemon[] listaCpu, Pokemon[] listaHumano, int caso) throws SQLException{
         if(caso == 1){
             accionOfensiva(listaCpu, listaHumano);
         }
@@ -54,27 +54,43 @@ public class ControladorCombateCpu {
         return listaCpu;
     }
     
-    public void buscaDebilidad(int elHum, int elCpu, Pokemon[] lCPU) throws SQLException{
-        cc.danoTipo(elHum, elCpu);
+    /*public void buscaDebilidad(Pokemon elHum, Pokemon elCpu) throws SQLException{
+        cc.danoTipo(cc.elFamilia(elHum), cc.elFamilia(elCpu));
         setCteCambio(cc.getCteTipo());
-    }
+    }*/
     
-    public int cambio(){
-        
-    }
+    /*public void cambioDebilidad(Pokemon hum, Pokemon[] lista) throws SQLException{
+        int cte1 = getCteCambio();
+        System.out.println(cte1);
+        for(int i = 0; i < lista.length; i++){
+            buscaDebilidad(hum, lista[i]);
+            int cte2 = getCteCambio();
+            System.out.println(cte2);
+            if(cte1 > cte2){
+                cc.cambio(lista, i);
+            }
+            break;
+        }
+    }*/
+    
     
     // método que determina la acción ofensiva de la cpu
-    public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival, int cteDano, int inMov){
-        if(listaCpu[0].getAtk() > listaCpu[0].getAtkEsp()){
-            int dañoC =  (int) (cteDano * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtk() * listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDef())));
+    public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival) throws SQLException{
+        int inMov = (int)(Math.random()*4+1);
+        if(listaCpu[0].getMovimientos().getMovimientosA()[inMov].isContacto()){
+            cc.danoTipo(listaCpu[0].getMovimientos().getMovimientosA()[inMov].getIdElemento(), cc.elFamilia(listaCpu[0]));
+            setCteCambio(cc.getCteTipo());
+            int dañoC =  (int) (getCteCambio() * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtk() * listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDef())));
             listaRival[0].setPS(listaRival[0].getPS() - dañoC);
             if(listaRival[0].getPS() <= 0 ){
                 listaRival[0].setPS(0);
                 getCc().cambiaDebil(listaRival);
             }
         }
-        else if(listaCpu[0].getAtk() < listaCpu[0].getAtkEsp()){
-            int dañoD = (int) (cteDano * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtkEsp()* listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDefEsp())));
+        else{
+            cc.danoTipo(listaCpu[0].getMovimientos().getMovimientosA()[inMov].getIdElemento(), cc.elFamilia(listaCpu[0]));
+            setCteCambio(cc.getCteTipo());
+            int dañoD = (int) (getpCambio() * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtkEsp()* listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDefEsp())));
             listaRival[0].setPS(listaRival[0].getPS() - dañoD);
             if(listaRival[0].getPS()<=0){
                 listaRival[0].setPS(0);
@@ -93,7 +109,7 @@ public class ControladorCombateCpu {
                 if( listaCpu[i].getPS()>0){
                         setpCambio(i);
                     JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[getpCambio()].getNombre());
-                    listaCpu=getCc().cambio(listaCpu, getpCambio()); 
+                    listaCpu = getCc().cambio(listaCpu, getpCambio()); 
                     break;
                     }
                 }
@@ -234,5 +250,13 @@ public class ControladorCombateCpu {
 
     public void setAccion(int accion) {
         this.accion = accion;
+    }
+
+    public int getCteCambio() {
+        return cteCambio;
+    }
+
+    public void setCteCambio(int cteCambio) {
+        this.cteCambio = cteCambio;
     }
 }

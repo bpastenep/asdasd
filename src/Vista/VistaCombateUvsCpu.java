@@ -208,7 +208,11 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             } catch (SQLException ex) {
                 Logger.getLogger(VistaCombateUvsCpu.class.getName()).log(Level.SEVERE, null, ex);
             }
-            equipoMaq = ccpu.accionCpu(equipoMaq, equipoHum, ccpu.verificaHpCpu(equipoMaq));
+            try {
+                equipoMaq = ccpu.accionCpu(equipoMaq, equipoHum, ccpu.verificaHpCpu(equipoMaq));
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaCombateUvsCpu.class.getName()).log(Level.SEVERE, null, ex);
+            }
             pokemonCpu.setText(equipoMaq[0].getNombre());
             pokemonU.setText(equipoHum[0].getNombre());
             cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoHum)));
