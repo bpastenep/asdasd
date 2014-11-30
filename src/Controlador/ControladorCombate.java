@@ -21,20 +21,8 @@ public class ControladorCombate {
     
     //Esto se tiene que borrar ya que se sacará de la BD
     
-    private Pokemon p1 = new Pokemon("Pikachu",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p2 = new Pokemon("Evee",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p3 = new Pokemon("Bulbasaur",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p4 = new Pokemon("Caterpie",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p5 = new Pokemon("Geodude",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p6 = new Pokemon("Snorlax",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p7 = new Pokemon("Lapras",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p8 = new Pokemon("Haunter",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p9 = new Pokemon("Arceus",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p10 = new Pokemon("Celebi",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p11 = new Pokemon("Mew",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon p12 = new Pokemon("Charizard",(int)(Math.random()*50+30),(int)(Math.random()*30+1), (int)(Math.random()*50+1),(int)(Math.random()*50+1), 50);
-    private Pokemon[] equipoP={p1,p2,p3,p4,p5,p6};
-    private Pokemon[] equipo2={p7,p8,p9,p10,p11,p12};
+    private Pokemon[] equipoP;
+    private Pokemon[] equipo2;
     private  int hpFinal;
     
     //Contstructor  
@@ -44,10 +32,12 @@ public class ControladorCombate {
         this.usu2=usua2;
         try{
         j1.creaEntrenador(usu1);
+        j2.creaEntrenador(getUsu2());
         }catch(SQLException ex){
             System.out.println(ex);
         }
         equipoP=j1.getePokemon();
+        setEquipo2(j2.getePokemon());
     }
     
     
@@ -55,8 +45,6 @@ public class ControladorCombate {
     
     //Se instancia la vista  
     public void iniciarVUvU() throws SQLException{
-        j2.creaEntrenador(getUsu2());
-        setEquipo2(j2.getePokemon());
         vc = new VistaCombateUvU(this,cp, getUsu1(), getUsu2(), getEquipoP(), getEquipo2());
         vc.setVisible(true);
     }
