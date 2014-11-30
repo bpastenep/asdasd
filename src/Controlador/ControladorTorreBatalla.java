@@ -72,7 +72,7 @@ public class ControladorTorreBatalla {
 
     public void avanceTorre() throws SQLException{
             getCp().simularCombate(getUsu());
-            if(validaGanador(getCp().ganador)){
+            if(validaGanador(getCp().getGanador())){
                 setNumCV(getNumCV() + 1);
             }
             else {
