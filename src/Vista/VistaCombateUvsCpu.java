@@ -198,7 +198,6 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     }//GEN-LAST:event_cambioActionPerformed
 
     private void simularTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularTActionPerformed
-
         if(op1 == 0){
             JOptionPane.showMessageDialog(null, "El jugador debe seleccionar una opción.");
         }

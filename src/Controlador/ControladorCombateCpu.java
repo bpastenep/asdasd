@@ -6,37 +6,37 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class ControladorCombateCpu {
-    public ControladorPrincipal cp;
-    public ControladorCombate cc;
-    public VistaCombateUvsCpu vcpu;
-    public int pCambio = 0;
-    String usua1;
-    public int accion;
+    private ControladorPrincipal cp;
+    private ControladorCombate cc;
+    private VistaCombateUvsCpu vcpu;
+    private int pCambio = 0;
+    private String usua1;
+    private int accion;
     
     
     public ControladorCombateCpu(ControladorPrincipal co, String u1) throws SQLException{
         this.cp=co;
         this.usua1=u1;
-        this.cc=new ControladorCombate(this.cp, this.usua1, "CPU");
+        this.cc=new ControladorCombate(this.getCp(), this.getUsua1(), "CPU");
     }
     
     public void iniciarVUvsCpu(){
-        vcpu = new VistaCombateUvsCpu(this, cc, this.cp, cc.getUsu1(), cc.getEquipoP(), cc.getEquipo2());
-        vcpu.setVisible(true);
+        setVcpu(new VistaCombateUvsCpu(this, getCc(), this.getCp(), getCc().getUsu1(), getCc().getEquipoP(), getCc().getEquipo2()));
+        getVcpu().setVisible(true);
      }
     
     public int verificaHpCpu(Pokemon[] listaCpu){
         System.out.println("El PS es: "+ listaCpu[0].getPS());
         if(listaCpu[0].getPS() >20 /*Cambiar por HP INICIAL*/){
-            this.accion = 1;
+            this.setAccion(1);
         }
         else if(listaCpu[0].getPS() <= 20 /*Cambiar por HP INICIAL*/){
-            this.accion = 2;
+            this.setAccion(2);
         }
         else if(listaCpu[0].getPS() == 0){
-            this.accion = 3;
+            this.setAccion(3);
         }
-        return this.accion;
+        return this.getAccion();
     }  
     
     // método que determina la acción a ser realizada por la cpu
@@ -48,7 +48,7 @@ public class ControladorCombateCpu {
             accionDefensiva(listaCpu, listaHumano);
         }
         else if(caso == 3){
-            cc.cambiaDebil(listaCpu);
+            getCc().cambiaDebil(listaCpu);
         }
         return listaCpu;
     }
@@ -61,14 +61,14 @@ public class ControladorCombateCpu {
             listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtk());
             if(listaRival[0].getPS()<=0){
                 listaRival[0].setPS(0);
-                cc.cambiaDebil(listaRival);
+                getCc().cambiaDebil(listaRival);
             }
         }
         else if(listaCpu[0].getAtk() < listaCpu[0].getAtkEsp()){
             listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtkEsp());
             if(listaRival[0].getPS()<=0){
                 listaRival[0].setPS(0);
-                cc.cambiaDebil(listaRival);
+                getCc().cambiaDebil(listaRival);
             }
         }
         return listaRival;
@@ -81,9 +81,9 @@ public class ControladorCombateCpu {
             for(int i = 0; i < listaCpu.length; i++){
                 if(listaCpu[0].getDef() < listaCpu[i].getDef()){
                 if( listaCpu[i].getPS()>0){
-                    pCambio = i;
-                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
-                    listaCpu=cc.cambio(listaCpu, pCambio); 
+                        setpCambio(i);
+                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[getpCambio()].getNombre());
+                    listaCpu=getCc().cambio(listaCpu, getpCambio()); 
                     break;
                     }
                 }
@@ -94,9 +94,9 @@ public class ControladorCombateCpu {
             for(int i = 0; i < listaCpu.length; i++){
                 if(listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp()){
                     if( listaCpu[i].getPS()>0){
-                    pCambio = i;
-                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
-                    listaCpu=cc.cambio(listaCpu, pCambio); 
+                        setpCambio(i);
+                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[getpCambio()].getNombre());
+                    listaCpu=getCc().cambio(listaCpu, getpCambio()); 
                     break;
                     }                   
                 }
@@ -108,9 +108,9 @@ public class ControladorCombateCpu {
             for(int i = 0; i < listaCpu.length; i++){
                 if(listaCpu[0].getDef() < listaCpu[i].getDef() || listaCpu[0].getDefEsp()< listaCpu[i].getDefEsp()){
                     if( listaCpu[i].getPS()>0){
-                    pCambio = i;
-                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por: " + listaCpu[pCambio].getNombre());
-                    listaCpu=cc.cambio(listaCpu, pCambio); 
+                        setpCambio(i);
+                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por: " + listaCpu[getpCambio()].getNombre());
+                    listaCpu=getCc().cambio(listaCpu, getpCambio()); 
                     break;
                     }
                 }
@@ -121,9 +121,9 @@ public class ControladorCombateCpu {
         else {
             for(int i=0;i<listaCpu.length;i++){
                 if(listaCpu[i].getPS()>0){
-                    pCambio = i;
-                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[pCambio].getNombre());
-                    listaCpu=cc.cambio(listaCpu, pCambio); 
+                    setpCambio(i);
+                    JOptionPane.showMessageDialog(null, "¡ATENCION! \n Tu enemigo cambiará su pokemón por:" + listaCpu[getpCambio()].getNombre());
+                    listaCpu=getCc().cambio(listaCpu, getpCambio()); 
                     break;
                 }
             }
@@ -149,13 +149,13 @@ public class ControladorCombateCpu {
             return "CPU";
         }
         else if(c2==listaCpu.length){
-            return cc.getUsu1();
+            return getCc().getUsu1();
         }
         return null;
     }
     
     public boolean combateT(){
-        if(vcpu.combateF){
+        if(getVcpu().combateF){
             return false;
         }
         else{
@@ -163,18 +163,66 @@ public class ControladorCombateCpu {
         }
     }
     public String Ganador(Pokemon[] e1, Pokemon[] e2){
-           if(jugadorGanador(e1, e2) == usua1){
-            JOptionPane.showMessageDialog(null, "El ganador es " + usua1 + "!");
-            cp.setGanador(usua1);
-            vcpu.setVisible(false);
-            return usua1;
+           if(jugadorGanador(e1, e2) == getUsua1()){
+            JOptionPane.showMessageDialog(null, "El ganador es " + getUsua1() + "!");
+            getCp().setGanador(getUsua1());
+            getVcpu().setVisible(false);
+            return getUsua1();
            }
            else if(jugadorGanador(e1,e2)=="CPU"){
             JOptionPane.showMessageDialog(null, "El ganador es CPU!");
-            cp.setGanador("CPU");
-            vcpu.setVisible(false);
+            getCp().setGanador("CPU");
+            getVcpu().setVisible(false);
             return "CPU";
            }
            return null;
+    }
+
+    public ControladorPrincipal getCp() {
+        return cp;
+    }
+
+    public void setCp(ControladorPrincipal cp) {
+        this.cp = cp;
+    }
+
+    public ControladorCombate getCc() {
+        return cc;
+    }
+
+    public void setCc(ControladorCombate cc) {
+        this.cc = cc;
+    }
+
+    public VistaCombateUvsCpu getVcpu() {
+        return vcpu;
+    }
+
+    public void setVcpu(VistaCombateUvsCpu vcpu) {
+        this.vcpu = vcpu;
+    }
+
+    public int getpCambio() {
+        return pCambio;
+    }
+
+    public void setpCambio(int pCambio) {
+        this.pCambio = pCambio;
+    }
+
+    public String getUsua1() {
+        return usua1;
+    }
+
+    public void setUsua1(String usua1) {
+        this.usua1 = usua1;
+    }
+
+    public int getAccion() {
+        return accion;
+    }
+
+    public void setAccion(int accion) {
+        this.accion = accion;
     }
 }

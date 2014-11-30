@@ -370,7 +370,8 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             barraHp1.setValue(cc.barraHp(getEquipoP1()));
             System.out.println(cc.barraHp(getEquipoP1()));
             barraHp2.setValue(cc.barraHp(getEquipoP2()));
-            System.out.println(cc.barraHp(getEquipoP1()));        }
+            System.out.println(cc.barraHp(getEquipoP1()));        
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ataques2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ataques2ActionPerformed

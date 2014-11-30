@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 public class VistaCreaU extends javax.swing.JDialog {
     
     private final ControladorCreaUsuario cu;
-    public String[] ataqueP1;
+    private String[] ataqueP1;
     
     public VistaCreaU(ControladorCreaUsuario parent, boolean modal) throws SQLException {
         initComponents();

@@ -12,35 +12,71 @@ public class ControladorPrincipal {
     private VistaCombateUvsCpu vcpu;
     private VistaPrincipal vp;
     private VistaLogin vl;
-    public String ganador;
-    ControladorCombateCpu ccpu;
+    private String ganador;
+    private ControladorCombateCpu ccpu;
     
     public ControladorPrincipal(){
     
     vl = new VistaLogin(this);
 }
     public void iniciar(String nu){
-        vp = new VistaPrincipal(this,nu);
-        vl.setVisible(false);
-        vp.setVisible(true);
+        setVp(new VistaPrincipal(this,nu));
+        getVl().setVisible(false);
+        getVp().setVisible(true);
     }
     public void iniciarL() {
-        this.vl.setVisible(true);
+        this.getVl().setVisible(true);
     }
 
     public void cerrarIniciar() throws SQLException {
-        this.vl.setVisible(true);
+        this.getVl().setVisible(true);
         ControladorCreaUsuario cu = new ControladorCreaUsuario();
         cu.Iniciar(this);
     }
     
     // cambiar el String por un entrenador
     public void simularCombate (String j1) throws SQLException{
-        this.ccpu = new ControladorCombateCpu(this, j1);
-        ccpu.iniciarVUvsCpu();
+        this.setCcpu(new ControladorCombateCpu(this, j1));
+        getCcpu().iniciarVUvsCpu();
     }
     
     public void setGanador(String u){
         this.ganador=u;
+    }
+
+    public VistaCombateUvsCpu getVcpu() {
+        return vcpu;
+    }
+
+    public void setVcpu(VistaCombateUvsCpu vcpu) {
+        this.vcpu = vcpu;
+    }
+
+    public VistaPrincipal getVp() {
+        return vp;
+    }
+
+    public void setVp(VistaPrincipal vp) {
+        this.vp = vp;
+    }
+
+    public VistaLogin getVl() {
+        return vl;
+    }
+
+    public void setVl(VistaLogin vl) {
+        this.vl = vl;
+    }
+
+    public String getGanador() {
+        return ganador;
+    }
+
+    public ControladorCombateCpu getCcpu() {
+        return ccpu;
+    }
+
+    public void setCcpu(ControladorCombateCpu ccpu) {
+        this.ccpu = ccpu;
     }
 }
