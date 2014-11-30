@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.ConsultaSQL;
 import Modelo.Pokemon;
 import Vista.VistaCombateUvsCpu;
 import java.sql.SQLException;
@@ -11,8 +12,8 @@ public class ControladorCombateCpu {
     public VistaCombateUvsCpu vcpu;
     public int pCambio = 0;
     String usua1;
-    public int accion;
-    
+    private int accion;
+    private int cteCambio;
     
     public ControladorCombateCpu(ControladorPrincipal co, String u1) throws SQLException{
         this.cp=co;
@@ -28,15 +29,15 @@ public class ControladorCombateCpu {
     public int verificaHpCpu(Pokemon[] listaCpu){
         System.out.println("El PS es: "+ listaCpu[0].getPS());
         if(listaCpu[0].getPS() >20 /*Cambiar por HP INICIAL*/){
-            this.accion = 1;
+            this.setAccion(1);
         }
         else if(listaCpu[0].getPS() <= 20 /*Cambiar por HP INICIAL*/){
-            this.accion = 2;
+            this.setAccion(2);
         }
         else if(listaCpu[0].getPS() == 0){
-            this.accion = 3;
+            this.setAccion(3);
         }
-        return this.accion;
+        return this.getAccion();
     }  
     
     // método que determina la acción a ser realizada por la cpu
@@ -53,19 +54,28 @@ public class ControladorCombateCpu {
         return listaCpu;
     }
     
-    public void buscaDebilidad(int elHum, int elCpu){}
+    public void buscaDebilidad(int elHum, int elCpu, Pokemon[] lCPU) throws SQLException{
+        cc.danoTipo(elHum, elCpu);
+        setCteCambio(cc.getCteTipo());
+    }
+    
+    public int cambio(){
+        
+    }
     
     // método que determina la acción ofensiva de la cpu
-    public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival){
+    public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival, int cteDano, int inMov){
         if(listaCpu[0].getAtk() > listaCpu[0].getAtkEsp()){
-            listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtk());
-            if(listaRival[0].getPS()<=0){
+            int dañoC =  (int) (cteDano * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtk() * listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDef())));
+            listaRival[0].setPS(listaRival[0].getPS() - dañoC);
+            if(listaRival[0].getPS() <= 0 ){
                 listaRival[0].setPS(0);
                 cc.cambiaDebil(listaRival);
             }
         }
         else if(listaCpu[0].getAtk() < listaCpu[0].getAtkEsp()){
-            listaRival[0].setPS(listaRival[0].getPS() - listaCpu[0].getAtkEsp());
+            int dañoD = (int) (cteDano * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtkEsp()* listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDefEsp())));
+            listaRival[0].setPS(listaRival[0].getPS() - dañoD);
             if(listaRival[0].getPS()<=0){
                 listaRival[0].setPS(0);
                 cc.cambiaDebil(listaRival);
@@ -176,5 +186,21 @@ public class ControladorCombateCpu {
             return "CPU";
            }
            return null;
+    }
+
+    public int getAccion() {
+        return accion;
+    }
+
+    public void setAccion(int accion) {
+        this.accion = accion;
+    }
+
+    public int getCteCambio() {
+        return cteCambio;
+    }
+
+    public void setCteCambio(int cteCambio) {
+        this.cteCambio = cteCambio;
     }
 }

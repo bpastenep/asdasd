@@ -23,6 +23,8 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     private Pokemon[] equipoP2;
     private String usua1;
     private String usua2;
+    private boolean restaPP1;
+    private boolean restaPP2;
     //Pokemones creados para la prueba
     
     public VistaCombateUvU(ControladorCombate cco, ControladorPrincipal op,String usu1, String usu2, Pokemon[] equipo, Pokemon[] equipo2) {
@@ -284,24 +286,28 @@ public class VistaCombateUvU extends javax.swing.JDialog {
         pokemon1.setEnabled(false);
         ataques1.setEnabled(true);
         op1 = 1;
+        setRestaPP1(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        pokemon1.setEnabled(true);
        ataques1.setEnabled(false);
        op1 = 2;
+       setRestaPP1(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         pokemon2.setEnabled(false);
         ataques2.setEnabled(true);
         op2 = 1;
+        setRestaPP2(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         pokemon2.setEnabled(true);
         ataques2.setEnabled(false);
         op2 = 2;
+        setRestaPP2(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void pokemon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokemon1ActionPerformed
@@ -325,7 +331,9 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             
             try {
                 setEquipoP2(cc.realizarAccion(op2, pokemon2.getSelectedIndex(), getEquipoP2(), getEquipoP1(), ataques2.getSelectedIndex()));
-                equipoP2[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].setpP(equipoP2[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP()- 1);
+                if(isRestaPP2()){
+                    equipoP2[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].setpP(equipoP2[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP()- 1);
+                }
                 pp2.setText("PP: "+ Integer.toString(getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP()));
                 if(getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP() <= 0){
                     jButton1.setVisible(false);
@@ -335,7 +343,9 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             }
             try {
                 setEquipoP1(cc.realizarAccion(op1, pokemon1.getSelectedIndex(), getEquipoP1(), getEquipoP2(), ataques1.getSelectedIndex()));
-                equipoP1[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].setpP(equipoP1[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP()- 1);
+                if(isRestaPP1()){
+                    equipoP1[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].setpP(equipoP1[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP()- 1);
+                }
                 pp1.setText("PP: "+ Integer.toString(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP()));
                 if(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP() <= 0){
                     jButton1.setVisible(false);
@@ -476,5 +486,21 @@ public class VistaCombateUvU extends javax.swing.JDialog {
 
     public void setUsua2(String usua2) {
         this.usua2 = usua2;
+    }
+
+    public boolean isRestaPP1() {
+        return restaPP1;
+    }
+
+    public void setRestaPP1(boolean restaPP1) {
+        this.restaPP1 = restaPP1;
+    }
+
+    public boolean isRestaPP2() {
+        return restaPP2;
+    }
+
+    public void setRestaPP2(boolean restaPP2) {
+        this.restaPP2 = restaPP2;
     }
 }
