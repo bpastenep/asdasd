@@ -76,7 +76,7 @@ public class ControladorCombateCpu {
     
     // método que determina la acción ofensiva de la cpu
     public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival) throws SQLException{
-        int inMov = (int)(Math.random()*4+1);
+        int inMov = (int)(Math.random()*3+0);
         if(listaCpu[0].getMovimientos().getMovimientosA()[inMov].isContacto()){
             cc.danoTipo(listaCpu[0].getMovimientos().getMovimientosA()[inMov].getIdElemento(), cc.elFamilia(listaCpu[0]));
             setCteCambio(cc.getCteTipo());
