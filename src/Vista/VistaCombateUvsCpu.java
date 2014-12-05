@@ -17,9 +17,10 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     private ControladorCombateCpu ccpu;
     private ControladorPrincipal cp;
     private ControladorTorreBatalla ctb;
-    public Pokemon[] equipoMaq, equipoHum;
-    public String usua1;
-    public boolean combateF;
+    private Pokemon[] equipoMaq;
+    private Pokemon[] equipoHum;
+    private String usua1;
+    private boolean combateF;
 
     public VistaCombateUvsCpu(ControladorCombateCpu cpuu,ControladorCombate cco, ControladorPrincipal op, String usu1, Pokemon[] equipoUsuario, Pokemon[] equipoCpu) {
         
@@ -31,9 +32,9 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
         this.equipoHum = equipoUsuario;
         this.usua1 = usu1;
         this.ccpu = cpuu;    
-        ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaA(equipoHum)));
+        ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaA(getEquipoHum())));
         ataquesUsuario.setEnabled(false);
-        cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoHum)));
+        cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(getEquipoHum())));
         cambiosUsuario.setEnabled(false);
         pokemonCpu.setText(equipoMaq[0].getNombre());
         pokemonU.setText(equipoHum[0].getNombre());
@@ -202,33 +203,32 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "El jugador debe seleccionar una opción.");
         }
         else{
-            combateF=true;
+            setCombateF(true);
             try {
-                equipoHum = cc.realizarAccion(op1,cambiosUsuario.getSelectedIndex(),equipoHum,equipoMaq, ataquesUsuario.getSelectedIndex());
+                setEquipoHum(cc.realizarAccion(op1, cambiosUsuario.getSelectedIndex(), getEquipoHum(), getEquipoMaq(), ataquesUsuario.getSelectedIndex()));
             } catch (SQLException ex) {
                 Logger.getLogger(VistaCombateUvsCpu.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
-                equipoMaq = ccpu.accionCpu(equipoMaq, equipoHum, ccpu.verificaHpCpu(equipoMaq));
+                setEquipoMaq(ccpu.accionCpu(getEquipoMaq(), getEquipoHum(), ccpu.verificaHpCpu(getEquipoMaq())));
             } catch (SQLException ex) {
                 Logger.getLogger(VistaCombateUvsCpu.class.getName()).log(Level.SEVERE, null, ex);
             }
-            pokemonCpu.setText(equipoMaq[0].getNombre());
-            pokemonU.setText(equipoHum[0].getNombre());
-            cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(equipoHum)));
+            pokemonCpu.setText(getEquipoMaq()[0].getNombre());
+            pokemonU.setText(getEquipoHum()[0].getNombre());
+            cambiosUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaP(getEquipoHum())));
             op1=0;
-            }
-        ccpu.Ganador(equipoHum, equipoMaq);
-        ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaA(equipoHum)));
+        }
+        ccpu.Ganador(getEquipoHum(), getEquipoMaq());
+        ataquesUsuario.setModel(new javax.swing.DefaultComboBoxModel(cc.asignaA(getEquipoHum())));
         cambiosUsuario.setEnabled(false);
         ataquesUsuario.setEnabled(false);
-        hpCpu.setValue(cc.barraHp(equipoMaq));
-        System.out.println(cc.barraHp(equipoMaq));
-        hpUsuario.setValue(cc.barraHp(equipoHum));
-        System.out.println(cc.barraHp(equipoHum));
-        cPokemonCPU.setText("Al equipo rival aún le quedan "+cc.pokeDeb(equipoMaq)+" pokemones");
+        hpCpu.setValue(cc.barraHp(getEquipoMaq()));
+        System.out.println(cc.barraHp(getEquipoMaq()));
+        hpUsuario.setValue(cc.barraHp(getEquipoHum()));
+        System.out.println(cc.barraHp(getEquipoHum()));
+        cPokemonCPU.setText("Al equipo rival aún le quedan "+cc.pokeDeb(getEquipoMaq())+" pokemones");
         op1=0;
-        
     }//GEN-LAST:event_simularTActionPerformed
 
 
@@ -250,4 +250,36 @@ public class VistaCombateUvsCpu extends javax.swing.JDialog {
     private javax.swing.JLabel pokemonU;
     private javax.swing.JButton simularT;
     // End of variables declaration//GEN-END:variables
+
+    public Pokemon[] getEquipoMaq() {
+        return equipoMaq;
+    }
+
+    public void setEquipoMaq(Pokemon[] equipoMaq) {
+        this.equipoMaq = equipoMaq;
+    }
+
+    public Pokemon[] getEquipoHum() {
+        return equipoHum;
+    }
+
+    public void setEquipoHum(Pokemon[] equipoHum) {
+        this.equipoHum = equipoHum;
+    }
+
+    public String getUsua1() {
+        return usua1;
+    }
+
+    public void setUsua1(String usua1) {
+        this.usua1 = usua1;
+    }
+
+    public boolean isCombateF() {
+        return combateF;
+    }
+
+    public void setCombateF(boolean combateF) {
+        this.combateF = combateF;
+    }
 }

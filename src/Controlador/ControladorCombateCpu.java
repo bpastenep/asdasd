@@ -13,7 +13,7 @@ public class ControladorCombateCpu {
     private int pCambio = 0;
     private String usua1;
     private int accion;
-    private int cteCambio;
+    private float cteCambio;
     
     public ControladorCombateCpu(ControladorPrincipal co, String u1) throws SQLException{
         this.cp=co;
@@ -24,20 +24,20 @@ public class ControladorCombateCpu {
     public void iniciarVUvsCpu(){
         setVcpu(new VistaCombateUvsCpu(this, getCc(), this.getCp(), getCc().getUsu1(), getCc().getEquipoP(), getCc().getEquipo2()));
         getVcpu().setVisible(true);
-     }
+    }
     
     public int verificaHpCpu(Pokemon[] listaCpu){
         System.out.println("El PS es: "+ listaCpu[0].getPS());
-        if(listaCpu[0].getPS() >20 /*Cambiar por HP INICIAL*/){
-            this.setAccion(1);
+        if(listaCpu[0].getPS() > (listaCpu[0].getPSi()/3) ){
+            setAccion(1);
         }
-        else if(listaCpu[0].getPS() <= 20 /*Cambiar por HP INICIAL*/){
-            this.setAccion(2);
+        else if(listaCpu[0].getPS() <= (listaCpu[0].getPSi()/3) ){
+            setAccion(2);
         }
-        else if(listaCpu[0].getPS() == 0){
-            this.setAccion(3);
+        else if(listaCpu[0].getPS() <= 0){
+            setAccion(3);
         }
-        return this.getAccion();
+        return getAccion();
     }  
     
     // método que determina la acción a ser realizada por la cpu
@@ -73,25 +73,24 @@ public class ControladorCombateCpu {
         }
     }*/
     
-    
     // método que determina la acción ofensiva de la cpu
     public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival) throws SQLException{
         int inMov = (int)(Math.random()*3+0);
         if(listaCpu[0].getMovimientos().getMovimientosA()[inMov].isContacto()){
-            cc.danoTipo(listaCpu[0].getMovimientos().getMovimientosA()[inMov].getIdElemento(), cc.elFamilia(listaCpu[0]));
+            cc.danoTipo(listaCpu[0].getMovimientos().getMovimientosA()[inMov].getIdElemento(), cc.elFamilia(listaRival[0]));
             setCteCambio(cc.getCteTipo());
-            int dañoC =  (int) (getCteCambio() * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtk() * listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDef())));
-            listaRival[0].setPS(listaRival[0].getPS() - dañoC);
+            double dañoC = (getCteCambio() * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtk() * listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDef())));
+            listaRival[0].setPS(listaRival[0].getPS() - (int) dañoC);
             if(listaRival[0].getPS() <= 0 ){
                 listaRival[0].setPS(0);
                 getCc().cambiaDebil(listaRival);
             }
         }
         else{
-            cc.danoTipo(listaCpu[0].getMovimientos().getMovimientosA()[inMov].getIdElemento(), cc.elFamilia(listaCpu[0]));
+            cc.danoTipo(listaCpu[0].getMovimientos().getMovimientosA()[inMov].getIdElemento(), cc.elFamilia(listaRival[0]));
             setCteCambio(cc.getCteTipo());
-            int dañoD = (int) (getpCambio() * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtkEsp()* listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDefEsp())));
-            listaRival[0].setPS(listaRival[0].getPS() - dañoD);
+            double dañoD = (getpCambio() * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtkEsp()* listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDefEsp())));
+            listaRival[0].setPS(listaRival[0].getPS() - (int) dañoD);
             if(listaRival[0].getPS()<=0){
                 listaRival[0].setPS(0);
                 getCc().cambiaDebil(listaRival);
@@ -126,7 +125,6 @@ public class ControladorCombateCpu {
                     break;
                     }                   
                 }
-                
             }
             return listaCpu;
         }
@@ -181,7 +179,7 @@ public class ControladorCombateCpu {
     }
     
     public boolean combateT(){
-        if(getVcpu().combateF){
+        if(getVcpu().isCombateF()){
             return false;
         }
         else{
@@ -252,11 +250,11 @@ public class ControladorCombateCpu {
         this.accion = accion;
     }
 
-    public int getCteCambio() {
+    public float getCteCambio() {
         return cteCambio;
     }
 
-    public void setCteCambio(int cteCambio) {
+    public void setCteCambio(float cteCambio) {
         this.cteCambio = cteCambio;
     }
 }

@@ -1,6 +1,5 @@
 package Controlador;
 
-
 import Modelo.ConsultaSQL;
 import Modelo.Entrenador;
 import Modelo.MovAprendido;
@@ -16,20 +15,17 @@ public class ControladorCombate {
     private String usu1,usu2,ganador;
     private Entrenador j1 = new Entrenador();
     private Entrenador j2 = new Entrenador();
-    private int cteTipo;
+    private float cteTipo;
     private boolean atkEx;
-    
-    //Esto se tiene que borrar ya que se sacará de la BD
-    
     private Pokemon[] equipoP;
     private Pokemon[] equipo2;
-    private  int hpFinal;
+    private int hpFinal;
     
     //Contstructor  
     public ControladorCombate(ControladorPrincipal op, String nusurio, String usua2) throws SQLException {
-        this.usu1=nusurio;
-        this.cp=op;
-        this.usu2=usua2;
+        this.usu1 = nusurio;
+        this.cp = op;
+        this.usu2 = usua2;
         try{
         j1.creaEntrenador(usu1);
         j2.creaEntrenador(getUsu2());
@@ -39,9 +35,6 @@ public class ControladorCombate {
         equipoP=j1.getePokemon();
         setEquipo2(j2.getePokemon());
     }
-    
-    
-    
     
     //Se instancia la vista  
     public void iniciarVUvU() throws SQLException{
@@ -81,43 +74,41 @@ public class ControladorCombate {
         ConsultaSQL cte = new ConsultaSQL();
         cte.setResult("SELECT MULTIPLICADORDANO FROM NIVEL_DE_RESISTENCIA WHERE ID_ELEMENTOATACA =" + idElAtk + "AND ID_ELEMENTODEFIENDE =" + idElDef);
         while(cte.getResult().next()){
-            setCteTipo(cte.getResult().getInt(1));
+            setCteTipo(cte.getResult().getFloat(1));
         }
     }
     
     // recibe: PS, ATK, ATKESP, DEF, DEF, cteTipo (que corresponde al multiplicador del daño
     // dependiendo del tipo del ataque de entrada y el tipo del pokemon que recibe el ataque), pow (que es la potencia), 
     // la lista de pokemon y el tipo de contacto de un movimiento.
-    public void atacar(int ps, int atk, int atkEsp, int def, int defEsp, int pres, int mTipo, int pow, int lvl, Pokemon[] lista1, boolean contacto){
-        int dTipoC = (int) (mTipo * (((0.2 * lvl + 1) * atk * pow)/(25 * def)));
-        int dTipoD = (int) (mTipo * (((0.2 * lvl + 1) * atkEsp * pow)/(25 * defEsp)));
+    public void atacar(int ps, int atk, int atkEsp, int def, int defEsp, int pres, float mTipo, int pow, int lvl, Pokemon[] lista1, boolean contacto){
+        double dTipoC = (mTipo * (((0.2 * lvl + 1) * atk * pow)/(25 * def)));
+        double dTipoD = (mTipo * (((0.2 * lvl + 1) * atkEsp * pow)/(25 * defEsp)));
         presAtk(pres);
         if(isAtkEx()){    
             if(contacto){
-                if(ps - dTipoC < 0){
+                if(ps - (int)dTipoC < 0){
                     lista1[0].setPS(0);
                     cambiaDebil(lista1);
                 }
                 else
-                    lista1[0].setPS(ps - dTipoC);
-                System.out.println("daño total 1 es: " + dTipoC);
+                    lista1[0].setPS(ps - (int)dTipoC);
+                System.out.println("daño total 1 es: " + (int)dTipoC);
             }
             else{
-                if(ps - dTipoD < 0){
+                if(ps - (int)dTipoD < 0){
                     lista1[0].setPS(0);
                     cambiaDebil(lista1);
                 }
                 else
-                    lista1[0].setPS(ps - dTipoD);
-                System.out.println("daño total 2 es: " + dTipoD);
+                    lista1[0].setPS(ps - (int)dTipoD);
+                System.out.println("daño total 2 es: " + (int)dTipoD);
             }
         }
         else{
             JOptionPane.showMessageDialog(null, "El ataque falló.");
         }    
     }
-    
-     
     
     //Cambiar un pokemon debitilitado 
     public void cambiaDebil(Pokemon[] listaActiva){
@@ -178,8 +169,6 @@ public class ControladorCombate {
         return id;
     }
     
-    
-    
     //Realiza la acción entre ataque o cambiar pokemon
     public Pokemon[] realizarAccion(int op, int indiceP, Pokemon[] team1, Pokemon[] team2, int indiceA) throws SQLException{
         if (op==1){
@@ -218,8 +207,7 @@ public class ControladorCombate {
                 equipo[i]="DEB "+e[i].getNombre().replaceAll(" ","");
             else
                equipo[i]=e[i].getNombre();
-       }
-       
+       }   
        return equipo;
     }
     
@@ -233,11 +221,11 @@ public class ControladorCombate {
         return cont;
     }
 
-    public int getCteTipo() {
+    public float getCteTipo() {
         return cteTipo;
     }
 
-    public void setCteTipo(int muTipo) {
+    public void setCteTipo(float muTipo) {
         this.cteTipo = muTipo;
     }
 
