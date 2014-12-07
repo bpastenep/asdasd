@@ -18,6 +18,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private ControladorCombate cc;
     private ControladorLiga cl;
     private ControladorCombateCpuVs ccpuvs;
+    private ControladorRanking cR;
     private String nUsuarioL;
     private String[] tC = {"Tipo de combate", "Usuario vs Usuario", "Usuario vs CPU", "CPU vs CPU"};
     private String[] nTdeB = {"Numero de Batallas", "5", "25", "50", "100", "Continuar"};
@@ -28,6 +29,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.cp = co;
         this.nUsuarioL = n;
         this.jLabel4.setText(n);
+        setcR(new ControladorRanking());
         tipoCombate.setModel(new javax.swing.DefaultComboBoxModel(tC));
         comienzaCombate.setVisible(false);
         tipoCombate.setEnabled(false);
@@ -56,13 +58,13 @@ public Image getIconImage(){
         comienzaCombate = new javax.swing.JButton();
         comienzaTB = new javax.swing.JButton();
         numTdeB = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setIconImage(getIconImage());
-        setMinimumSize(new java.awt.Dimension(530, 483));
+        setMinimumSize(new java.awt.Dimension(530, 580));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -75,7 +77,7 @@ public Image getIconImage(){
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(190, 340, 170, 23);
+        jButton1.setBounds(190, 440, 170, 23);
 
         simulaCombate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         simulaCombate.setForeground(new java.awt.Color(255, 0, 0));
@@ -121,7 +123,7 @@ public Image getIconImage(){
             }
         });
         getContentPane().add(ligaPkmn);
-        ligaPkmn.setBounds(190, 290, 170, 23);
+        ligaPkmn.setBounds(190, 390, 170, 23);
 
         comienzaCombate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         comienzaCombate.setForeground(new java.awt.Color(255, 0, 0));
@@ -154,14 +156,19 @@ public Image getIconImage(){
         getContentPane().add(numTdeB);
         numTdeB.setBounds(290, 200, 120, 20);
 
+        jButton3.setText("RANKING");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(233, 320, 90, 23);
+
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VistaPrinciplNew666uchihamadara.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 0, 530, 580);
-
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 240, 160, 14);
 
         pack();
         setLocationRelativeTo(null);
@@ -254,12 +261,16 @@ public Image getIconImage(){
         
     }//GEN-LAST:event_comienzaTBActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        getcR().iniciaRanking();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton comienzaCombate;
     private javax.swing.JButton comienzaTB;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -268,4 +279,12 @@ public Image getIconImage(){
     private javax.swing.JButton simulaCombate;
     private javax.swing.JComboBox tipoCombate;
     // End of variables declaration//GEN-END:variables
+
+    public ControladorRanking getcR() {
+        return cR;
+    }
+
+    public void setcR(ControladorRanking cR) {
+        this.cR = cR;
+    }
 }

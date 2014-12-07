@@ -43,7 +43,6 @@ public class ControladorLiga {
     }
     
     public void iniciarVliga() throws SQLException{
-        System.out.println("hola");
         vl = new VistaLiga();
         vl.setVisible(true);
     }

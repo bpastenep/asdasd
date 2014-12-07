@@ -337,6 +337,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
                 pp2.setText("PP: "+ Integer.toString(getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP()));
                 if(getEquipoP2()[0].getMovimientos().getMovimientosA()[ataques2.getSelectedIndex()].getpP() <= 0){
                     jButton1.setVisible(false);
+                    JOptionPane.showMessageDialog(null, "El ataque seleccionado no tiene PP restantes \n Seleccione un ataque distinto.");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(VistaCombateUvU.class.getName()).log(Level.SEVERE, null, ex);
@@ -349,6 +350,7 @@ public class VistaCombateUvU extends javax.swing.JDialog {
                 pp1.setText("PP: "+ Integer.toString(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP()));
                 if(getEquipoP1()[0].getMovimientos().getMovimientosA()[ataques1.getSelectedIndex()].getpP() <= 0){
                     jButton1.setVisible(false);
+                    JOptionPane.showMessageDialog(null, "El ataque seleccionado no tiene PP restantes \n Seleccione un ataque distinto.");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(VistaCombateUvU.class.getName()).log(Level.SEVERE, null, ex);
