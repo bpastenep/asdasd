@@ -66,7 +66,7 @@ public class ControladorCombate {
     
     public int barraHp(Pokemon[] lista){
         int valor;
-        valor = (lista[0].getPS()*100)/lista[0].getPSi();
+        valor = (int)(lista[0].getPS()/lista[0].getPSi())*100;
         return valor;
     }
     

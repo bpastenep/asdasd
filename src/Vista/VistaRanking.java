@@ -26,10 +26,10 @@ public class VistaRanking extends javax.swing.JDialog {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         rankTrainer = new javax.swing.JTable();
-        rVictorias = new javax.swing.JButton();
         vuelveMenu = new javax.swing.JButton();
         rPropio = new javax.swing.JButton();
 
+        setTitle("Ranking");
         setMinimumSize(new java.awt.Dimension(386, 300));
         setResizable(false);
 
@@ -58,8 +58,6 @@ public class VistaRanking extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(rankTrainer);
 
-        rVictorias.setText("Por Victorias");
-
         vuelveMenu.setText("Salir");
         vuelveMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +65,7 @@ public class VistaRanking extends javax.swing.JDialog {
             }
         });
 
-        rPropio.setText("?????????");
+        rPropio.setText("Ranking Victorias");
         rPropio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rPropioActionPerformed(evt);
@@ -79,18 +77,17 @@ public class VistaRanking extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(rVictorias)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(vuelveMenu))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rPropio, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(154, 154, 154)
+                                .addComponent(vuelveMenu))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(rPropio, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,9 +96,7 @@ public class VistaRanking extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rVictorias)
-                    .addComponent(rPropio))
+                .addComponent(rPropio)
                 .addGap(18, 18, 18)
                 .addComponent(vuelveMenu)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -135,7 +130,6 @@ public class VistaRanking extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton rPropio;
-    private javax.swing.JButton rVictorias;
     private javax.swing.JTable rankTrainer;
     private javax.swing.JButton vuelveMenu;
     // End of variables declaration//GEN-END:variables
