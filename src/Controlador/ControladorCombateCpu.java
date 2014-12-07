@@ -76,7 +76,9 @@ public class ControladorCombateCpu {
     // método que determina la acción ofensiva de la cpu
     public Pokemon[] accionOfensiva(Pokemon[] listaCpu, Pokemon[] listaRival) throws SQLException{
         int inMov = (int)(Math.random()*3+0);
+        
         if(listaCpu[0].getMovimientos().getMovimientosA()[inMov].isContacto()){
+            System.out.println(getCteCambio()+", "+listaCpu[0].getnV()+", "+listaCpu[0].getAtk()+", "+ listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia()+", "+listaRival[0].getDef());
             cc.danoTipo(listaCpu[0].getMovimientos().getMovimientosA()[inMov].getIdElemento(), cc.elFamilia(listaRival[0]));
             setCteCambio(cc.getCteTipo());
             double dañoC = (getCteCambio() * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtk() * listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDef())));
@@ -88,6 +90,7 @@ public class ControladorCombateCpu {
             }
         }
         else{
+            System.out.println(getCteCambio()+", "+listaCpu[0].getnV()+", "+listaCpu[0].getAtk()+", "+ listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia()+", "+listaRival[0].getDef());
             cc.danoTipo(listaCpu[0].getMovimientos().getMovimientosA()[inMov].getIdElemento(), cc.elFamilia(listaRival[0]));
             setCteCambio(cc.getCteTipo());
             double dañoD = (getpCambio() * (((0.2 * listaCpu[0].getnV() + 1) * listaCpu[0].getAtkEsp()* listaCpu[0].getMovimientos().getMovimientosA()[inMov].getPotencia())/(25 * listaRival[0].getDefEsp())));
