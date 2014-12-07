@@ -19,7 +19,7 @@ public class Pokemon extends EspeciePokemon {
         for(int i=0;i<equipoP.length;i++){
             equipoP[i]=new Pokemon();
         }
-        datosP.setResult("select *  from pokemon inner join equipopokemon on(equipopokemon.ID_ENTRENADOR="+idE+" and pokemon.ID_POKEMON=equipopokemon.ID_POKEMON)");
+        datosP.setResult("select *  from pokemon inner join equipopokemon on(equipopokemon.ID_ENTRENADOR="+idE+" and pokemon.ID_POKEMON=equipopokemon.ID_POKEMON) order by random() ");
         int r=0;
         while(datosP.getResult().next()){
             if(r<6){
@@ -211,7 +211,6 @@ public class Pokemon extends EspeciePokemon {
         ataquesF[0]="Seleccione";
         for (int i=1;i<r+1;i++){
             ataquesF[i]=ataquesA[i-1];
-            System.out.println("Ataques asignados :"+ataquesF[i]);
         }
         return ataquesF;
     }

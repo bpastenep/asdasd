@@ -1,6 +1,0 @@
-1;bulbasur;140;placaje;latigos cepa;hojas navaja;arañazo
-2;charmander;110;ascuas;placaje;arañazo;chirrido
-3;evee;120;placaje;arañazo;rapidez;cabezazo
-4;pikachu;150;impactrueno;placaje;chirrido;arañazo
-5;caterpie;110;placaje;chirrido;arañazo;cabezazo
-6;golbat;120;placaje;chirrido;somnifero;cabezazo
