@@ -48,7 +48,6 @@ public class ControladorCombate {
             int hpPkmn = listaPActual[i].getPS();
             hpT = hpT + hpPkmn;
         }
-        System.out.println(hpT);
         if(hpT <= 0){
             return true;
         }
@@ -93,7 +92,6 @@ public class ControladorCombate {
                 }
                 else
                     lista1[0].setPS(ps - (int)dTipoC);
-                System.out.println("daño total 1 es: " + (int)dTipoC);
             }
             else{
                 if(ps - (int)dTipoD < 0){
@@ -102,7 +100,6 @@ public class ControladorCombate {
                 }
                 else
                     lista1[0].setPS(ps - (int)dTipoD);
-                System.out.println("daño total 2 es: " + (int)dTipoD);
             }
         }
         else{
@@ -176,7 +173,6 @@ public class ControladorCombate {
             hpTotal(team2);
             hpTotal(team1);
             //Si Opcion es igual a 1 representará que el jugdor desea atacar
-            System.out.println(elFamilia(team2[0]) + ", " + elFamilia(team1[0]));
             atacar(team2[0].getPS(), team1[0].getAtaque(), team1[0].getAtkEsp(), team2[0].getDef(), team2[0].getDefEsp(), 
             team1[0].getMovimientos().getMovimientosA()[indiceA].getPrecision() , getCteTipo(), team1[0].getMovimientos().getMovimientosA()[indiceA].getPotencia(), 
             team1[0].getnV(), team2 ,team1[0].getMovimientos().getMovimientosA()[indiceA].isContacto());

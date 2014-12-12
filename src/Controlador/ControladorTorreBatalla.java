@@ -92,7 +92,6 @@ public class ControladorTorreBatalla {
     }
     
     public void guardarRegistro() throws SQLException {
-        System.out.println("Cantidad de batallas: "+getCBatallas()+"Usuario :"+usu);
         tDB.actualizar(getCBatallas(),usu,selec);
     }
     

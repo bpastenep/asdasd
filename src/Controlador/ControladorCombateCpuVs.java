@@ -24,9 +24,14 @@ public class ControladorCombateCpuVs {
         setCpu2(cc.getEquipo2());
     }
     
+    // EL EQUIPO ESTÁ COMPUESTO SOLO POR PKMNS CON HP 0???
+    // Se necesita el metodo que asigna el equipo a la cpu...
     public int hpEquipo(Pokemon[] listaPokemon){
-        for(int i = 1; i < listaPokemon.length ; i++){
-            setHpTotal(listaPokemon[0].getPS()+listaPokemon[i].getPS());
+        int hp = 0;
+        for(int i = 0; i < listaPokemon.length ; i++){
+            hp = hp + listaPokemon[i].getPS();
+            System.out.println(hp);
+            setHpTotal(hp);
         }
         return getHpTotal();
     }
@@ -34,21 +39,26 @@ public class ControladorCombateCpuVs {
     // metodo que haga pelear las dos cpus hasta que una tenga a todos
     // sus pkmns con hp == 0, o un hp total == 0
     public void combateEntreCpu(Pokemon[] listaCpu1, Pokemon[] listaCpu2){
-        /*mientras haya hp en las dos listas*/
-        while(hpEquipo(listaCpu1) > 0 && hpEquipo(listaCpu2) > 0){
-            System.out.println("entro a combate");
+        hpEquipo(listaCpu1);
+        int h1 = getHpTotal();
+        System.out.println(h1);
+        hpEquipo(listaCpu2);
+        int h2 = getHpTotal();
+        System.out.println(h2);
+        while(h1 > 0 && h2 > 0){
             /*se actualizan las listas de cada cpu a partir de la acción que realizan*/
             try{
-            listaCpu1 = ccpu.accionCpu(listaCpu1, listaCpu2, ccpu.verificaHpCpu(listaCpu1));
-            listaCpu2 = ccpu.accionCpu(listaCpu2, listaCpu1, ccpu.verificaHpCpu(listaCpu2));
-            }catch(SQLException ex){}
-            if(hpEquipo(listaCpu1) == 0){
-                System.out.println("setea ganador 1");
+                System.out.println("Combate");
+                ccpu.verificaHpCpu(listaCpu1);
+                listaCpu1 = ccpu.accionCpu(listaCpu1, listaCpu2, ccpu.getAccion());
+                ccpu.verificaHpCpu(listaCpu2);
+                listaCpu2 = ccpu.accionCpu(listaCpu2, listaCpu1, ccpu.getAccion());
+            }catch(SQLException ex){System.out.println("oops");}
+            if(h1 <= 0){
                 setGanador("CPU 2, con " + listaCpu2[0].getNombre());
                 break;
             }
-            else if(hpEquipo(listaCpu2) == 0){
-                System.out.println("setea ganador 2");
+            else if(h2 <= 0){
                 setGanador("CPU, con " + listaCpu1[0].getNombre());
                 break;
             }

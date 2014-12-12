@@ -30,8 +30,7 @@ public class TorreDeBatalla {
          while(sql.getResult().next()){
              cbatallas=sql.getResult().getInt(1);
         }
-         System.out.println("Cantidad de batallas ganadas: "+cbatallas);
-         return cbatallas;
+        return cbatallas;
     }
 
     public void inicializa(int idE) throws SQLException {
@@ -51,9 +50,7 @@ public class TorreDeBatalla {
         String cbatallas=null; 
         sql.setResult("Select torre_batalla.version_torrebatalla from torre_batalla inner join historial_entrenador_torre_batalla on (historial_entrenador_torre_batalla.id_torrebatalla=torre_batalla.ID_TORREBATALLA) where historial_entrenador_torre_batalla.id_entrenador="+id+" and  historial_entrenador_torre_batalla.CANTIDADVICTORIASCONSECUTIVAS_HISTORIALENTRENADORTORREBATALLA<>0");
          while(sql.getResult().next()){
-             System.out.println("Valor encontrado :"+sql.getResult().getString(1));
              cbatallas=sql.getResult().getString(1);
-             System.out.println("pasó la asignación");
         }
          return cbatallas.trim();
     }
@@ -63,9 +60,7 @@ public class TorreDeBatalla {
         int cbatallas=0;
         sql.setResult("Select id_torrebatalla from torre_batalla where version_torrebatalla='"+cantidadCombateGanar+"'");
          while(sql.getResult().next()){
-             System.out.println("Valor encontrado :"+sql.getResult().getString(1));
              cbatallas=sql.getResult().getInt(1);
-             System.out.println("pasó la asignación");
         }
          return cbatallas;
     }

@@ -23,8 +23,7 @@ public class ConsultaSQL {
             // nombre de la BD: pokemon // usuario: pokemon // pass: pokemon
             url = "jdbc:derby://localhost:1527/pokemon;user=pokemon;password=pokemon";
             conexion=DriverManager.getConnection(url);
-            sentencia= conexion.createStatement();            
-            //System.out.println("Conexion a Base de Datos "+url+" . . . . .Ok");
+            sentencia= conexion.createStatement();
 
         }
         catch (SQLException ex) {
@@ -61,7 +60,6 @@ public class ConsultaSQL {
     public Connection cerrarConexion(){
         try {
             conexion.close();
-            // System.out.println("Cerrando conexion a "+url+" . . . . . Ok");
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -72,7 +70,6 @@ public class ConsultaSQL {
     public Statement cerrarStatement(){
         try {
             sentencia.close();
-             //System.out.println("Cerrando conexion a "+url+" . . . . . Ok");
         } catch (SQLException ex) {
             System.out.println(ex);
         }
