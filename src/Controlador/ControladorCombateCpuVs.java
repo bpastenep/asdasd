@@ -19,12 +19,13 @@ public class ControladorCombateCpuVs {
     public ControladorCombateCpuVs(ControladorPrincipal co) throws SQLException{
         this.cp = co;
         this.ccpu = new ControladorCombateCpu(cp, "CPU");
-        this.cc = new ControladorCombate(cp, "CPU", "CPU_2");
+        this.cc = new ControladorCombate(cp, "CPU", "CPU");
         setCpu1(cc.getEquipoP());
         setCpu2(cc.getEquipo2());
     }
     
     public int hpEquipo(Pokemon[] listaPokemon){
+        System.out.println("Primer pokemón primera lista :"+listaPokemon[0].getNombre());
         for(int i = 1; i < listaPokemon.length ; i++){
             setHpTotal(listaPokemon[0].getPS()+listaPokemon[i].getPS());
         }
@@ -36,20 +37,21 @@ public class ControladorCombateCpuVs {
     public void combateEntreCpu(Pokemon[] listaCpu1, Pokemon[] listaCpu2){
         /*mientras haya hp en las dos listas*/
         while(hpEquipo(listaCpu1) > 0 && hpEquipo(listaCpu2) > 0){
-            System.out.println("entro a combate");
+            
             /*se actualizan las listas de cada cpu a partir de la acción que realizan*/
             try{
             listaCpu1 = ccpu.accionCpu(listaCpu1, listaCpu2, ccpu.verificaHpCpu(listaCpu1));
             listaCpu2 = ccpu.accionCpu(listaCpu2, listaCpu1, ccpu.verificaHpCpu(listaCpu2));
             }catch(SQLException ex){}
-            if(hpEquipo(listaCpu1) == 0){
+            if(hpEquipo(listaCpu1) <= 0){
+                
                 System.out.println("setea ganador 1");
-                setGanador("CPU 2, con " + listaCpu2[0].getNombre());
+                setGanador("CPU 2");
                 break;
             }
-            else if(hpEquipo(listaCpu2) == 0){
+            else if(hpEquipo(listaCpu2) <= 0){
                 System.out.println("setea ganador 2");
-                setGanador("CPU, con " + listaCpu1[0].getNombre());
+                setGanador("CPU 1, con");
                 break;
             }
         }

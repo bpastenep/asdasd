@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Combate;
 import Modelo.ConsultaSQL;
 import Modelo.Entrenador;
 import Modelo.MovAprendido;
@@ -20,6 +21,7 @@ public class ControladorCombate {
     private Pokemon[] equipoP;
     private Pokemon[] equipo2;
     private int hpFinal;
+    private Combate com = new Combate();
     
     //Contstructor  
     public ControladorCombate(ControladorPrincipal op, String nusurio, String usua2) throws SQLException {
@@ -38,7 +40,7 @@ public class ControladorCombate {
     
     //Se instancia la vista  
     public void iniciarVUvU() throws SQLException{
-        vc = new VistaCombateUvU(this,cp, getUsu1(), getUsu2(), getEquipoP(), getEquipo2());
+        vc = new VistaCombateUvU(this,cp, getUsu1(), getUsu2(), getEquipoP(), getEquipo2(), j1, j2);
         vc.setVisible(true);
     }
 
@@ -275,5 +277,8 @@ public class ControladorCombate {
 
     public void setAtkEx(boolean atkEx) {
         this.atkEx = atkEx;
+    }
+    public Combate getCom(){
+        return this.com;
     }
 }
