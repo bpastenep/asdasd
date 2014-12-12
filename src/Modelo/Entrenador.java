@@ -87,6 +87,9 @@ public class Entrenador {
     public void setNroMedallas(int nroMedallas) {
         this.nroMedallas = nroMedallas;
     }
+    public int getIdE(){
+        return this.idE;
+    }
 
     public void asignaEquipo(int idE, int idP, int idF) throws SQLException {
         ConsultaSQL insertaE = new ConsultaSQL();

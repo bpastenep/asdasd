@@ -2,9 +2,11 @@ package Vista;
 
 import Controlador.ControladorCombate;
 import Controlador.ControladorPrincipal;
+import Modelo.Entrenador;
 import Modelo.Pokemon;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,9 +27,12 @@ public class VistaCombateUvU extends javax.swing.JDialog {
     private String usua2;
     private boolean restaPP1;
     private boolean restaPP2;
+    private Entrenador j1,j2;
     //Pokemones creados para la prueba
     
-    public VistaCombateUvU(ControladorCombate cco, ControladorPrincipal op,String usu1, String usu2, Pokemon[] equipo, Pokemon[] equipo2) {
+    public VistaCombateUvU(ControladorCombate cco, ControladorPrincipal op,String usu1, String usu2, Pokemon[] equipo, Pokemon[] equipo2, Entrenador ju1, Entrenador ju2) {
+        this.j1=ju1;
+        this.j2=ju2;
         initComponents();
         this.cp = op;
         this.cc = cco;
@@ -365,9 +370,23 @@ public class VistaCombateUvU extends javax.swing.JDialog {
             op2=0;
             if(cc.hpTotal(getEquipoP1())){
                 JOptionPane.showMessageDialog(null, "El ganador es "+getUsua2());
+                try {
+                    cc.getCom().actualizaC(j1.getIdE(), j2.getIdE(), 1);
+                } catch (SQLException ex) {
+                    Logger.getLogger(VistaCombateUvU.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(VistaCombateUvU.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 this.setVisible(false);
             }
             if(cc.hpTotal(getEquipoP2())){
+                try {
+                    cc.getCom().actualizaC(j1.getIdE(), j2.getIdE(), 2);
+                } catch (SQLException ex) {
+                    Logger.getLogger(VistaCombateUvU.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(VistaCombateUvU.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 JOptionPane.showMessageDialog(null, "El ganador es "+getUsua1());
                 this.setVisible(false);
             }

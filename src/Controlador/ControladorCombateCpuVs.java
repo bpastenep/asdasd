@@ -19,7 +19,7 @@ public class ControladorCombateCpuVs {
     public ControladorCombateCpuVs(ControladorPrincipal co) throws SQLException{
         this.cp = co;
         this.ccpu = new ControladorCombateCpu(cp, "CPU");
-        this.cc = new ControladorCombate(cp, "CPU", "CPU_2");
+        this.cc = new ControladorCombate(cp, "CPU", "CPU");
         setCpu1(cc.getEquipoP());
         setCpu2(cc.getEquipo2());
     }
